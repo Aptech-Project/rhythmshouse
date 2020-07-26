@@ -1,0 +1,5 @@
+Web index
+http://localhost/rhythmhouse/branches/dev/public/web/index
+
+Admin index
+http://localhost/rhythmhouse/branches/dev/public/admin/index
