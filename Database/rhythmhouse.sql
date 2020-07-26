@@ -25,9 +25,7 @@ CREATE TABLE `product` (
   `price` float NOT NULL,
   `promotion` int DEFAULT NULL,
   `description` varchar(255) NOT NULL,
-  `image1` varchar(255) DEFAULT NULL,
-  `image2` varchar(255) DEFAULT NULL,
-  `image3` varchar(255) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
