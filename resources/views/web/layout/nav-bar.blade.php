@@ -1,10 +1,11 @@
+<!-- {{ asset(' ') }} -->
 <!-- Header Section Begin -->
 <header class="header">
     <div class="container">
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="./index.html"><span style="font-weight:30px; font-size: 30px; color: white">RhythmHouse</span></a>
                 </div>
             </div>
             <div class="col-lg-10 col-md-10">
