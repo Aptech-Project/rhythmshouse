@@ -472,17 +472,12 @@
     </section>
     <!-- Countdown Section End -->
 @endsection
-<!-- @section('script-section')
-    <script>
-        $(function () {
-            $('#product').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-            });
-        });
-    </script>
-@endsection -->
+
+<!-- Write function here -->
+@section('function')
+<script>
+    $(document).ready(function(){
+        $("#home").addClass("active");
+    });
+</script>
+@endsection

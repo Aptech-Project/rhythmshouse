@@ -12,12 +12,12 @@
                 <div class="header__nav">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="{{ url('web/index') }}">Home</a></li>
-                            <li><a href="{{ url('web/about') }}">About</a></li>
-                            <li><a href="{{ url('web/product') }}">Product</a></li>
-                            <li><a href="{{ url('web/event') }}">Event</a></li>
-                            <li><a href="{{ url('web/membership') }}">Membership</a></li>
-                            <li><a href="{{ url('web/contact') }}">Contact</a></li>
+                            <li id="home"><a href="{{ url('web/index') }}">Home</a></li>
+                            <li id="about"><a href="{{ url('web/about') }}">About</a></li>
+                            <li id="product"><a href="{{ url('web/product') }}">Product</a></li>
+                            <li id="event"><a href="{{ url('web/event') }}">Event</a></li>
+                            <li id="membership"><a href="{{ url('web/membership') }}">Membership</a></li>
+                            <li id="contact"><a href="{{ url('web/contact') }}">Contact</a></li>
                             <!-- <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="./about.html">About</a></li>

@@ -1,6 +1,6 @@
 <!-- {{ asset('') }} -->
 @extends('web.layout.header')
-@section('title', 'RhythmHouse | Home')
+@section('title', 'RhythmHouse | Event')
 @section('content')
      <!-- Countdown Section Begin -->
     <section class="countdown countdown--page spad set-bg" data-setbg="{{ asset('img/countdown-bg.jpg') }}">
@@ -138,6 +138,16 @@
             </div>
         </div>
     </section>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <!-- Tours Section End --> 
+@endsection
+
+<!-- Write function here -->
+@section('function')
+<script>
+    $(document).ready(function(){
+        $("#event").addClass("active");
+        $("header:first").addClass("header--normal");
+        $("footer:first").addClass("footer--normal");
+    });
+</script>
 @endsection

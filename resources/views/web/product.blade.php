@@ -1,6 +1,6 @@
 <!-- {{ asset('') }} -->
 @extends('web.layout.header')
-@section('title', 'RhythmHouse | Home')
+@section('title', 'RhythmHouse | Product')
 @section('content')
         <!-- Breadcrumb Begin -->
         <div class="breadcrumb-option">
@@ -17,41 +17,51 @@
     </div>
     <!-- Breadcrumb End -->
 
-    <!-- Product Pic Begin -->
-    <div class="about-pic">
+        <!-- Services Section Begin -->
+        <section class="services">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
-                            <img src="{{ asset('img/about/ap-1.jpg') }}" alt="">
-                            <img src="{{ asset('img/about/ap-2.jpg') }}" alt="">
-                        </div>
-                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
-                            <img src="{{ asset('img/about/ap-3.jpg') }}" alt="">
-                        </div>
+                <div class="col-lg-6 p-0">
+                    <div class="services__left set-bg" data-setbg="{{ asset('img/services/service-left.jpg') }}">
+                        <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" class="play-btn video-popup"><i class="fa fa-play"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="row">
-                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
-                            <img src="{{ asset('img/about/ap-4.jpg') }}" alt="">
+                <div class="col-lg-6 p-0">
+                    <div class="row services__list">
+                        <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
+                            <div class="service__item deep-bg">
+                                <img src="{{ asset('img/services/service-1.png') }}" alt="">
+                                <h4>Wedding</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                            </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
-                            <img src="{{ asset('img/about/ap-5.jpg') }}" alt="">
+                        <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
+                            <div class="service__item">
+                                <img src="{{ asset('img/services/service-2.png') }}" alt="">
+                                <h4>Clubs and bar</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                            </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-sm-4 p-0">
-                            <img src="{{ asset('img/about/ap-6.jpg') }}" alt="">
+                        <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
+                            <div class="service__item deep-bg">
+                                <img src="{{ asset('img/services/service-4.png') }}" alt="">
+                                <h4>DJ lessons</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                            </div>
                         </div>
-                        <div class="col-lg-8 col-md-8 col-sm-8 p-0">
-                            <img src="{{ asset('img/about/ap-7.jpg') }}" alt="">
+                        <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
+                            <div class="service__item">
+                                <img src="{{ asset('img/services/service-3.png') }}" alt="">
+                                <h4>Corporate events</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Product Pic End -->
+    </section>
+    <!-- Services Section End -->
 
     <!-- Product Section Begin -->
     <section class="discography spad">
@@ -156,10 +166,12 @@
     </section>
     <!-- Product Section End -->
 @endsection
+
 <!-- Write function here -->
 @section('function')
 <script>
     $(document).ready(function(){
+        $("#product").addClass("active");
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });
