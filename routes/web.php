@@ -32,3 +32,5 @@ Route::get('web/event', 'webController@event');
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');
 Route::get('web/membership', 'webController@membership');
+Route::get('web/cart', 'webController@cart');
+Route::get('web/shop', 'webController@shop');

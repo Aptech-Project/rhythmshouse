@@ -10,10 +10,16 @@ class webController extends Controller
     public function index() {
         return view('web.index');
     }
-
 // Controller for product start
     public function product() {
         return view('web.product');
+    }
+    //phong
+    public function cart() {
+        return view('web.cart');
+    }
+    public function shop() {
+        return view('web.index2');
     }
 // Controller for product end
 
