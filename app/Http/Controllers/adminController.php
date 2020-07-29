@@ -8,8 +8,11 @@ use Illuminate\Support\Facades\DB;
 class adminController extends Controller
 {
     public function index() {
-        $products = DB::table('product')->get();
-        return view('admin.index')->with(['products'=>$products]);
+        $earnLastmonth = DB::table('order')->whereMonth('deliverydate','=',now()->month-1)->get();
+        $earnThisyear = DB::table('order')->whereYear('deliverydate','=',now()->year)->get();
+        $receivable = DB::table('event')->where('status','Approved')->get();
+        $pendingRequest = DB::table('event')->where('status','Processing')->get();
+        return view('admin.index')->with(['earnLastmonth'=>$earnLastmonth, 'earnThisyear'=>$earnThisyear, 'receivable'=>$receivable, 'pendingRequest'=>$pendingRequest]);
     }
     
 
@@ -90,4 +93,11 @@ class adminController extends Controller
         return redirect()->action('adminController@productList');
     }
 // Controller for product end
+
+// Controller for event start
+public function eventList() {
+    $products = DB::table('product')->get();
+    return view('admin.event.eventList')->with(['products'=>$products]);
+    }
+// Controller for event end
 }

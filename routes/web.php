@@ -17,12 +17,15 @@ Route::get('/', function () {
 
 //Admin Route 
 Route::get('admin/index', 'adminController@index');
-Route::get('admin/product/productList', 'adminController@productList');
-Route::get('admin/product/productCreate', 'adminController@productCreate');
-Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
-Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
-Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
-Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+    //Product Route
+    Route::get('admin/product/productList', 'adminController@productList');
+    Route::get('admin/product/productCreate', 'adminController@productCreate');
+    Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
+    Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
+    Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
+    Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+    //Event Route
+    Route::get('admin/event/eventtList', 'adminController@eventList');
 
 
 //Web Route 
