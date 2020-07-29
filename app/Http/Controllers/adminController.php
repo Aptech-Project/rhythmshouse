@@ -96,8 +96,8 @@ class adminController extends Controller
 
 // Controller for event start
 public function eventList() {
-    $products = DB::table('product')->get();
-    return view('admin.event.eventList')->with(['products'=>$products]);
+    $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    return view('admin.event.eventList')->with(['events'=>$events]);
     }
 // Controller for event end
 }
