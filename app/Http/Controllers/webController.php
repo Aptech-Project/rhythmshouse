@@ -8,81 +8,36 @@ use Illuminate\Support\Facades\DB;
 class webController extends Controller
 {
     public function index() {
-        $products = DB::table('product')->get();
-        return view('web.index')->with(['products'=>$products]);
+        return view('web.index');
     }
 
 // Controller for product start
-    public function productCreate() {
-        return view('admin.productCreate');
-    }
-    public function postProductCreate(Request $request) {
-        // nhận tất cả tham số vào mảng product
-        $product = $request->all();
-        // xử lý upload hình vào thư mục
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
-            {
-                return redirect('product/create')->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
-            }
-            $imageName = $file->getClientOriginalName();
-            $file->move("images",$imageName);
-        }
-        else
-        {
-            $imageName = null;
-        }
-
-        DB::table('product')->insert([
-            'id'=>intval($product['id']),
-            'name'=>$product['name'],
-            'price'=>intval($product['price']),
-            'description'=>$product['description'],
-            'image'=>$imageName
-        ]);
-        return redirect()->action('adminController@index');
-    }
-    public function productUpdate($id) {
-        $p = DB::table('product')
-            ->where('id', intval($id))
-            ->first();
-        return view('admin.productUpdate', ['p'=>$p]);
-    }
-    public function postProductUpdate(Request $request, $id) {
-        $name = $request->input('name');
-        $price = $request->input('price');
-        $description = $request->input('description');
-        // xử lý upload hình vào thư mục
-        if($request->hasFile('image'))
-        {
-            $file=$request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
-            {
-                return redirect('productUpdate')->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
-            }
-            $imageName = $file->getClientOriginalName();
-            $file->move("public/images",$imageName);
-        } else { // không upload hình mới => giữ lại hình cũ
-            $p = DB::table('product')
-                ->where('id', intval($id))
-                ->first();
-            $imageName = $p->image;
-        }
-
-        $p = DB::table('product')
-                ->where('id', intval($id))
-                ->update(['name'=>$name, 'price'=>intval($price), 'description'=>$description, 'image'=>$imageName]);
-        return redirect()->action('adminController@index');
-    }
-    public function productDelete($id) {
-        $p = DB::table('product')
-            ->where('id', intval($id))
-            ->delete();
-        return redirect()->action('adminController@index');
+    public function product() {
+        return view('web.product');
     }
 // Controller for product end
+
+
+// Controller for event start
+    public function event() {
+        return view('web.event');
+    }
+// Controller for event end
+
+
+// Controller for other view start (about, contact, membership)
+    public function about() {
+        return view('web.about');
+    }
+    public function contact() {
+        return view('web.contact');
+    }
+    public function membership() {
+        return view('web.membership');
+    }
+// Controller for other view end
+
+
+// Controller for user start
+// Controller for user end
 }

@@ -55,4 +55,5 @@
     <script src="{{ asset('js/jquery.jplayer.min.js') }}"></script>
     <script src="{{ asset('js/jplayerInit.js') }}"></script>
 </body>
+@yield('function')
 </html>
