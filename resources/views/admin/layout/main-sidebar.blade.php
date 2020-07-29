@@ -1,110 +1,146 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar elevation-4" style="position: fixed; background-color: darkgray">
     <!-- Brand Logo -->
-    <a href="{{ url('/') }}" class="brand-link">
-        <img src="{{ asset('img/admin.png') }}"
-             alt="Product Demo"
-             class="brand-image img-circle elevation-3">
-        <span class="brand-text">Admin Home</span>
+    <a href="{{ url('admin/index') }}" class="brand-link">
+        <img src="{{ asset('img/Logo-black1.png') }}"
+             alt="Managed Page"
+             class="brand-image img-circle elevation-3"
+             style="opacity: .8">
+        <span class="brand-text" style="color: ghostwhite">Managed Page</span>
     </a>
-
-    <!-- Product Sidebar -->
+ 
+    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Product Sidebar Menu -->
+        <!-- Sidebar user (optional) -->
+        <ul class="nav nav-pills nav-sidebar flex-column user-panel mt-3 pb-3 mb-3 d-flex" data-widget="treeview" role="menu" data-accordion="false">
+            <!-- Add icons to the links using the .nav-icon class
+                 with font-awesome or any other icon font library -->
+            <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                    <img src="{{ asset('img/admin.png') }}" class="brand-image img-circle elevation-2" alt="User Image">
+                    <p style="color: ghostwhite">
+                        &nbsp;&nbsp;
+                        Admin
+                        <i class="right fas fa-angle-left"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('product/index') }}" class="nav-link">
+                            <i class="nav-icon fas"></i>
+                            <p style="color: ghostwhite">Log Out</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>          
+        </ul>
+
+        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-music"></i>
-                        <p>
-                            Product
-                            <i class="right fas fa-angle-down"></i>
+                        <i class="nav-icon fas fa fa-music" style="color: ghostwhite"></i>
+                        <p style="color: ghostwhite">
+                            Products
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>View Products</p>
+                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Products Types</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/productCreate') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create a Product</p>
+                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">All Products</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Favorite Products</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Discount Products</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/event/eventList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Event</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-
-    <!-- User Sidebar -->
-    <div class="sidebar">
-        <!-- User Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-user-alt"></i>
-                        <p>
-                            User
-                            <i class="right fas fa-angle-down"></i>
+                        <i class="nav-icon fas fa fa-users" style="color: ghostwhite"></i>
+                        <p style="color: ghostwhite">
+                            Users
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>User List</p>
+                            <a href="{{ url('admin/user/userList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">All Users</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/productCreate') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Create User</p>
+                            <a href="{{ url('admin/user/userFeedback') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Feedbacks</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-            </ul>
-        </nav>
-        <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
 
-    <!-- Event Sidebar -->
-    <div class="sidebar">
-        <!-- Event Sidebar Menu -->
-        <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-grin-stars"></i>
-                        <p>
-                            Event
-                            <i class="right fas fa-angle-down"></i>
+                        <i class="nav-icon fas fa fa-cart-arrow-down" style="color: ghostwhite"></i>
+                        <p style="color: ghostwhite">
+                            Orders
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview" style="padding-left:15px" style="padding-left:15px" style="padding-left:15px">
+                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/index') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Event List</p>
+                            <a href="{{ url('admin/order/ordersList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Orders List</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa fa-industry" style="color: ghostwhite"></i>
+                        <p style="color: ghostwhite">
+                            Revenue
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('admin/revenue/parnerDept') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Partner Dept</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/productCreate') }}" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Revenue & Liabilities</p>
+                            <a href="{{ url('admin/revenue/revenueDetails') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Revenue Details</p>
                             </a>
                         </li>
                     </ul>
@@ -115,3 +151,4 @@
     </div>
     <!-- /.sidebar -->
 </aside>
+ 

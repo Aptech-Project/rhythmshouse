@@ -11,10 +11,15 @@ class adminController extends Controller
         $products = DB::table('product')->get();
         return view('admin.index')->with(['products'=>$products]);
     }
+    
 
 // Controller for product start
+    public function productList() {
+    $products = DB::table('product')->get();
+    return view('admin.product.productList')->with(['products'=>$products]);
+    }
     public function productCreate() {
-        return view('admin.productCreate');
+        return view('admin.product.productCreate');
     }
     public function postProductCreate(Request $request) {
         // nhận tất cả tham số vào mảng product
@@ -26,7 +31,7 @@ class adminController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('product/create')->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+                return redirect('admin/product/productCreate')->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images",$imageName);
@@ -43,13 +48,13 @@ class adminController extends Controller
             'description'=>$product['description'],
             'image'=>$imageName
         ]);
-        return redirect()->action('adminController@index');
+        return redirect()->action('adminController@productList');
     }
     public function productUpdate($id) {
         $p = DB::table('product')
             ->where('id', intval($id))
             ->first();
-        return view('admin.productUpdate', ['p'=>$p]);
+        return view('admin.product.productUpdate', ['p'=>$p]);
     }
     public function postProductUpdate(Request $request, $id) {
         $name = $request->input('name');
@@ -76,13 +81,13 @@ class adminController extends Controller
         $p = DB::table('product')
                 ->where('id', intval($id))
                 ->update(['name'=>$name, 'price'=>intval($price), 'description'=>$description, 'image'=>$imageName]);
-        return redirect()->action('adminController@index');
+        return redirect()->action('adminController@productList');
     }
     public function productDelete($id) {
         $p = DB::table('product')
             ->where('id', intval($id))
             ->delete();
-        return redirect()->action('adminController@index');
+        return redirect()->action('adminController@productList');
     }
 // Controller for product end
 }
