@@ -9,8 +9,6 @@ class webController extends Controller
 {
     public function index() {
         return view('web.index');
-        
-        return view('web.index');
     }
 
 // Controller for product start

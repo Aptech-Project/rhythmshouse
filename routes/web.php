@@ -17,20 +17,19 @@ Route::get('/', function () {
 
 //Admin Controller 
 Route::get('admin/index', 'adminController@index');
-    //Product Controller
-    Route::get('admin/product/productList', 'adminController@productList');
-    Route::get('admin/product/productCreate', 'adminController@productCreate');
-    Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
-    Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
-    Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
-    Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+//Product Controller
+Route::get('admin/product/productList', 'adminController@productList');
+Route::get('admin/product/productCreate', 'adminController@productCreate');
+Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
+Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
+Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
+Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
 
 
 //Web Controller 
 Route::get('web/index', 'webController@index');
-    //Product Controller
-    Route::get('web/productCreate', 'webController@productCreate');
-    Route::post('web/postProductCreate', 'webController@postProductCreate');
-    Route::get('web/productUpdate/{id}', 'webController@productUpdate');
-    Route::post('web/postProductUpdate/{id}', 'webController@postProductUpdate');
-    Route::get('web/deleteProduct/{id}', 'webController@deleteProduct');
+Route::get('web/product', 'webController@product');
+Route::get('web/event', 'webController@event');
+Route::get('web/about', 'webController@about');
+Route::get('web/contact', 'webController@contact');
+Route::get('web/membership', 'webController@membership');
