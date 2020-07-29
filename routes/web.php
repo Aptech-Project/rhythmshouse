@@ -15,9 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Admin Controller 
+//Admin Route 
 Route::get('admin/index', 'adminController@index');
-//Product Controller
 Route::get('admin/product/productList', 'adminController@productList');
 Route::get('admin/product/productCreate', 'adminController@productCreate');
 Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
@@ -26,7 +25,7 @@ Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProduct
 Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
 
 
-//Web Controller 
+//Web Route 
 Route::get('web/index', 'webController@index');
 Route::get('web/product', 'webController@product');
 Route::get('web/event', 'webController@event');
