@@ -48,6 +48,7 @@ CREATE TABLE `order` (
 );
 CREATE TABLE `event` (
   `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(70) NOT NULL,
   `address` varchar(70) NOT NULL,
   `registerdate` datetime NOT NULL,
   `fromdate` datetime NOT NULL,
