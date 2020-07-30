@@ -119,7 +119,7 @@
 @section('function')
 <script>
     $(document).ready(function(){
-        $("#home").addClass("active");
+        $("#cart").addClass("active");
     });
 </script>
 @endsection

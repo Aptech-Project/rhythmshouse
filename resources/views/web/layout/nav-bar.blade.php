@@ -29,7 +29,7 @@
                     </nav>
                     <div class="header__right__social">
                         <a href="{{ url('') }}"><i class="fa fa-user-circle"></i></a>
-                        <a href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+                        <a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
                     </div>
                 </div>
             </div>

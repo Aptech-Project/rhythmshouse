@@ -52,4 +52,5 @@ Route::get('web/contact', 'webController@contact');
 Route::get('web/membership', 'webController@membership');
 Route::get('web/cart', 'webController@cart');
 Route::get('web/shop', 'webController@shop');
+Route::get('web/order', 'webController@order');
 Route::get('web/productDetail', 'webController@productDetail');
