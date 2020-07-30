@@ -99,5 +99,30 @@ public function eventList() {
     $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
     return view('admin.event.eventList')->with(['events'=>$events]);
     }
+public function eventView() {
+        $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
+        //->where('event.id', intval($id))
+        ->first();
+        return view('admin.event.eventView')->with(['events'=>$e]);
+        }
+public function eventUpdate($id) {
+        $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
+            ->where('event.id', intval($id))
+            ->first();
+        return view('admin.event.eventUpdate', ['e'=>$e]);
+    }
+public function postEventUpdate(Request $request, $id) {
+        $status = $request->input('status');       
+        $e = DB::table('event')
+                ->where('id', intval($id))
+                ->update(['status'=>$status]);
+        return redirect()->action('adminController@eventList');
+    }
+public function eventDelete($id) {
+        $e = DB::table('event')
+            ->where('id', intval($id))
+            ->delete();
+        return redirect()->action('adminController@eventList');
+    }
 // Controller for event end
 }

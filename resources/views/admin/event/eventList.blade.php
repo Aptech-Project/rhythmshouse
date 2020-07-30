@@ -19,12 +19,13 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="product" class="table table-bordered table-hover">
+                        <table id="event" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Name</th>
-                                <th>Address</th>                            
+                                <th>FromDate</th> 
+                                <th>ToDate</th>                            
                                 <th>Status</th>
                                 <th>Views</th>
                                 <th>Cost</th>
@@ -38,20 +39,21 @@
                             <tr>
                                 <td>{{ $e->id }}</td>
                                 <td>{{ $e->artist }}</td>
-                                <td>{{ $e->address }}</td>
+                                <td>{{ $e->fromdate }}</td>
+                                <td>{{ $e->todate }}</td>
                                 <td>{{ $e->status }}</td>
                                 <td>{{ $e->views }}</td>
                                 <td>{{ $e->costperview }}</td>
                                 <td>{{ $e->prcost }}</td>
                                 <td>{{ $e->username }}</td>
                                 <td class="text-center">
-                                    <a class="btn btn-primary btn-sm" href="{{ url('admin/event/eventView'.$e->id) }}">
+                                    <a class="btn btn-primary btn-sm" href="{{ url('admin/event/eventView/'.$e->id) }}">
                                         <i class="fas fa-eye"></i> 
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="{{ url('admin/event/eventUpdate'.$e->id) }}">
+                                    </a><br><br>
+                                    <a class="btn btn-info btn-sm" href="{{ url('admin/event/eventUpdate/'.$e->id) }}">
                                         <i class="fas fa-pencil-alt"></i> 
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/event/delete'.$e->id) }}">
+                                    </a><br><br>
+                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/event/deleteEvent/'.$e->id) }}">
                                         <i class="fas fa-trash"></i> 
                                     </a>
                                 </td>
@@ -71,9 +73,9 @@
 @section('script-section')
     <script>
         $(function () {
-            $('#product').DataTable({
+            $('#event').DataTable({
                 "paging": true,
-                "lengthChange": false,
+                "lengthChange": true,
                 "searching": true,
                 "ordering": true,
                 "info": true,
