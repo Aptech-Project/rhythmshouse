@@ -1,23 +1,23 @@
-<aside class="main-sidebar elevation-4" style="position: fixed; background-color: darkgray">
+<aside class="main-sidebar elevation-4" style="position: fixed; background-color: #2e3b46">
     <!-- Brand Logo -->
-    <a href="{{ url('admin/index') }}" class="brand-link">
+    <a href="{{ url('admin/index') }}" class="brand-link" style="background-color: #1a2732">
         <img src="{{ asset('img/Logo-black1.png') }}"
              alt="Managed Page"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text" style="color: ghostwhite">Managed Page</span>
+        <span class="brand-text" style="color: ghostwhite">Manager Page</span>
     </a>
  
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" style="background-color: #2e3b46"> 
         <!-- Sidebar user (optional) -->
         <ul class="nav nav-pills nav-sidebar flex-column user-panel mt-3 pb-3 mb-3 d-flex" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link" style="background-color: #2e3b46">
                     <img src="{{ asset('img/admin.png') }}" class="brand-image img-circle elevation-2" alt="User Image">
-                    <p style="color: ghostwhite">
+                    <p style="color: ghostwhite; background-color: #2e3b46">
                         &nbsp;&nbsp;
                         Admin
                         <i class="right fas fa-angle-left"></i>
