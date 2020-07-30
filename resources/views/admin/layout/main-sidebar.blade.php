@@ -90,7 +90,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/user/userList') }}" class="nav-link">
+                            <a href="{{ url('admin/user/allUsers') }}" class="nav-link">
                                 <i class="nav-icon fas"></i>
                                 <p style="color: ghostwhite">All Users</p>
                             </a>

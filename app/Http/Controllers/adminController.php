@@ -125,4 +125,10 @@ public function eventDelete($id) {
         return redirect()->action('adminController@eventList');
     }
 // Controller for event end
+// Controller for All User
+public function allUsers() {
+    $user = DB::table('user')->get();
+    return view('admin.User.allUsers')->with(['user'=>$user]);
+    }
 }
+

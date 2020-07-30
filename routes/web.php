@@ -30,6 +30,8 @@ Route::get('admin/index', 'adminController@index');
     Route::get('admin/event/eventUpdate/{id}', 'adminController@eventUpdate');
     Route::post('admin/event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('admin/event/deleteEvent/{id}', 'adminController@eventDelete');
+    //User Route
+    Route::get('admin/user/allUsers', 'adminController@allUsers');
 
 
 //Web Route 
