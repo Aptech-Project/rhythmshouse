@@ -23,7 +23,7 @@ Route::get('admin/index', 'adminController@index');
     Route::post('admin/product/postProductCreate', 'adminController@postProductCreate');
     Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
     Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
-    Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+    Route::get('admin/product/productDelete/{id}', 'adminController@productDelete');
     //Order Route
     Route::get('admin/order/detailOrder', 'adminController@detailOrder');
     Route::get('admin/order/listOrder', 'adminController@listOrder');

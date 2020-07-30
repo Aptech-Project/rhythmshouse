@@ -18,20 +18,30 @@
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="txt-id">Product Id</label>
-                                    <input type="text" class="form-control" id="txt-id" name="id" placeholder="1">
-                                </div>
-                                <div class="form-group">
                                     <label for="txt-name">Product Name</label>
                                     <input type="text" class="form-control" id="txt-name" name="name" placeholder="Input Product Name">
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Category</label>
-                                    <select class="form-control" id="txt-name" name="category" placeholder="Input Product Name"></select>
+                                    <select class="form-control" id="txt-name" name="category" placeholder="Input Product Name">
+                                        <option value="" disabled selected hidden>Choose a category</option>
+                                        <option value="pop">Pop</option>
+                                        <option value="rock">Rock</option>
+                                        <option value="ballad">Ballad</option>
+                                        <option value="country">Country</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt-price">Artist</label>
+                                    <input type="text" class="form-control" id="txt-price" name="artist" placeholder="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="txt-price">Author</label>
+                                    <input type="text" class="form-control" id="txt-price" name="author" placeholder="">
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-price">Product Price</label>
-                                    <input type="text" class="form-control" id="txt-price" name="price" placeholder="1">
+                                    <input type="text" class="form-control" id="txt-price" name="price" placeholder="12$">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
@@ -41,7 +51,7 @@
                                 <label for="image">Image 1</label>
                                     <div class="input-group">
                                         <div class="custom-file">
-                                            <input type="file" class="custom-file-input" id="image1" name="image1">
+                                            <input type="file" class="custom-file-input" id="image" name="image">
                                             <label class="custom-file-label" for="image">Choose Image</label>
                                         </div>
                                     </div>

@@ -45,8 +45,10 @@ class adminController extends Controller
         }
 
         DB::table('product')->insert([
-            'id'=>intval($product['id']),
             'name'=>$product['name'],
+            'categoryname'=>$product['category'],
+            'artist'=>$product['artist'],
+            'author'=>$product['author'],
             'price'=>intval($product['price']),
             'description'=>$product['description'],
             'image'=>$imageName

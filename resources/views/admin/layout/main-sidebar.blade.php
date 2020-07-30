@@ -49,9 +49,9 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                            <a href="{{ url('admin/product/productCreate') }}" class="nav-link">
                                 <i class="nav-icon fas"></i>
-                                <p style="color: ghostwhite">Products Types</p>
+                                <p style="color: ghostwhite">Add Products</p>
                             </a>
                         </li>
                         <li class="nav-item">

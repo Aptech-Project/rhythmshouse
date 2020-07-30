@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>DataTables</h1>
+                    <h1>Product List</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
+                        <li class="breadcrumb-item active">Product List</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
+                        <h3 class="card-title">All product in page</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -33,9 +33,11 @@
                             <tr>
                                 <th>Product Id</th>
                                 <th>Product Name</th>
+                                <th>Artist</th>
+                                <th>Author</th>
                                 <th>Price</th>
                                 <th>Image</th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,16 +45,18 @@
                             <tr>
                                 <td>{{ $p->id }}</td>
                                 <td>{{ $p->name }}</td>
+                                <td>{{ $p->artist }}</td>
+                                <td>{{ $p->author }}</td>
                                 <td>{{ $p->price }}</td>
                                 <td><img width="100px" src="{{ url('images/'.$p->image) }}"/></td>
                                 <td class="text-right">
-                                    <a class="btn btn-primary btn-sm" href="{{ url('product/view/'.$p->id) }}">
+                                    <a class="btn btn-primary btn-sm" href="{{ url('admin/product/productView/'.$p->id) }}">
                                         <i class="fas fa-folder"></i> View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="{{ url('product/update/'.$p->id) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ url('admin/product/productUpdate/'.$p->id) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('product/delete/'.$p->id) }}">
+                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/product/productDelete/'.$p->id) }}">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
                                 </td>
