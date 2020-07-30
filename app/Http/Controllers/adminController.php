@@ -92,6 +92,13 @@ class adminController extends Controller
             ->delete();
         return redirect()->action('adminController@productList');
     }
+    //phong
+    public function detailOrder() {
+        return view('admin.order.detailOrder');
+    }
+    public function listOrder() {
+        return view('admin.order.listOrder');
+    }
 // Controller for product end
 
 // Controller for event start
@@ -125,4 +132,10 @@ public function eventDelete($id) {
         return redirect()->action('adminController@eventList');
     }
 // Controller for event end
+// Controller for All User
+public function allUsers() {
+    $user = DB::table('user')->get();
+    return view('admin.User.allUsers')->with(['user'=>$user]);
+    }
 }
+

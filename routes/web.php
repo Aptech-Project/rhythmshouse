@@ -24,12 +24,17 @@ Route::get('admin/index', 'adminController@index');
     Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
     Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
     Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+    //Order Route
+    Route::get('admin/order/detailOrder', 'adminController@detailOrder');
+    Route::get('admin/order/listOrder', 'adminController@listOrder');
     //Event Route
     Route::get('admin/event/eventList', 'adminController@eventList');
     Route::get('admin/event/eventView', 'adminController@eventView');
     Route::get('admin/event/eventUpdate/{id}', 'adminController@eventUpdate');
     Route::post('admin/event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('admin/event/deleteEvent/{id}', 'adminController@eventDelete');
+    //User Route
+    Route::get('admin/user/allUsers', 'adminController@allUsers');
 
 
 //Web Route 
