@@ -110,7 +110,7 @@ public function eventView() {
         $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
         //->where('event.id', intval($id))
         ->first();
-        return view('admin.event.eventView')->with(['events'=>$e]);
+        return view('admin.event.eventView')->with(['e'=>$e]);
         }
 public function eventUpdate($id) {
         $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
@@ -137,5 +137,15 @@ public function allUsers() {
     $user = DB::table('user')->get();
     return view('admin.User.allUsers')->with(['user'=>$user]);
     }
+//Controller for revenue start
+public function revenueDetails() {
+    $revenue = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    return view('admin.revenue.revenueDetails')->with(['revenue'=>$revenue]);
+    }
+public function partnerDept() {
+    $dept = DB::table('event')->get();
+    return view('admin.revenue.partnerDept')->with(['dept'=>$dept]);
+    }
+//Controller for revenue end
 }
 

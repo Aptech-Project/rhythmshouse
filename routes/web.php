@@ -29,18 +29,24 @@ Route::get('admin/index', 'adminController@index');
     Route::get('admin/order/listOrder', 'adminController@listOrder');
     //Event Route
     Route::get('admin/event/eventList', 'adminController@eventList');
-    Route::get('admin/event/eventView', 'adminController@eventView');
+    Route::get('admin/event/eventView/{id}', 'adminController@eventView');
     Route::get('admin/event/eventUpdate/{id}', 'adminController@eventUpdate');
     Route::post('admin/event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('admin/event/deleteEvent/{id}', 'adminController@eventDelete');
     //User Route
+    //Revenue Route
     Route::get('admin/user/allUsers', 'adminController@allUsers');
+    Route::get('admin/revenue/revenueDetails', 'adminController@revenueDetails');
+    Route::get('admin/revenue/partnerDept', 'adminController@partnerDept');
 
 
 //Web Route 
 Route::get('web/index', 'webController@index');
 Route::get('web/product', 'webController@product');
-Route::get('web/event', 'webController@event');
+    //Event Route
+    Route::get('web/event', 'webController@event');
+    Route::get('web/eventCreate', 'webController@eventCreate');
+
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');
 Route::get('web/membership', 'webController@membership');

@@ -30,7 +30,7 @@
                         </div>
                     </div>
                     <div class="buy__tickets">
-                        <a href="#" class="primary-btn">Buy tickets</a>
+                        <a href="#" class="primary-btn">More Details >>>></a>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
                             <p>Soundtracking the leap from 2019 into 2020 in what is one of the most anticipated nights
                                 of the year, in one of the city’s most hyped venues, HYTE Berlin NYE is the</p>
                         </div>
-                        <a href="#" class="primary-btn border-btn">Buy tickets</a>
+                        <a href="#" class="primary-btn border-btn">More Details >>>></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-2">
@@ -96,7 +96,7 @@
                             <p>Soundtracking the leap from 2019 into 2020 in what is one of the most anticipated nights
                                 of the year, in one of the city’s most hyped venues, HYTE Berlin NYE is the</p>
                         </div>
-                        <a href="#" class="primary-btn border-btn">Buy tickets</a>
+                        <a href="#" class="primary-btn border-btn">More Details >>>></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-3">
@@ -127,12 +127,25 @@
                             <p>Soundtracking the leap from 2019 into 2020 in what is one of the most anticipated nights
                                 of the year, in one of the city’s most hyped venues, HYTE Berlin NYE is the</p>
                         </div>
-                        <a href="#" class="primary-btn border-btn">Buy tickets</a>
+                        <a href="#" class="primary-btn border-btn">More Details >>>></a>
                     </div>
                 </div>
                 <div class="col-lg-6 order-lg-6">
                     <div class="tours__item__pic tours__item__pic--last">
                         <img src="{{ asset('img/tours/tour-3.jpg') }}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-12 order-lg-7">
+                    <div class="pagination__links">
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">Next</a>
+                    </div>
+                </div>
+                <div class="col-lg-12 order-lg-8">
+                    <div class="pagination__links">
+                    <a href="#">>>>>Become Our Partner To Advertise Your Event</a>
                     </div>
                 </div>
             </div>
