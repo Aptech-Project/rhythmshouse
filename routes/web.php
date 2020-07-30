@@ -34,8 +34,8 @@ Route::get('admin/index', 'adminController@index');
     Route::post('admin/event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('admin/event/deleteEvent/{id}', 'adminController@eventDelete');
     //User Route
-    //Revenue Route
     Route::get('admin/user/allUsers', 'adminController@allUsers');
+    //Revenue Route
     Route::get('admin/revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('admin/revenue/partnerDept', 'adminController@partnerDept');
 
