@@ -22,38 +22,38 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 p-0">
-                    <div class="skills__content">
+                    <div class="skills__content" style="height:600px">
                         <div class="section-title">
-                            <h2>DJ Alexandra Rud</h2>
+                            <h2>RhythmHouse</h2>
                             <h1>DJ’s skill</h1>
                         </div>
-                        <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
-                            from the norm.</p>
+                        <p>Rhythm House is a music store in the city which offers not only music but introduces event too. 
+                        We caters to almost all the age groups by providing the CDs, latest pop music collection for teenagers etc.</p>
                         <div class="skill__bar__item">
-                            <p>Perform</p>
+                            <p>Pop</p>
                             <div id="bar1" class="barfiller">
                                 <span class="tip"></span>
-                                <span class="fill" data-percentage="95"></span>
+                                <span class="fill" data-percentage="34"></span>
                             </div>
                         </div>
                         <div class="skill__bar__item">
-                            <p>Use Midi</p>
+                            <p>Classic</p>
                             <div id="bar2" class="barfiller">
                                 <span class="tip"></span>
-                                <span class="fill" data-percentage="85"></span>
+                                <span class="fill" data-percentage="28"></span>
                             </div>
                         </div>
                         <div class="skill__bar__item">
-                            <p>Remix and mash up</p>
+                            <p>Other</p>
                             <div id="bar3" class="barfiller">
                                 <span class="tip"></span>
-                                <span class="fill" data-percentage="98"></span>
+                                <span class="fill" data-percentage="38"></span>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 p-0">
-                    <div class="skills__video set-bg" data-setbg="{{ asset('img/skill-video.jpg') }}">
+                    <div class="skills__video set-bg" data-setbg="{{ asset('img/skill-video.jpg') }}" style="height:600px">
                         <a href="https://www.youtube.com/watch?v=S19UcWdOA-I?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
                     </div>
                 </div>
@@ -63,7 +63,7 @@
     <!-- Skills Section End -->
 
     <!-- About Section Begin -->
-    <section class="about about--page spad">
+    <section class="about spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -74,13 +74,11 @@
                 <div class="col-lg-6">
                     <div class="about__text">
                         <div class="section-title">
-                            <h2>He heard something that he knew to be music</h2>
+                            <h2>Music a form of expression</h2>
+                            <h1>Pop Love</h1>
                         </div>
-                        <p>At vero eos et accusamus et iusto odi odgnissimos ducimus qui blanditiis praesentium volup
-                            tatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi quod
-                            justo pro an.</p>
-                        <img src="{{ asset('img/about/signature.png') }}" alt="">
+                        <p>Music is a strong form of expression, and through music many emotions can be shown whether that be happy, sad, or angry . Music gives you the opportunity to express yourself without using words of your own instead the emotions of a complex song or a simple love song to do so.</p>
+                        <a href="#" class="primary-btn">MUSIC ZONE</a>
                     </div>
                 </div>
             </div>
@@ -130,7 +128,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title center-title">
-                        <h2>WHERE DO I PLAY</h2>
+                        <h2>Our Music Suit</h2>
                         <h1>Best service</h1>
                     </div>
                 </div>

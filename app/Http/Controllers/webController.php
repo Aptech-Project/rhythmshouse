@@ -14,6 +14,9 @@ class webController extends Controller
     public function product() {
         return view('web.product');
     }
+    public function productDetail() {
+        return view('web.productDetail');
+    }
     //phong
     public function cart() {
         return view('web.cart');

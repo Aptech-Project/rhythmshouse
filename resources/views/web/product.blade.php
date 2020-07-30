@@ -29,12 +29,12 @@
                         <div class="col-lg-3">
                             <div class="videos__item">
                                 <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-1.jpg') }}">
-                                    <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <!-- <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
                                 </div>
                                 <div class="videos__item__text">
                                     <h5>Electric Love Festival 2019 - The Opening Ceremony</h5>
                                     <ul>
-                                        <li>02:35:18</li>
+                                        <li>12.00 $</li>
                                         <li>Dec 17, 2019</li>
                                     </ul>
                                 </div>
@@ -43,12 +43,12 @@
                         <div class="col-lg-3">
                             <div class="videos__item">
                                 <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-2.jpg') }}">
-                                    <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <!-- <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
                                 </div>
                                 <div class="videos__item__text">
                                     <h5>Tiësto - Live Electric Daisy Carnival Las Vegas 2019</h5>
                                     <ul>
-                                        <li>02:35:18</li>
+                                        <li>15.00 $</li>
                                         <li>Dec 17, 2019</li>
                                     </ul>
                                 </div>
@@ -57,12 +57,12 @@
                         <div class="col-lg-3">
                             <div class="videos__item">
                                 <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-3.jpg') }}">
-                                    <a href="https://www.youtube.com/watch?v=3nQNiWdeH2Q?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <!-- <a href="https://www.youtube.com/watch?v=3nQNiWdeH2Q?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
                                 </div>
                                 <div class="videos__item__text">
                                     <h5>Martin Garrix - Live @ Ultra Music Festival Miami 2019</h5>
                                     <ul>
-                                        <li>02:35:18</li>
+                                        <li>19.00 $</li>
                                         <li>Dec 17, 2019</li>
                                     </ul>
                                 </div>
@@ -71,12 +71,12 @@
                         <div class="col-lg-3">
                             <div class="videos__item">
                                 <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-4.jpg') }}">
-                                    <a href="https://www.youtube.com/watch?v=Srqs4CitU2U?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <!-- <a href="https://www.youtube.com/watch?v=Srqs4CitU2U?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
                                 </div>
                                 <div class="videos__item__text">
                                     <h5>Armin van Buuren live at Tomorrowland 2019</h5>
                                     <ul>
-                                        <li>02:35:18</li>
+                                        <li>21 $</li>
                                         <li>Dec 17, 2019</li>
                                     </ul>
                                 </div>
@@ -85,12 +85,12 @@
                         <div class="col-lg-3">
                             <div class="videos__item">
                                 <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-3.jpg') }}">
-                                    <a href="https://www.youtube.com/watch?v=vBGiFtb8Rpw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a>
+                                    <!-- <a href="https://www.youtube.com/watch?v=vBGiFtb8Rpw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
                                 </div>
                                 <div class="videos__item__text">
                                     <h5>Martin Garrix - Live @ Ultra Music Festival Miami 2019</h5>
                                     <ul>
-                                        <li>02:35:18</li>
+                                        <li>11 $</li>
                                         <li>Dec 17, 2019</li>
                                     </ul>
                                 </div>
@@ -140,8 +140,8 @@
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        Collapsible Group #1
+                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: black; font-size: 19px;">
+                                        Category Group #1
                                     </button>
                                 </h5>
                             </div>
@@ -158,32 +158,34 @@
                         <div class="card">
                             <div class="card-header" id="headingTwo">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        Collapsible Group #2
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: black; font-size: 19px;">
+                                        Category Group #2
                                     </button>
                                 </h5>
                             </div>
                             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    #1
+                                </div>
+                                <div class="card-body">
+                                    #2
                                 </div>
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header" id="headingThree">
                                 <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        Collapsible Group #3
+                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: black; font-size: 19px;">
+                                        Category Group #3
                                     </button>
                                 </h5>
                             </div>
                             <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                    #1
+                                </div>
                                 <div class="card-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.
-                                    Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea
-                                    proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                    #2
                                 </div>
                             </div>
                         </div>
@@ -203,8 +205,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>
@@ -216,8 +218,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>
@@ -229,8 +231,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>
@@ -242,8 +244,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>
@@ -255,8 +257,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>
@@ -268,8 +270,8 @@
                             <div class="discography__item__text">
                                 <span>$ 52.00</span>
                                 <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/discography/link-1.jpg') }}" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/discography/link-2.jpg') }}" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
                             </div>
                         </div>
                     </div>

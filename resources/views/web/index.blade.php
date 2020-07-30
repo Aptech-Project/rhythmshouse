@@ -92,32 +92,6 @@
     </section>
     <!-- Event Section End -->
 
-    <!-- About Section Begin -->
-    <section class="about spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="about__pic">
-                        <img src="{{ asset('img/about/about.png') }}" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="about__text">
-                        <div class="section-title">
-                            <h2>DJ Alexandra Rud</h2>
-                            <h1>About me</h1>
-                        </div>
-                        <p>DJ Rainflow knows how to move your mind, body and soul by delivering tracks that stand out
-                            from the norm. As if this impressive succession of high impact, floor-filling bombs wasn’t
-                            enough to sustain.</p>
-                        <a href="#" class="primary-btn">CONTACT ME</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- About Section End -->
-
     <!-- Services Section Begin -->
     <section class="services">
         <div class="container-fluid">
@@ -132,28 +106,28 @@
                         <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
                             <div class="service__item deep-bg">
                                 <img src="{{ asset('img/services/service-1.png') }}" alt="">
-                                <h4>Wedding</h4>
+                                <h4>Love songs</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
                             <div class="service__item">
                                 <img src="{{ asset('img/services/service-2.png') }}" alt="">
-                                <h4>Clubs and bar</h4>
+                                <h4>Relaxing</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
                             <div class="service__item deep-bg">
                                 <img src="{{ asset('img/services/service-4.png') }}" alt="">
-                                <h4>DJ lessons</h4>
+                                <h4>Dance</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
                             <div class="service__item">
                                 <img src="{{ asset('img/services/service-3.png') }}" alt="">
-                                <h4>Corporate events</h4>
+                                <h4>Party</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
                             </div>
                         </div>
@@ -170,7 +144,7 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="section-title">
-                        <h2>Latest tracks</h2>
+                        <h2>Top Billboard</h2>
                         <h1>Music podcast</h1>
                     </div>
                 </div>
@@ -397,7 +371,7 @@
                 </div>
                 <div class="col-lg-5 p-0">
                     <div class="track__pic">
-                        <img src="{{ asset('img/track-right.jpg') }}" alt="">
+                        <img src="{{ asset('img/headphone.jpg') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -411,7 +385,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h2>Youtube feed</h2>
+                        <h2>On Trending</h2>
                         <h1>Latest videos</h1>
                     </div>
                 </div>
@@ -464,7 +438,7 @@
                     <div class="countdown__timer" id="countdown-time">
                     </div>
                     <div class="buy__tickets">
-                        <a href="#" class="primary-btn">Buy tickets</a>
+                        <a href="#" class="primary-btn">See Details</a>
                     </div>
                 </div>
             </div>
