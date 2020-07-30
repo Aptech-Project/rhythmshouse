@@ -92,6 +92,10 @@ class adminController extends Controller
             ->delete();
         return redirect()->action('adminController@productList');
     }
+    //phong
+    public function detailOrder() {
+        return view('admin.order.detailOrder');
+    }
 // Controller for product end
 
 // Controller for event start

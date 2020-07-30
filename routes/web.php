@@ -24,6 +24,8 @@ Route::get('admin/index', 'adminController@index');
     Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
     Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
     Route::get('admin/product/deleteProduct/{id}', 'adminController@deleteProduct');
+    Route::get('admin/product/detailOrder', 'adminController@detailOrder');
+
     //Event Route
     Route::get('admin/event/eventList', 'adminController@eventList');
     Route::get('admin/event/eventView', 'adminController@eventView');
