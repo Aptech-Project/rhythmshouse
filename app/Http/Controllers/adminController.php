@@ -96,6 +96,9 @@ class adminController extends Controller
     public function detailOrder() {
         return view('admin.order.detailOrder');
     }
+    public function listOrder() {
+        return view('admin.order.listOrder');
+    }
 // Controller for product end
 
 // Controller for event start
