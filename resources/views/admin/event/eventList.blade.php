@@ -19,7 +19,7 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="event" class="table table-bordered table-hover">
+                        <table id="event" class="table table-bordered table-hover" style="text-align: center">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -28,8 +28,7 @@
                                 <th>ToDate</th>                            
                                 <th>Status</th>
                                 <th>Views</th>
-                                <th>Cost</th>
-                                <th>PreCost</th>
+                                <th>Total Dept</th>
                                 <th>UserName</th>
                                 <th></th>
                             </tr>
@@ -37,15 +36,14 @@
                             <tbody>
                             @foreach($events as $e)
                             <tr>
-                                <td>{{ $e->id }}</td>
-                                <td>{{ $e->artist }}</td>
-                                <td>{{ $e->fromdate }}</td>
-                                <td>{{ $e->todate }}</td>
-                                <td>{{ $e->status }}</td>
-                                <td>{{ $e->views }}</td>
-                                <td>{{ $e->costperview }}</td>
-                                <td>{{ $e->prcost }}</td>
-                                <td>{{ $e->username }}</td>
+                                <td style="vertical-align: middle">{{ $e->id }}</td>
+                                <td style="vertical-align: middle">{{ $e->artist }}</td>
+                                <td style="vertical-align: middle">{{ $e->fromdate }}</td>
+                                <td style="vertical-align: middle">{{ $e->todate }}</td>
+                                <td style="vertical-align: middle">{{ $e->status }}</td>
+                                <td style="vertical-align: middle">{{ $e->views }}</td>
+                                <td style="vertical-align: middle">{{ $e->costperview }}</td>
+                                <td style="vertical-align: middle">{{ $e->username }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/event/eventView/'.$e->id) }}">
                                         <i class="fas fa-eye"></i> 
