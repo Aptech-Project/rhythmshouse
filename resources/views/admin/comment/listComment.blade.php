@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>List Orders</h1>
+                <h1>List Comment</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Lists Orders</li>
+                    <li class="breadcrumb-item active">Lists Comment</li>
                 </ol>
             </div>
         </div>
@@ -32,63 +32,66 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th class="">Date</th>
-                            <th>User Name</th>
-                            <th>Status</th>
-                            <th>Total</th>
+                            <th class="">Product</th>
+                            <th>User Name Comment</th>
+                            <th>Rate</th>
+                            <th>Date</th>
+                            <th>Comment</th>
+                            <th>Content Reply </th>
+                            <th>Reply</th>
                             <th>Delete</th>
-                            <th>Edit</th>
-                            <th>Detail</th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td class="">1</td>
                                 <td class="">
-                                    2020-07-28 23:19:00
+                                    David Guetta Miami Ultra
                                 </td>
                                 <td class="">Phong</td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price">$240.00</td>
+                                <td class="">5</td>
+                                <td class="total-price">2020-07-28 23:19:00</td>
+                                <td class="" style="color:blue;"> Sản phẩm tốt</i></td>
+                                <td class="""> Cảm ơn bạn</td>
+                                <td class="" style="color:blue;">Reply </td>
                                 <td class=""><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="""><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
                             </tr>
                             <tr>
                                 <td class="">2</td>
                                 <td class="">
-                                    2020-07-28 23:19:00
+                                    David Guetta Miami Ultra
                                 </td>
-                                <td class="">Hải</td>
-                                <td class="">Đã giao</td>
-                                <td class="total-price">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
-                            </tr>
-                            <tr>
+                                <td class="">Phong</td>
+                                <td class="">5</td>
+                                <td class="total-price">2020-07-28 23:19:00</td>
+                                <td class="" style="color:blue;"> Sản phẩm tốt</i></td>
+                                <td class="""> Cảm ơn bạn</td>
+                                <td class="" style="color:blue;">Reply </td>
+                                <td class=""><i class="fas fa-trash"></i> Delete</i></td>
+                            </tr><tr>
                                 <td class="">3</td>
                                 <td class="">
-                                    2020-07-28 23:19:00
+                                    David Guetta Miami Ultra
                                 </td>
-                                <td class="">Khang</td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price ">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
-                            </tr>
-                            <tr>
+                                <td class="">Phong</td>
+                                <td class="">5</td>
+                                <td class="total-price">2020-07-28 23:19:00</td>
+                                <td class="" style="color:blue;"> Sản phẩm tốt</i></td>
+                                <td class="""> Cảm ơn bạn</td>
+                                <td class="" style="color:blue;" >Reply </td>
+                                <td class=""><i class="fas fa-trash"></i> Delete</i></td>
+                            </tr><tr>
                                 <td class="">4</td>
                                 <td class="">
-                                    2020-07-28 23:19:00
+                                    David Guetta Miami Ultra
                                 </td>
-                                <td class="">Long</td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price ">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
+                                <td class="">Phong</td>
+                                <td class="" >5</td>
+                                <td class="total-price">2020-07-28 23:19:00</td>
+                                <td class="" style="color:blue;"> Sản phẩm tốt</i></td>
+                                <td class="""> Cảm ơn bạn</td>
+                                <td class="" style="color:blue;">Reply </td>
+                                <td class=""><i class="fas fa-trash"></i> Delete</i></td>
                             </tr>
                         </tbody>
                     </table>
