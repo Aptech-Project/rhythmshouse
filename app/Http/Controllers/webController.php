@@ -41,6 +41,9 @@ class webController extends Controller
     public function eventCreate() {
         return view('web.eventCreate');
     }
+    public function eventManagerment() {
+        return view('web.eventManagerment');
+    }
 // Controller for event end
 
 

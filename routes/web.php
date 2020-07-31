@@ -38,6 +38,8 @@ Route::get('admin/index', 'adminController@index');
     //Revenue Route
     Route::get('admin/revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('admin/revenue/partnerDept', 'adminController@partnerDept');
+    Route::get('admin/revenue/deptUpdate/{id}', 'adminController@deptUpdate');
+    Route::post('admin/revenue/postdeptUpdate/{id}', 'adminController@postdeptUpdate');
     //comment Route
     Route::get('admin/comment/listComment', 'adminController@listComment');
 
@@ -48,6 +50,7 @@ Route::get('web/product', 'webController@product');
     //Event Route
     Route::get('web/event', 'webController@event');
     Route::get('web/eventCreate', 'webController@eventCreate');
+    Route::get('web/eventManagerment', 'webController@eventManagerment');
 
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');

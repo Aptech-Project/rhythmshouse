@@ -37,12 +37,12 @@
                             @foreach($events as $e)
                             <tr>
                                 <td style="vertical-align: middle">{{ $e->id }}</td>
-                                <td style="vertical-align: middle">{{ $e->artist }}</td>
+                                <td style="vertical-align: middle">{{ $e->name }}</td>
                                 <td style="vertical-align: middle">{{ $e->fromdate }}</td>
                                 <td style="vertical-align: middle">{{ $e->todate }}</td>
                                 <td style="vertical-align: middle">{{ $e->status }}</td>
                                 <td style="vertical-align: middle">{{ $e->views }}</td>
-                                <td style="vertical-align: middle">{{ $e->costperview }}</td>
+                                <td style="vertical-align: middle">${{ $e->totaldept }}</td>
                                 <td style="vertical-align: middle">{{ $e->username }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/event/eventView/'.$e->id) }}">

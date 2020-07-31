@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Revenue Details </h1>
+                    <h1>Partner Dept</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -19,29 +19,34 @@
                 <div class="card">
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <h3>* Partner Dept</h3>
                         <table id="dept" class="table table-bordered table-hover" style="text-align: center">
                             <thead>
                             <tr>
+                                <th>PartnerName</th>
                                 <th>EventId</th>
+                                <th>EventName</th>
                                 <th>RegisterDate</th>
                                 <th>Views</th> 
-                                <th>Total Dept ($)</th>
-                                <th>Has paid ($)</th>
+                                <th>Total Dept</th>
+                                <th>Has paid</th>
+                                
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($dept as $e)
                             <tr>
+                                <td>{{ $e->username }}</td>
                                 <td>{{ $e->id }}</td>
+                                <td>{{ $e->name }}</td>
                                 <td>{{ $e->registerdate }}</td>
                                 <td>{{ $e->views }}</td>
-                                <td>${{ $e->costperview }}</td>
-                                <td>${{ $e->prcost }}</td>
+                                <td>${{ $e->totaldept }}</td>
+                                <td>${{ $e->haspaid }}</td>
+                                
                                 <td class="text-center">  
-                                    <a class="btn btn-info btn-sm" href="{{ url('admin/event/eventUpdate/'.$e->id) }}">
-                                        <i class="fas fa-pencil-alt"></i> Update Dept
+                                    <a class="btn btn-info btn-sm" href="{{ url('admin/revenue/deptUpdate/'.$e->id) }}">
+                                        <i class="fas fa-pencil-alt"></i> Update
                                     </a>
                                 </td>
                             </tr>

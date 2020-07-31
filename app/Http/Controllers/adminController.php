@@ -148,8 +148,21 @@ public function revenueDetails() {
     return view('admin.revenue.revenueDetails')->with(['revenue'=>$revenue]);
     }
 public function partnerDept() {
-    $dept = DB::table('event')->get();
+    $dept = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
     return view('admin.revenue.partnerDept')->with(['dept'=>$dept]);
+    }
+public function deptUpdate($id) {
+        $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
+            ->where('event.id', intval($id))
+            ->first();
+        return view('admin.revenue.deptUpdate', ['e'=>$e]);
+    }
+public function postdeptUpdate(Request $request, $id) {
+        $haspaid = $request->input('haspaid');       
+        $e = DB::table('event')
+                ->where('id', intval($id))
+                ->update(['haspaid'=>floatval($haspaid)]);
+        return redirect()->action('adminController@partnerDept');
     }
 //Controller for revenue end
 }

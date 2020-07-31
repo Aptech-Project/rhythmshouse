@@ -61,14 +61,15 @@
                                 <td>{{ $e->id }}</td>
                                 <td>{{ $e->registerdate }}</td>
                                 <td>{{ $e->views }}</td>
-                                <td>${{ $e->costperview }}</td>
-                                <td>${{ $e->prcost }}</td>
+                                <td>${{ $e->totaldept }}</td>
+                                <td>${{ $e->haspaid }}</td>
                             </tr>
                             @endforeach
                             <tfoot>
                                 <tr>
-                                    <th colspan="4" style="text-align:right">Total:</th>
-                                    <th colspan="5" style="text-align:center">${{$revenue -> sum('prcost')}}</th> 
+                                    <th colspan="3" style="text-align:right">Total:</th>
+                                    <th colspan="1" style="text-align:center">${{$revenue -> sum('totaldept')}}</th>
+                                    <th colspan="1" style="text-align:center">${{$revenue -> sum('haspaid')}}</th> 
                                 </tr>
                             </tfoot>
                         </table>
