@@ -38,6 +38,8 @@ Route::get('admin/index', 'adminController@index');
     //Revenue Route
     Route::get('admin/revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('admin/revenue/partnerDept', 'adminController@partnerDept');
+    //comment Route
+    Route::get('admin/comment/listComment', 'adminController@listComment');
 
 
 //Web Route 
@@ -54,3 +56,4 @@ Route::get('web/cart', 'webController@cart');
 Route::get('web/shop', 'webController@shop');
 Route::get('web/order', 'webController@order');
 Route::get('web/productDetail', 'webController@productDetail');
+Route::get('web/comment', 'webController@comment');

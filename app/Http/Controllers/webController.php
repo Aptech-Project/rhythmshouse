@@ -24,6 +24,13 @@ class webController extends Controller
     public function shop() {
         return view('web.index2');
     }
+    
+    public function order() {
+        return view('web.order');
+    }
+    public function comment() {
+        return view('web.comment');
+    }
 // Controller for product end
 
 

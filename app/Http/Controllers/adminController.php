@@ -101,8 +101,8 @@ class adminController extends Controller
     public function listOrder() {
         return view('admin.order.listOrder');
     }
-    public function order() {
-        return view('web.order');
+    public function listComment() {
+        return view('admin.comment.listComment');
     }
 // Controller for product end
 
