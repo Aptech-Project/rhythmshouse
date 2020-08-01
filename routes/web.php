@@ -60,3 +60,6 @@ Route::get('web/shop', 'webController@shop');
 Route::get('web/order', 'webController@order');
 Route::get('web/productDetail', 'webController@productDetail');
 Route::get('web/comment', 'webController@comment');
+//Register and Login Route
+Route::get('web/register', 'webController@register');
+Route::get('web/login', 'webController@login');

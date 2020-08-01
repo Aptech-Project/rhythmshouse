@@ -31,6 +31,13 @@ class webController extends Controller
     public function comment() {
         return view('web.comment');
     }
+    //Controller for Login and register
+    public function register() {
+        return view('web.register');
+    }
+    public function login() {
+        return view('web.login');
+    }
 // Controller for product end
 
 
