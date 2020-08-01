@@ -343,7 +343,6 @@ label {
                 <div style="padding-left:34%; padding-bottom:30px">
                     <img src="../../public/img/discography/disco-2.jpg">
                 </div>
-
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="email" style="text-align: left;"><i
                             class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email :</label>
@@ -361,6 +360,11 @@ label {
                 <div class="form-group">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-default">Login</button><br>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        aaaa
                     </div>
                 </div>
                 <div class="form-group">

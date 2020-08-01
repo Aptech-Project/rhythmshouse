@@ -38,6 +38,44 @@ class webController extends Controller
     public function login() {
         return view('web.login');
     }
+
+    // public function postLoginUser(Request $request){
+    //     $this ->validate($request,
+    //     [
+    //         'email'=>'required|email',
+    //         'password'=>'required|min:6|max:20'
+    //     ],[
+    //         'email.required'=>'Enter Email',
+    //         'email.email'=>'Email Sai',
+    //         'password.required'=>'Enter Email',
+    //     ]
+    //     );
+    //     $creadentials=array('email'=>$request=>email,'password'=>$request=>password);
+    //     if(Auth::attempt($creadentials)){
+    //         return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap thanh cong']);
+    //     }else{
+    //         return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap khong thanh cong']);
+    //     }
+    // }
+
+    //controller for UserCreate
+    public function getUserCreate() {
+        return view('web.login');
+    }
+    public function postUserCreate(Request $request) {
+        // nhận tất cả tham số vào mảng user
+        $user = $request->all();
+        DB::table('user')->insert([
+            'email'=>$user['email'],
+            'password'=>$user['password'],
+            'username'=>$user['username'],
+            'address'=>$user['address'],
+            'birthday'=>($user['birthday']),
+            'name'=>$user['name'],
+            'phonenumber'=>$user['phonenumber']
+        ]);
+        return redirect()->action('webController@postUserCreate');
+}
 // Controller for product end
 
 
@@ -65,7 +103,6 @@ class webController extends Controller
         return view('web.membership');
     }
 // Controller for other view end
-
 
 // Controller for user start
 // Controller for user end

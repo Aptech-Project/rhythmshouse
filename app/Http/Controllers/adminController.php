@@ -142,6 +142,12 @@ public function allUsers() {
     $user = DB::table('user')->get();
     return view('admin.User.allUsers')->with(['user'=>$user]);
     }
+ public function userDelete($id) {
+        $us = DB::table('user')
+            ->where('id', intval($id))
+            ->delete();
+        return redirect()->action('adminController@allUsers');
+    }
 //Controller for revenue start
 public function revenueDetails() {
     $revenue = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
@@ -166,4 +172,3 @@ public function postdeptUpdate(Request $request, $id) {
     }
 //Controller for revenue end
 }
-

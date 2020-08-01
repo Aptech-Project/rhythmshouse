@@ -346,8 +346,9 @@ label {
                         style="padding-top:100px;padding-left:20px">
                 </div>
                 <div class="col-sm-7" style="padding-left:10px">
-                    <form class="form-horizontal" action="" style="color: antiquewhite;" style="text-align: center;">
-                        <h2 style="text-align:center; "><b>Register</b></h2><br>
+                    <form class="form-horizontal" action="{{ url('web/login') }}" enctype="multipart/form-data" method="post" style="color: antiquewhite;" style="text-align: center;">
+                    {{ csrf_field() }}    
+                    <h2 style="text-align:center; "><b>Register</b></h2><br>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="email" style="text-align: left;"><i
                                     class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email :*</label>
@@ -357,11 +358,11 @@ label {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-sm-5" for="pwd" style="text-align: left;"><i
+                            <label class="control-label col-sm-5" for="password" style="text-align: left;"><i
                                     class="fa fa-lock" aria-hidden="true"></i>&nbsp;Password :*</label>
                             <div class="col-sm-9">
-                                <input type="password" class="form-control" id="pwd" placeholder="Enter password"
-                                    name="pwd">
+                                <input type="password" class="form-control" id="password" placeholder="Enter password"
+                                    name="password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -433,4 +434,13 @@ $(document).ready(function() {
     $("footer:first").addClass("footer--normal");
 });
 </script>
+@endsection
+@section('script-section')
+    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bsCustomFileInput.init();
+        });
+    </script>
 @endsection
