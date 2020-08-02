@@ -13,7 +13,8 @@ class webController extends Controller
     }
 // Controller for product start
     public function product() {
-        return view('web.product');
+        $products = DB::table('product')->get();
+        return view('web.product')->with(['products'=>$products]);
     }
     public function productDetail() {
         return view('web.productDetail');

@@ -197,84 +197,61 @@
             <!-- Product list start -->
             <div class="col-lg-9 col-md-9 col-sm-9">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-1.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-2.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-3.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-4.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-5.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
+                    @foreach($products as $p)
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="discography__item">
+                                <div class="center">
+                                    <a href="{{ url('web/productDetail') }}">
+                                        <img src="{{ url('images/'.$p->image) }}" height=200px, width=200px/>
+                                    </a>
+                                </div>
+                                <div class="discography__item__text">
+                                    <span>{{ $p->price }}</span>
+                                    <h4>{{ $p->name }}</h4>
+                                    <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
+                                    <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
+                                </div>
+
+
+                        <div class="single_player_container">
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1"
+                                data-url="{{ asset('music-files/1.mp3') }}"></div>
+                            <div class="jp-audio jp_container_1" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
+                                    <!-- Volume Controls -->
+                                    <div class="jp-volume-controls">
+                                        <button class="jp-mute" tabindex="0"><i
+                                                class="fa fa-volume-down"></i></button>
+                                        <div class="jp-volume-bar">
+                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="discography__item">
-                            <div class="discography__item__pic">
-                                <img src="{{ asset('img/discography/disco-6.jpg') }}" alt="" />
-                            </div>
-                            <div class="discography__item__text">
-                                <span>$ 52.00</span>
-                                <h4>EDM Party Electro House</h4>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
+
+
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                     <div class="col-lg-12">
                         <div class="pagination__links">
                             <a href="#">1</a>

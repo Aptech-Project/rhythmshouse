@@ -1,0 +1,29 @@
+	.center {
+	    margin: 0 auto;
+	    width: 70%;
+	    text-align: center;
+	}
+	.product-info {
+	    text-align: left;
+		margin-top: 1vw;
+	    margin-left: 12px;
+	    font-size: 1.2vw;
+		font-family: Kotta One;
+	}
+	.product-title {
+		margin-top: -1vw;
+		margin-bottom: -1vw;
+	    text-align: center;
+	    font-family: Gravitas One;
+	    font-weight: 700;
+		text-shadow: 10px 10px 10px #909090;
+	    font-size: 2.5vw
+	}	
+	.product-artist {
+		margin-top: -1vw;
+		margin-bottom: -1vw;
+	    text-align: center;
+	    font-family: Great Vibes;
+		text-shadow: 1px 1px 1px #909090;
+	    font-size: 2.5vw
+	}
