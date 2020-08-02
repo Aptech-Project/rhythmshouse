@@ -62,7 +62,8 @@ Route::get('web/productDetail', 'webController@productDetail');
 Route::get('web/comment', 'webController@comment');
 //Register and Login Route
 Route::get('web/register', 'webController@register');
+Route::get('web/register', 'webController@getRegister');
+Route::post('web/register', 'webController@postRegister');
+
 Route::get('web/login', 'webController@login');
 Route::post('web/login', 'webController@postLogin');
-Route::get('web/login', 'webController@getUserCreate');
-Route::post('web/login', 'webController@postUserCreate');

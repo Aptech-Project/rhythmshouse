@@ -1,5 +1,5 @@
 @extends('web.layout.header')
-@section('title', 'RhythmHouse | Register')
+@section('title', 'RhythmHouse | Login')
 @section('content')
 <style>
 @font-face {
@@ -338,11 +338,19 @@ label {
 <section>
     <div class="wrapper" style="background-image: url('../../public/img/hero-bg.png');">
         <div class="inner">
-            <form class="form-horizontal" action="{{ url('web/login') }}" style="color: antiquewhite;" style="text-align: center;">
-                <h2 style="text-align:center; "><b>Register</b></h2><br>
+            <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{ url('web/login') }}" style="color: antiquewhite;" style="text-align: center;">
+            {{ csrf_field() }}    
+                <div>
+                <p>aaaa</p>
+                    @if(Session::has('flag'))
+                    <div class="alert alert-success">aaaaa</div>
+                    @endif
+                </div>
+                <h2 style="text-align:center; "><b></b></h2><br>
                 <div style="padding-left:34%; padding-bottom:30px">
                     <img src="../../public/img/discography/disco-2.jpg">
                 </div>
+               
                 <div class="form-group">
                     <label class="control-label col-sm-4" for="email" style="text-align: left;"><i
                             class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email :</label>
@@ -354,17 +362,12 @@ label {
                     <label class="control-label col-sm-4" for="pwd" style="text-align: left;"><i class="fa fa-lock"
                             aria-hidden="true"></i>&nbsp;Password :</label>
                     <div class="col-sm-8">
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-sm-12">
                         <button type="submit" class="btn btn-default">Login</button><br>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-12">
-                        aaaa
                     </div>
                 </div>
                 <div class="form-group">

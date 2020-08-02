@@ -342,13 +342,25 @@ label {
         <div class="inner">
             <div class="row">
                 <div class="col-sm-5">
-                    <img src="../../public/img/about/ap-6.jpg" alt=""
-                        style="padding-top:100px;padding-left:20px">
+                    <img src="../../public/img/about/ap-6.jpg" alt="" style="padding-top:100px;padding-left:20px">
                 </div>
                 <div class="col-sm-7" style="padding-left:10px">
-                    <form class="form-horizontal" action="{{ url('web/login') }}" enctype="multipart/form-data" method="post" style="color: antiquewhite;" style="text-align: center;">
-                    {{ csrf_field() }}    
-                    <h2 style="text-align:center; "><b>Register</b></h2><br>
+                    <form class="form-horizontal" action="{{ url('web/register') }}" enctype="multipart/form-data"
+                        method="post" style="color: antiquewhite;" style="text-align: center;">
+                        {{ csrf_field() }}
+                        <h2 style="text-align:center; "><b>Register</b></h2><br>
+                        @if(count($errors))
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $err)
+                            {{$err}}<br>
+                            @endforeach
+                        <div>
+                        @endif
+                        @if(session('thongbao'))
+                        <div class="alert alert-cuccess">
+                            {{session('thongbao')}}
+                        <div>
+                        @endif
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="email" style="text-align: left;"><i
                                     class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email :*</label>
@@ -436,11 +448,11 @@ $(document).ready(function() {
 </script>
 @endsection
 @section('script-section')
-    <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            bsCustomFileInput.init();
-        });
-    </script>
+<script type="text/javascript">
+$(document).ready(function() {
+    bsCustomFileInput.init();
+});
+</script>
 @endsection

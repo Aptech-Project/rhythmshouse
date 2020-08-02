@@ -27,17 +27,20 @@
                             </li> -->
                         </ul>
                     </nav>
+                    @if(Auth::check())
+                    <div class="header__right__social">
+                        <a href="{{ url('') }}"><i class="fa fa-user-circle"></i>&nbsp; {{Auth::user()->name}}</a>
+                        <a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+                    </div>
+                    @else
                     <div class="header__right__social">
                         <a href="{{ url('web/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</i></a>
                         <a href="{{ url('web/register')}}"><i class="fa fa-user-plus" aria-hidden="true"></i>&nbsp;Register</i></a>
                         <a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
                     </div>
-                    <!--
-                    <div class="header__right__social">
-                        <a href="{{ url('') }}"><i class="fa fa-user-circle"></i></a>
-                        <a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
-                    </div>
-                    -->
+                    @endif
+                    
+                
                 </div>
             </div>
         </div>
