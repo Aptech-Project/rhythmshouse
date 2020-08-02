@@ -39,24 +39,24 @@ class webController extends Controller
         return view('web.login');
     }
 
-    // public function postLoginUser(Request $request){
-    //     $this ->validate($request,
-    //     [
-    //         'email'=>'required|email',
-    //         'password'=>'required|min:6|max:20'
-    //     ],[
-    //         'email.required'=>'Enter Email',
-    //         'email.email'=>'Email Sai',
-    //         'password.required'=>'Enter Email',
-    //     ]
-    //     );
-    //     $creadentials=array('email'=>$request=>email,'password'=>$request=>password);
-    //     if(Auth::attempt($creadentials)){
-    //         return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap thanh cong']);
-    //     }else{
-    //         return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap khong thanh cong']);
-    //     }
-    // }
+    public function postLogin(Request $request){
+        $this ->validate($request,
+        [
+            'email'=>'required|email',
+            'password'=>'required|min:6|max:20'
+        ],[
+            'email.required'=>'Enter Email',
+            'email.email'=>'Email Sai',
+            'password.required'=>'Enter Email',
+        ]
+        );
+        $creadentials=array('email'=>$request=>email,'password'=>$request=>password);
+        if(Auth::attempt($creadentials)){
+            return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap thanh cong']);
+        }else{
+            return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap khong thanh cong']);
+        }
+    }
 
     //controller for UserCreate
     public function getUserCreate() {

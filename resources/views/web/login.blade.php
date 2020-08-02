@@ -354,7 +354,7 @@ label {
                     <label class="control-label col-sm-4" for="pwd" style="text-align: left;"><i class="fa fa-lock"
                             aria-hidden="true"></i>&nbsp;Password :</label>
                     <div class="col-sm-8">
-                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+                        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
                     </div>
                 </div>
                 <div class="form-group">
