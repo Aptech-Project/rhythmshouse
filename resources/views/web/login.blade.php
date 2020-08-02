@@ -338,7 +338,7 @@ label {
 <section>
     <div class="wrapper" style="background-image: url('../../public/img/hero-bg.png');">
         <div class="inner">
-            <form class="form-horizontal" action="" style="color: antiquewhite;" style="text-align: center;">
+            <form class="form-horizontal" action="{{ url('web/login') }}" style="color: antiquewhite;" style="text-align: center;">
                 <h2 style="text-align:center; "><b>Register</b></h2><br>
                 <div style="padding-left:34%; padding-bottom:30px">
                     <img src="../../public/img/discography/disco-2.jpg">
