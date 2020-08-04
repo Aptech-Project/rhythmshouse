@@ -14,11 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
-   
+    Route::get('admin/index', 'adminController@index');
 
 
 //Admin Route 
-Route::get('admin/index', 'adminController@index');
+
     //Product Route
     Route::get('admin/product/productList', 'adminController@productList');
     Route::get('admin/product/productCreate', 'adminController@productCreate');
@@ -56,8 +56,7 @@ Route::get('admin/index', 'adminController@index');
 Route::get('web/product', 'webController@product');
     //Event Route
     Route::get('web/event', 'webController@event');
-    Route::get('web/eventCreate/{id}', 'webController@eventCreate');
-    Route::post('web/posteventCreate/{id}', 'webController@postEventCreate');
+    Route::get('web/eventCreate', 'webController@eventCreate');
     Route::get('web/eventManagerment', 'webController@eventManagerment');
 
 Route::get('web/about', 'webController@about');
@@ -78,3 +77,4 @@ Route::post('web/register', 'webController@postRegister');
 
 Route::get('web/login', 'webController@login');
 Route::post('web/login', 'webController@postLogin');
+Route::get('web/login', 'webController@login');

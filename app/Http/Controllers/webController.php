@@ -42,14 +42,37 @@ class webController extends Controller
         return view('web.login');
     }
     public function postLogin(Request $request) {
+        // $data = $request->only('username', 'password');
+        // if(Auth::attempt($data)){
+        //     $user = User::where('username', $request->username)->first();
+        //     if($user->role == 'customer') {
+        //         $idUser = $user->cust_id;
+        //         Session::put('logined', $idUser);
+        //         return redirect()->route('')->with(['login_success1'=>'Đăng nhập thành công!!!']);
+        //     }
+        //     if($user->role == 1) {
+        //         Session::put('ql', 1);
+        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'Đăng nhập thành công!!!']);
+        //     }
+        //     if($user->role == 2){
+        //         Session::put('qlsp', 2);
+        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'qlsp Đăng nhập thành công!!!']);
+        //     }
+        //     if($user->role == 3) {
+        //         Session::put('qldh', 3);
+        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'Đăng nhập thành công!!!']);
+        //     }
+        // } else {
+        //     return back()->with(['login_fail1'=>'Thông tin đăng nhập không chính xác!!!']);
+        // }
         $email = $request->input('email');
         $pwd = $request->input('password');
         $user = DB::table('user')->where('email',$email)->first();
         if($user !=null && $user->password == $pwd && $user->role=='customer')
         {
             $id = $user->username;
-            Session::put('logined', $id);
-            return redirect("web/index")->with(['tk'=>$id]);
+            Session::put('login', $id);
+            return redirect("web/index")->with(['user'=>$user]);
         }
         if($user !=null && $user->password == $pwd && $user->role=='admin')
         {
@@ -85,7 +108,7 @@ class webController extends Controller
         $user = $request->all();
         DB::table('user')->insert([
             'email'=>$user['email'],
-            'password'=>$user['password'],
+            'password'=>bcrypt($user['password']),
             'username'=>$user['username'],
             'address'=>$user['address'],
             'birthday'=>($user['birthday']),
