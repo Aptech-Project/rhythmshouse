@@ -29,7 +29,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($revenue as $e)
+                            @foreach($revenueorder as $e)
                             <tr>
                                 <td>{{ $e->id }}</td>
                                 <td>{{ $e->registerdate }}</td>
@@ -39,7 +39,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="2" style="text-align:right">Total:</th>
-                                    <th colspan="3" style="text-align:center">${{$revenue -> sum('ticketprice')}}</th> 
+                                    <th colspan="3" style="text-align:center">${{$revenueorder -> sum('ticketprice')}}</th> 
                                 </tr>
                             </tfoot>
                         </table>
@@ -56,7 +56,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($revenue as $e)
+                            @foreach($revenueevent as $e)
                             <tr>
                                 <td>{{ $e->id }}</td>
                                 <td>{{ $e->registerdate }}</td>
@@ -68,8 +68,8 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="3" style="text-align:right">Total:</th>
-                                    <th colspan="1" style="text-align:center">${{$revenue -> sum('totaldept')}}</th>
-                                    <th colspan="1" style="text-align:center">${{$revenue -> sum('haspaid')}}</th> 
+                                    <th colspan="1" style="text-align:center">${{$revenueevent -> sum('totaldept')}}</th>
+                                    <th colspan="1" style="text-align:center">${{$revenueevent -> sum('haspaid')}}</th> 
                                 </tr>
                             </tfoot>
                         </table>

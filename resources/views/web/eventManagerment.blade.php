@@ -9,7 +9,7 @@
                 <h1>Your Event</h1>
             </div>
             <div class="col-sm-2">
-                <a>
+                <a href="{{ url('web/eventCreate/1')}}">
                     <button style="width: 12vw;margin-top: 3vw;color: black;font-size: 1.5vw; background-color:white; border-color: indigo">
                         Create Event
                     </button><br>
@@ -31,20 +31,25 @@
                             <th>EventId</th>
                             <th>EventName</th>
                             <th>RegisterDate</th>
+                            <th>Status</th>
                             <th>Views</th> 
                             <th>Total Dept</th>
                             <th>Has paid</th>
                         </tr>
                         </thead>
                         <tbody>                       
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>$</td>
-                            <td>$</td>
-                        </tr>
+                            @foreach($eventmana as $e)
+                            <tr>
+                                <td>{{ $e->id }}</td>
+                                <td>{{ $e->name }}</td>
+                                <td>{{ $e->registerdate }}</td>
+                                <td>{{ $e->status }}</td>
+                                <td>{{ $e->views }}</td>
+                                <td>${{ $e->totaldept }}</td>
+                                <td>${{ $e->haspaid }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
                         
                     </table>
                 </div>
@@ -73,5 +78,12 @@
                 "autoWidth": true,
             });
     });
+</script>
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
 </script>
 @endsection

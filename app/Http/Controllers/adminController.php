@@ -111,9 +111,9 @@ public function eventList() {
     $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
     return view('admin.event.eventList')->with(['events'=>$events]);
     }
-public function eventView() {
+public function eventView($id) {
         $e = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
-        //->where('event.id', intval($id))
+        ->where('event.id', intval($id))
         ->first();
         return view('admin.event.eventView')->with(['e'=>$e]);
         }
@@ -150,8 +150,9 @@ public function allUsers() {
     }
 //Controller for revenue start
 public function revenueDetails() {
-    $revenue = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
-    return view('admin.revenue.revenueDetails')->with(['revenue'=>$revenue]);
+    $revenueevent = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    $revenueorder = DB::table('order')->get();
+    return view('admin.revenue.revenueDetails')->with(['revenueevent'=>$revenueevent,'revenueorder'=>$revenueorder]);
     }
 public function partnerDept() {
     $dept = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();

@@ -9,37 +9,37 @@
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <strong><h3 class="card-title">View Event 1</h3></strong>
+                            <strong><h3 class="card-title">View Event {{ $e->name }}</h3></strong>
                         </div>
                         <!-- /.card-header -->
                         <!-- card-body start -->
                         <div class="card-body">
                             <div>
-                                <h4><strong>User ID: 1  _   User Name: Aegon</strong></h4>
+                                <h4><strong>User ID: {{ $e->userid }}  _   User Name: {{ $e->username }}</strong></h4>
                                 <div class="row">
                                     <div class="col-6">
                                         <ul>
                                             <li>
-                                                <span><b>Register Date:</b> 16/07/2019</span>
+                                                <span><b>Register Date:</b> {{ $e->registerdate }}</span>
                                             </li>
                                             <li>
-                                                <span><b>Status:</b> Processing</span>
+                                                <span><b>Status:</b> {{ $e->status }}</span>
                                             </li>
                                             <li>
-                                                <span><b>Views:</b> 0</span>
+                                                <span><b>Views:</b> {{ $e->views }}</span>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="col-6">
                                         <ul>
                                             <li>
-                                                <span><b>Total Dept:</b> 0</span>
+                                                <span><b>Total Dept:</b> {{ $e->totaldept }}</span>
                                             </li>
                                             <li>
-                                                <span><b>Has Paid:</b> 0</span>
+                                                <span><b>Has Paid:</b> {{ $e->haspaid }}</span>
                                             </li>
                                             <li>
-                                                <span><b>Link:</b> alnwalkerevent.com</span>
+                                                <span><b>Link:</b> {{ $e->url1 }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -48,40 +48,37 @@
                             </div>
                             <div class="col-12">
                                 <div>
-                                    <h4>Untold Festival 2020</h4>
+                                    <h4>{{ $e->name }}</h4>
                                     <div>
                                         <ul>
                                             <li>
                                                 <span>
-                                                    <b>From:</b> 8:00pm Dec 15, 2019&nbsp;&nbsp;
-                                                    <b>To:</b> 8:00pm Dec 16,2019
+                                                    <b>From:</b> {{ $e->fromdate }}&nbsp;&nbsp;
+                                                    <b>To:</b> {{ $e->todate }}
                                                 </span>
                                                 
                                             </li>
                                             <li>
-                                                <B>Address:</B> Funkhaus Berlin, Berlin, Germany
+                                                <B>Address:</B> {{ $e->address }}
                                             </li>
                                             <li>
-                                                <B>Ticket Price:</B> $35.00
+                                                <B>Ticket Price:</B> {{ $e->ticketprice }}
                                             </li>
                                             <li>
-                                                <B>Type:</B> EDM
+                                                <B>Type:</B> {{ $e->type }}
                                             </li>
                                             <li>
-                                                <B>Artist:</B> Alan Walker
+                                                <B>Artist:</B> {{ $e->artist }}
                                             </li>
                                             <li>
                                                 <b>Description:</b>
-                                                <p>Held in Europe’s electronic music capital on New Year’s Eve, the seminal Funkhaus Berlin
-                                                hosts an impressive roster of techno artists worthy.</p>
-                                                <p>Soundtracking the leap from 2019 into 2020 in what is one of the most anticipated nights
-                                                of the year, in one of the city’s most hyped venues, HYTE Berlin NYE is the</p>
+                                                <p>{{ $e->description }}</p>
                                             </li>
                                             <li>
                                                 <b>Image: </b>
                                                 <div class="col-lg-6 order-lg-2">
                                                     <div class="tours__item__pic">
-                                                        <img src="{{ asset('img/tours/tour-1.jpg') }}" alt="">
+                                                        <img align="center" width="550px" src="{{ url('images/'.$e->url2) }}"/>
                                                     </div>
                                                 </div>
                                             </li>

@@ -49,7 +49,8 @@ Route::get('web/index', 'webController@index');
 Route::get('web/product', 'webController@product');
     //Event Route
     Route::get('web/event', 'webController@event');
-    Route::get('web/eventCreate', 'webController@eventCreate');
+    Route::get('web/eventCreate/{id}', 'webController@eventCreate');
+    Route::post('web/posteventCreate/{id}', 'webController@postEventCreate');
     Route::get('web/eventManagerment', 'webController@eventManagerment');
 
 Route::get('web/about', 'webController@about');

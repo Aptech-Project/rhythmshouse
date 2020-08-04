@@ -100,11 +100,53 @@ class webController extends Controller
     public function event() {
         return view('web.event');
     }
-    public function eventCreate() {
-        return view('web.eventCreate');
+    public function eventCreate($id = 1) {
+        $user = DB::table('user')->join('event','user.id','=','event.userid')->select('event.*','user.*')
+        ->where('user.id', intval($id))
+        ->first();
+    return view('web.eventCreate')->with(['user'=>$user]);
     }
-    public function eventManagerment() {
-        return view('web.eventManagerment');
+    public function postEventCreate(Request $request,$id) {
+        $events = $request->all();    
+        // xử lý upload hình vào thư mục
+        if($request->hasFile('image1'))
+        {
+            $file=$request->file('image1');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return redirect('web/eventCreate/1')->with('alert','You can only choose file have tail jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("images",$imageName);
+        }
+        else
+        {
+            $imageName = null;
+        }   
+        DB::table('event')->insert([
+            'userid'      =>intval($id),
+            'registerdate'=>$events['eventregister'],
+            'url1'        =>$events['eventlink'],
+            'name'        =>$events['eventname'],
+            'fromdate'    =>$events['eventfromdate'],
+            'todate'      =>$events['eventtodate'],
+            'address'     =>$events['eventaddress'],
+            'ticketprice' =>$events['eventprice'],
+            'type'        =>$events['eventtype'],
+            'artist'      =>$events['eventartist'],
+            'description' =>$events['eventdescription'],
+            'url2'        =>$imageName,
+                ]);
+        return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event');
+    }
+    public function eventManagerment($id=1) {
+        $user = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
+        ->get();
+        $eventmana = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
+        ->where('user.id', intval($id))
+        ->get();
+    return view('web.eventManagerment')->with(['users'=>$user,'eventmana'=>$eventmana]);
     }
 // Controller for event end
 
