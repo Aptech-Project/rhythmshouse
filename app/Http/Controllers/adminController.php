@@ -213,16 +213,27 @@ public function postdeptUpdate(Request $request, $id) {
     public function postCategoryUpdate(Request $request, $id) {
         $categoryname = $request->input('categoryname');
         $newcategoryname = $request->input('newcategoryname');
-        $p = DB::table('productcategory')
+        $productid = DB::table('category')->where('categoryname', '=', $categoryname )->value('id');//get productid
+        //create new category
+        DB::table('category')->insert([
+            'categoryname'=>$newcategoryname
+        ]);
+        //change categoryname in table productcategory
+        DB::table('productcategory')
             ->where('categoryname', $categoryname)
             ->update(['categoryname'=>$newcategoryname]);
-        $p = DB::table('category')
-                ->where('id', intval($id))
-                ->update(['categoryname'=>$categoryname]);
+        //delete old category    
+        DB::table('category')
+            ->where('id', intval($id))
+            ->delete();
+        //return old category id to new category
+        DB::table('category')
+                ->where('categoryname', $newcategoryname)
+                ->update(['id'=>intval($id)]);
         return redirect()->action('adminController@categoryList');
     }
     public function categoryDelete($id) {
-        $p = DB::table('category')
+        DB::table('category')
             ->where('id', intval($id))
             ->delete();
         return redirect()->action('adminController@categoryList');

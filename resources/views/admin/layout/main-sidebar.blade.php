@@ -82,7 +82,7 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa fa-music" style="color: ghostwhite"></i>
+                        <i class="nav-icon fas fa fa-list-ul " style="color: ghostwhite"></i>
                         <p style="color: ghostwhite">
                             Category
                             <i class="right fas fa-angle-left"></i>
