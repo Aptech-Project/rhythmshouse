@@ -1,4 +1,3 @@
-<!-- lưu tại /resources/views/product/create.blade.php -->
 @extends('admin.layout.header')
 @section('title', 'product - create new')
 @section('content')

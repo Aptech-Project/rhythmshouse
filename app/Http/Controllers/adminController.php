@@ -34,7 +34,7 @@ class adminController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('admin/product/productCreate')->with('loi','Bạn chỉ được chọn file có đuôi jpg,png,jpeg');
+                return redirect('admin/product/productCreate')->with('loi','You can choose only jpg,png,jpeg file');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images",$imageName);
@@ -46,12 +46,18 @@ class adminController extends Controller
 
         DB::table('product')->insert([
             'name'=>$product['name'],
-            'categoryname'=>$product['category'],
             'artist'=>$product['artist'],
             'author'=>$product['author'],
             'price'=>intval($product['price']),
             'description'=>$product['description'],
             'image'=>$imageName
+        ]);
+        // ->pluck: return an array
+        // ->value: return an value
+        $productid = DB::table('product')->where('name', '=', $product['name'])->value('id');
+        DB::table('productcategory')->insert([
+            'productid'=>$productid,
+            'categoryname'=>$product['category']
         ]);
         return redirect()->action('adminController@productList');
     }
@@ -62,9 +68,8 @@ class adminController extends Controller
         return view('admin.product.productUpdate', ['p'=>$p]);
     }
     public function postProductUpdate(Request $request, $id) {
-        $name = $request->input('name');
-        $price = $request->input('price');
-        $description = $request->input('description');
+        // nhận tất cả tham số vào mảng product
+        $product = $request->all();
         // xử lý upload hình vào thư mục
         if($request->hasFile('image'))
         {
@@ -82,17 +87,30 @@ class adminController extends Controller
                 ->first();
             $imageName = $p->image;
         }
-
-        $p = DB::table('product')
-                ->where('id', intval($id))
-                ->update(['name'=>$name, 'price'=>intval($price), 'description'=>$description, 'image'=>$imageName]);
+        DB::table('product')->where('id', intval($id))->update([
+            'name'=>$product['name'],
+            'artist'=>$product['artist'],
+            'author'=>$product['author'],
+            'price'=>intval($product['price']),
+            'description'=>$product['description'],
+            'image'=>$imageName
+        ]);
         return redirect()->action('adminController@productList');
     }
     public function productDelete($id) {
+        $p = DB::table('productcategory')
+            ->where('productid', intval($id))
+            ->delete();
         $p = DB::table('product')
             ->where('id', intval($id))
             ->delete();
         return redirect()->action('adminController@productList');
+    }
+    public function productDetail($id) {
+        $p = DB::table('product')
+            ->where('id', intval($id))
+            ->first();
+        return view('admin.product.productDetail', ['p'=>$p]);
     }
     //phong
     public function detailOrder() {
@@ -172,4 +190,42 @@ public function postdeptUpdate(Request $request, $id) {
         return redirect()->action('adminController@partnerDept');
     }
 //Controller for revenue end
+
+// Controller for category start
+    public function categoryList() {
+        $category = DB::table('category')->get();
+        return view('admin.category.categoryList')->with(['category'=>$category]);
+        }
+    public function postCategoryCreate(Request $request) {
+        // nhận tất cả tham số vào mảng category
+        $category = $request->all();
+        DB::table('category')->insert([
+            'categoryname'=>$category['categoryname']
+        ]);
+        return redirect()->action('adminController@categoryList');
+    }
+    public function categoryUpdate($id) {
+        $c = DB::table('category')
+            ->where('id', intval($id))
+            ->first();
+        return view('admin.category.categoryUpdate', ['c'=>$c]);
+    }
+    public function postCategoryUpdate(Request $request, $id) {
+        $categoryname = $request->input('categoryname');
+        $newcategoryname = $request->input('newcategoryname');
+        $p = DB::table('productcategory')
+            ->where('categoryname', $categoryname)
+            ->update(['categoryname'=>$newcategoryname]);
+        $p = DB::table('category')
+                ->where('id', intval($id))
+                ->update(['categoryname'=>$categoryname]);
+        return redirect()->action('adminController@categoryList');
+    }
+    public function categoryDelete($id) {
+        $p = DB::table('category')
+            ->where('id', intval($id))
+            ->delete();
+        return redirect()->action('adminController@categoryList');
+    }
+// Controller for category end
 }

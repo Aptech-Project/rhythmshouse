@@ -24,6 +24,7 @@ Route::get('admin/index', 'adminController@index');
     Route::get('admin/product/productUpdate/{id}', 'adminController@productUpdate');
     Route::post('admin/product/postProductUpdate/{id}', 'adminController@postProductUpdate');
     Route::get('admin/product/productDelete/{id}', 'adminController@productDelete');
+    Route::get('admin/product/productDetail/{id}', 'adminController@productDetail');
     //Order Route
     Route::get('admin/order/detailOrder', 'adminController@detailOrder');
     Route::get('admin/order/listOrder', 'adminController@listOrder');
@@ -42,8 +43,12 @@ Route::get('admin/index', 'adminController@index');
     Route::post('admin/revenue/postdeptUpdate/{id}', 'adminController@postdeptUpdate');
     //comment Route
     Route::get('admin/comment/listComment', 'adminController@listComment');
-
-
+    //Category Route
+    Route::get('admin/category/categoryList', 'adminController@categoryList');
+    Route::post('admin/category/postCategoryCreate', 'adminController@postCategoryCreate');
+    Route::get('admin/category/categoryUpdate/{id}', 'adminController@categoryUpdate');
+    Route::post('admin/category/postCategoryUpdate/{id}', 'adminController@postCategoryUpdate');
+    Route::get('admin/category/categoryDelete/{id}', 'adminController@categoryDelete');
 //Web Route 
 Route::get('web/index', 'webController@index');
 Route::get('web/product', 'webController@product');

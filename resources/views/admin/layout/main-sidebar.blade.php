@@ -82,6 +82,23 @@
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa fa-music" style="color: ghostwhite"></i>
+                        <p style="color: ghostwhite">
+                            Category
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ url('admin/category/categoryList') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">All Category</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa fa-users" style="color: ghostwhite"></i>
                         <p style="color: ghostwhite">
                             Users

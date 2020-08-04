@@ -19,7 +19,6 @@ CREATE TABLE `user` (
 CREATE TABLE `product` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `categoryname` varchar(255) NOT NULL,
   `artist` varchar(255) NOT NULL,
   `author` varchar(255) NOT NULL,
   `price` float NOT NULL,
