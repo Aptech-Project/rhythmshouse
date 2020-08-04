@@ -14,6 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+   
+
 
 //Admin Route 
 Route::get('admin/index', 'adminController@index');
@@ -50,7 +52,7 @@ Route::get('admin/index', 'adminController@index');
     Route::post('admin/category/postCategoryUpdate/{id}', 'adminController@postCategoryUpdate');
     Route::get('admin/category/categoryDelete/{id}', 'adminController@categoryDelete');
 //Web Route 
-Route::get('web/index', 'webController@index');
+
 Route::get('web/product', 'webController@product');
     //Event Route
     Route::get('web/event', 'webController@event');
@@ -70,6 +72,9 @@ Route::get('web/comment', 'webController@comment');
 Route::get('web/register', 'webController@register');
 Route::get('web/register', 'webController@getRegister');
 Route::post('web/register', 'webController@postRegister');
+
+
+    Route::get('web/index', 'webController@index');
 
 Route::get('web/login', 'webController@login');
 Route::post('web/login', 'webController@postLogin');

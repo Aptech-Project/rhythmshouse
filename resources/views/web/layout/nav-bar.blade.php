@@ -27,10 +27,11 @@
                             </li> -->
                         </ul>
                     </nav>
-                    @if(Auth::check())
+                    @if (Session::has('logined'))
                     <div class="header__right__social">
-                        <a href="{{ url('') }}"><i class="fa fa-user-circle"></i>&nbsp; {{Auth::user()->name}}</a>
+                        <a href="{{ url('') }}"><i class="fa fa-user-circle"></i>&nbsp;{{session()->get('tk')}}</a>
                         <a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a>
+                        {{-- @dd(Session::get('logined')); --}}
                     </div>
                     @else
                     <div class="header__right__social">
