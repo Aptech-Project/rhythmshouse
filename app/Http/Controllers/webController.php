@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Auth;
-use User;
+use App\User;
+use Session;
 class webController extends Controller
 {
     public function index() {
@@ -40,26 +41,26 @@ class webController extends Controller
     public function login() {
         return view('web.login');
     }
-    public function postLogin(Request $request){
-        $email=$request->email;
-        $password=$request->password;
-        $this ->validate($request,
-        [
-            'email'=>'required|email',
-            'password'=>'required|min:6|max:20'
-        ],[
-            'email.required'=>'Enter Email',
-            'email.email'=>'Email Sai',
-            'password.required'=>'Enter Email',
-        ]
-        );
-        if(Auth::attempt(['email'=>$email,'password'=>$password])){
-            return redirect()->back()->with(['flag'=>'success','message'=>'Dang nhap thanh cong']);
-        }else{
-            return redirect()->back()->with(['flag'=>'danger','message'=>'Dang nhap khong thanh cong']);
+    public function postLogin(Request $request) {
+        $email = $request->input('email');
+        $pwd = $request->input('password');
+        $user = DB::table('user')->where('email',$email)->first();
+        if($user !=null && $user->password == $pwd && $user->role=='customer')
+        {
+            $id = $user->username;
+            Session::put('logined', $id);
+            return redirect("web/index")->with(['tk'=>$id]);
+        }
+        if($user !=null && $user->password == $pwd && $user->role=='admin')
+        {
+            $request->session()->push('admin',$user);
+            return redirect("admin/index");
+        }
+        else
+        {
+            return back()->with(['login_fail1'=>'Thông tin đăng nhập không chính xác!!!']);
         }
     }
-
     //controller for UserCreate
     public function getRegister() {
         return view('web.register');

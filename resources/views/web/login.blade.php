@@ -341,10 +341,9 @@ label {
             <form class="form-horizontal" enctype="multipart/form-data" method="post" action="{{ url('web/login') }}" style="color: antiquewhite;" style="text-align: center;">
             {{ csrf_field() }}    
                 <div>
-                <p>aaaa</p>
-                    @if(Session::has('flag'))
-                    <div class="alert alert-success">aaaaa</div>
-                    @endif
+                @if (session()->has('login_fail1'))
+                    <div class="alert alert-danger mb-0 text-uppercase">{{session()->get('login_fail1')}}</div>
+                @endif
                 </div>
                 <h2 style="text-align:center; "><b></b></h2><br>
                 <div style="padding-left:34%; padding-bottom:30px">
