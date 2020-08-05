@@ -23,8 +23,9 @@ CREATE TABLE `product` (
   `author` varchar(255) NOT NULL,
   `price` float NOT NULL,
   `promotion` int DEFAULT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` varchar(500) NOT NULL,
   `image` varchar(255) DEFAULT NULL,
+  `demo` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 

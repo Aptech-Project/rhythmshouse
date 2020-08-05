@@ -31,7 +31,7 @@
                         <table id="product" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Product Id</th>
+                                <th>Id</th>
                                 <th>Product Name</th>
                                 <th>Artist</th>
                                 <th>Author</th>
@@ -43,21 +43,19 @@
                             <tbody>
                             @foreach($products as $p)
                             <tr>
-                                <td>{{ $p->id }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->artist }}</td>
-                                <td>{{ $p->author }}</td>
-                                <td>{{ $p->price }}</td>
+                                <td width="10%">{{ $p->id }}</td>
+                                <td width="15%">{{ $p->name }}</td>
+                                <td width="15%">{{ $p->artist }}</td>
+                                <td width="15%">{{ $p->author }}</td>
+                                <td width="5%">{{ $p->price }}</td>
                                 <td class="text-center"><img width="100px" src="{{ url('images/'.$p->image) }}"/></td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/product/productDetail/'.$p->id) }}">
                                         <i class="fas fa-folder"></i> View
                                     </a>
-                                    &ensp;
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/product/productUpdate/'.$p->id) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
-                                    &ensp;
                                     <a class="btn btn-danger btn-sm" href="{{ url('admin/product/productDelete/'.$p->id) }}">
                                         <i class="fas fa-trash"></i> Delete
                                     </a>
