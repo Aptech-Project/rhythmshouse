@@ -10,9 +10,11 @@ class adminController extends Controller
     public function index() {
         $earnLastmonth = DB::table('order')->whereMonth('deliverydate','=',now()->month-1)->get();
         $earnThisyear = DB::table('order')->whereYear('deliverydate','=',now()->year)->get();
-        $receivable = DB::table('event')->where('status','Approved')->get();
+        $receivable = DB::table('event')->where('status','Approved')->orwhere('status','Canceled')->get();
         $pendingRequest = DB::table('event')->where('status','Processing')->get();
-        return view('admin.index')->with(['earnLastmonth'=>$earnLastmonth, 'earnThisyear'=>$earnThisyear, 'receivable'=>$receivable, 'pendingRequest'=>$pendingRequest]);
+        $pendingRequest1 = DB::table('event')->where('todate','<',date('Y-m-d'))->get();
+        return view('admin.index')->with(['earnLastmonth'=>$earnLastmonth, 'earnThisyear'=>$earnThisyear, 'receivable'=>$receivable,
+                                          'pendingRequest'=>$pendingRequest, 'pendingRequest1'=>$pendingRequest1]);
     }
     
 
@@ -126,7 +128,7 @@ class adminController extends Controller
 
 // Controller for event start
 public function eventList() {
-    $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->orderBy('id','desc')->get();
     return view('admin.event.eventList')->with(['events'=>$events]);
     }
 public function eventView($id) {

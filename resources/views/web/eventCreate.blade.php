@@ -12,7 +12,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- card-body start -->
-                    <form role="form" action="{{ url('web/posteventCreate/1') }}" method="post" enctype="multipart/form-data" name="myForm">
+                    <form role="form" action="{{ url('web/posteventCreate/'.$user->id) }}" method="post" enctype="multipart/form-data" name="myForm">
                         {{ csrf_field() }}
                     <div class="card-body">
                         
@@ -22,7 +22,7 @@
                                 <div class="col-6 form-group">
                                     <ul>
                                         <li>
-                                            <span><b>Register Date:</b> <input type="date" class="form-control" id="txt-eventregister" name="eventregister" required ></span>
+                                            <span><b>Register Date:</b> <input type="datetime-local" class="form-control" id="txt-eventregister" name="eventregister" required ></span>
                                         </li>
                                     
                                     </ul>
@@ -45,16 +45,19 @@
                                             <span><b>Event Name:</b><input type="text" class="form-control" id="txt-eventname" name="eventname"required ></span>
                                         </li>
                                         <li>
-                                            <span>
-                                                <b>From:</b><input type="date" class="form-control" id="txt-eventfromdate" name="eventfromdate" required>
-                                            </span>
-                                            
-                                        </li>
-                                        <li>
-                                            <span>
-                                                <b>To:</b> <input type="date" class="form-control" id="txt-eventtodate" name="eventtodate" required>
-                                            </span>
-                                            
+                                            <div class="form-group">
+                                                <label for="txt-name">Event Time:</label><br>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <label for="txt-name">From:</label>
+                                                        <input type="datetime-local" class="form-control" id="txt-name" name="eventfromdate" required>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <label for="txt-name">To:</label>
+                                                        <input type="datetime-local" class="form-control" id="txt-name" name="eventtodate" required>
+                                                    </div>
+                                                </div>                                    
+                                            </div>
                                         </li>
                                         <li>
                                             <B>Address:</B><input type="text" class="form-control" id="txt-eventaddress" name="eventaddress" required>
@@ -95,7 +98,7 @@
                                 <button type="submit" class="btn btn-primary">Create Event</button>
                             </div>
                             <div class="col-6" style="text-align: left">
-                                <button type="reset" class="btn btn-danger">Cancel</button>
+                                <button type="reset" class="btn btn-danger" onclick="alertcancel()">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -128,6 +131,11 @@
     var exist = '{{Session::has('alert')}}';
     if(exist){
       alert(msg);
+    }
+</script>
+<script>
+    function alertcancel() {
+        alert("You have Cancel creating an event!!!");
     }
 </script>
 

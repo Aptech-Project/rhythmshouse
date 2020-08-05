@@ -56,8 +56,11 @@ Route::get('/', function () {
 Route::get('web/product', 'webController@product');
     //Event Route
     Route::get('web/event', 'webController@event');
-    Route::get('web/eventCreate', 'webController@eventCreate');
-    Route::get('web/eventManagerment', 'webController@eventManagerment');
+    Route::get('web/eventCreate/{id}', 'webController@eventCreate');
+    Route::post('web/posteventCreate/{id}', 'webController@postEventCreate');
+    Route::get('web/eventManagerment/2', 'webController@eventManagerment');
+    Route::get('web/eventPartnerUpdate/{id}', 'webController@eventPaUp');
+    Route::post('web/posteventPartnerUpdate/{id}', 'webController@postEventPaUp');
 
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');

@@ -124,9 +124,9 @@ class webController extends Controller
     public function event() {
         return view('web.event');
     }
-    public function eventCreate($id = 1) {
-        $user = DB::table('user')->join('event','user.id','=','event.userid')->select('event.*','user.*')
-        ->where('user.id', intval($id))
+    public function eventCreate($id) {
+        $user = DB::table('user')
+        ->where('id', intval($id))
         ->first();
     return view('web.eventCreate')->with(['user'=>$user]);
     }
@@ -162,15 +162,58 @@ class webController extends Controller
             'description' =>$events['eventdescription'],
             'url2'        =>$imageName,
                 ]);
-        return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event');
+        return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
     }
-    public function eventManagerment($id=1) {
-        $user = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
-        ->get();
+    public function eventManagerment($id=2) {
+        $users = DB::table('user')->where('id', intval($id))
+        ->first();
         $eventmana = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
-        ->where('user.id', intval($id))
+        ->where('user.id', intval($id))->where('event.status','Approved')->orwhere('event.status','Canceled')
         ->get();
-    return view('web.eventManagerment')->with(['users'=>$user,'eventmana'=>$eventmana]);
+        $eventmana1 = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
+        ->where('user.id', intval($id))->where('event.status','Processing')
+        ->get();
+    return view('web.eventManagerment')->with(['users'=>$users,'eventmana'=>$eventmana,'eventmana1'=>$eventmana1]);
+    }
+    public function eventPaUp($id) {
+        $eventpaup = DB::table('event')
+        ->where('id', intval($id))
+        ->first();
+    return view('web.eventPartnerUpdate', ['eventpaup'=>$eventpaup]);
+    }
+    public function postEventPaUp(Request $request, $id) {
+        $eventuser = DB::table('user')->get();
+        $eventpaup = $request->all();    
+        // xử lý upload hình vào thư mục
+        if($request->hasFile('image'))
+        {
+            $file=$request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
+            {
+                return redirect('productUpdate')->with('alert','You can only choose file have tail jpg,png,jpeg');
+            }
+            $imageName = $file->getClientOriginalName();
+            $file->move("public/images",$imageName);
+        } else { // không upload hình mới => giữ lại hình cũ
+            $e = DB::table('event')
+                ->where('id', intval($id))
+                ->first();
+            $imageName = $e->url2;
+        }
+        DB::table('event')->where('id',intval($id))->update([
+            'url1'        =>$eventpaup['link'],
+            'name'        =>$eventpaup['name'],
+            'fromdate'    =>$eventpaup['fromdate'],
+            'todate'      =>$eventpaup['todate'],
+            'address'     =>$eventpaup['address'],
+            'ticketprice' =>$eventpaup['price'],
+            'type'        =>$eventpaup['type'],
+            'artist'      =>$eventpaup['artist'],
+            'description' =>$eventpaup['description'],
+            'url2'        =>$imageName,
+                ]);
+        return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Update Event Successfully, Wait for admin to approve your Event.');
     }
 // Controller for event end
 

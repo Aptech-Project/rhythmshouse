@@ -87,7 +87,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- /.card-body -->                          
+                        <!-- /.card-body -->  
+                        <div class="card-footer" style="text-align: center">
+                            <a class="btn btn-info btn-sm" href="{{ url('admin/event/eventUpdate/'.$e->id) }}">
+                                <i class="fas fa-pencil-alt"></i> Update Event Status
+                            </a><br><br>
+                        </div>                        
                     </div>
                     <!-- /.card -->
                 </div>
