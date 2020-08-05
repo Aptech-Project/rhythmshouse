@@ -6,12 +6,12 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>List Comment</h1>
+                <h1>List FeedBack</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item active">Lists Comment</li>
+                    <li class="breadcrumb-item active">Lists FeedBack</li>
                 </ol>
             </div>
         </div>
@@ -33,10 +33,10 @@
                         <tr>
                             <th>ID</th>
                             <th class="">Product</th>
-                            <th>User Name Comment</th>
+                            <th>User Name FeedBack</th>
                             <th>Rate</th>
                             <th>Date</th>
-                            <th>Comment</th>
+                            <th>FeedBack</th>
                             <th>Content Reply </th>
                             <th>Reply</th>
                             <th>Delete</th>

@@ -32,8 +32,7 @@
                         <thead>
                         <tr>
                             <th>ID</th>
-                            <th class="">Date</th>
-                            <th>User Name</th>
+                            <th class="">Date Order</th>
                             <th>Status</th>
                             <th>Total</th>
                             <th>Delete</th>
@@ -47,11 +46,10 @@
                                 <td class="">
                                     2020-07-28 23:19:00
                                 </td>
-                                <td class="">Phong</td>
                                 <td class="">Chưa giao</td>
                                 <td class="total-price">$240.00</td>
                                 <td class=""><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="""><i class="fas fa-pencil-alt"></i> Edit</td>
+                                <td class="" style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
                                 <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
                             </tr>
                             <tr>
@@ -59,7 +57,6 @@
                                 <td class="">
                                     2020-07-28 23:19:00
                                 </td>
-                                <td class="">Hải</td>
                                 <td class="">Đã giao</td>
                                 <td class="total-price">$240.00</td>
                                 <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
@@ -71,11 +68,10 @@
                                 <td class="">
                                     2020-07-28 23:19:00
                                 </td>
-                                <td class="">Khang</td>
                                 <td class="">Chưa giao</td>
                                 <td class="total-price ">$240.00</td>
                                 <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
+                                <td class="close-td "style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
                                 <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
                             </tr>
                             <tr>
@@ -83,11 +79,10 @@
                                 <td class="">
                                     2020-07-28 23:19:00
                                 </td>
-                                <td class="">Long</td>
                                 <td class="">Chưa giao</td>
                                 <td class="total-price ">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
+                                <td class="close-td " ><i class="fas fa-trash"></i> Delete</i></td>
+                                <td class="close-td "style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
                                 <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
                             </tr>
                         </tbody>

@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="cart-table">
+                    <div class="cart-table" id="list-cart">
                         <table>
                             <thead>
                                 <tr>
@@ -27,62 +27,31 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
+                                    <th>Save</th>
                                     <th>Delete</th>
-									<th>Edit</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="cart-pic first-row"><img style="width: 170px;height:170px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
-                                    <td class="cart-title first-row">
-                                        <h5>UNTOLD FESTIVAL 2020</h5>
-                                    </td>
-                                    <td class="p-price first-row">$60.00</td>
-                                    <td class="qua-col first-row">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
+                                @foreach($cartdetail as $c)
+                                    <tr>
+                                        <td class="cart-pic first-row"><img style="width: 170px;height:170px" src="{{ url('img/discography/'.$c->image ) }} " alt=""></td>
+                                        <td class="cart-title first-row">
+                                            <h5>{{ $c -> name }}</h5>
+                                        </td>
+                                        <td class="p-price first-row">{{ $c -> price }}</td>
+                                        <td class="qua-col first-row">
+                                            <div class="quantity">
+                                                <div class="pro-qty">
+                                                <input type="text" value="{{$c->quanity}}">
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td first-row"><i class="ti-close"></i></td>
-									<td class="close-td first-row""><i class="ti-save"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-pic"><img style="width: 170px;height:170px" src="{{ asset('img/discography/disco-2.jpg' ) }} " alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>UNTOLD FESTIVAL 2020</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-                                    <td class="close-td"><i class="ti-close"></i></td>
-									<td class="close-td"><i class="ti-save"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="cart-pic"><img style="width: 170px;height:170px" src="{{ asset('img/discography/disco-3.jpg' ) }} " alt=""></td>
-                                    <td class="cart-title">
-                                        <h5>UNTOLD FESTIVAL 2020</h5>
-                                    </td>
-                                    <td class="p-price">$60.00</td>
-                                    <td class="qua-col">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="total-price">$60.00</td>
-									<td class="close-td"><i class="ti-close"></i></td>
-                                    <td class="close-td"><i class="ti-save"></i></td>
-                                </tr>
+                                        </td>
+                                        <td class="p-price first-row">{{ $c -> price * $c->quanity}}</td>
+                                        <td class="close-td first-row"><i class="ti-close"></i></td>
+                                        <td class="close-td first-row""><i class="ti-save"></i></td>
+                                    </tr>
+                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -87,7 +87,7 @@
 <Section>
     <div class="container">
         <div class="row ">
-            <h3>My comment</h3>
+            <h3>My FeedBack</h3>
         </div>
     </div>
     <div class="container mt-1 d-flex justify-content-center">

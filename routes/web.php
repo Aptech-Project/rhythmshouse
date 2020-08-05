@@ -65,7 +65,6 @@ Route::get('web/product', 'webController@product');
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');
 Route::get('web/membership', 'webController@membership');
-Route::get('web/cart', 'webController@cart');
 Route::get('web/shop', 'webController@shop');
 Route::get('web/order', 'webController@order');
 Route::get('web/productDetail', 'webController@productDetail');
@@ -83,4 +82,9 @@ Route::get('logout',[
     'as'=>'logout',
     'uses'=>'webController@logout'
 ]);
-    
+//cart
+Route::get('web/cart/{id}', 'webController@cart');
+Route::get('gio-hang',[
+    'as'=>'giohang',
+    'uses'=>'CartController@getCart'
+]);
