@@ -88,6 +88,10 @@ class webController extends Controller
     public function getRegister() {
         return view('web.register');
     }
+    public function logout() {
+        Session::forget('login');
+        return back();
+    }
     public function postRegister(Request $request) {
         // nhận tất cả tham số vào mảng user
         // $this ->validate($request,
@@ -108,7 +112,7 @@ class webController extends Controller
         $user = $request->all();
         DB::table('user')->insert([
             'email'=>$user['email'],
-            'password'=>bcrypt($user['password']),
+            'password'=>$user['password'],
             'username'=>$user['username'],
             'address'=>$user['address'],
             'birthday'=>($user['birthday']),
@@ -116,7 +120,8 @@ class webController extends Controller
             'phonenumber'=>$user['phonenumber']
         ]);
         return redirect()->action('webController@postRegister');
-}
+    }
+        
 // Controller for product end
 
 

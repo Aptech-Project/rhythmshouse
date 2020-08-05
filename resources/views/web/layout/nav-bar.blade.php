@@ -35,12 +35,12 @@
                                 <ul class="dropdown">
                                     <li><a href=""><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
                                     <li><a href=""><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
-                                    <li><a href=""><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
+                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
                                 </ul>
                             </li>
                             {{-- @dd(Session::get('login')); --}}
                             @else
-                            <li style="padding-left:20px;"><a href="{{ url('web/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</i></a></li>
+                            <li style="padding-left:0px;"><a href="{{ url('web/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</i></a></li>
                             <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i class="fa fa-sign-out"></i>&nbsp; Register</a></li>
                             @endif
                         </ul>

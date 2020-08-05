@@ -2,15 +2,8 @@
 @section('title', 'RhythmHouse | Register')
 @section('content')
 <style>
-@font-face {
-    font-family: "Poppins-Regular";
-    src: url("../fonts/poppins/Poppins-Regular.ttf");
-}
 
-@font-face {
-    font-family: "Poppins-SemiBold";
-    src: url("../fonts/poppins/Poppins-SemiBold.ttf");
-}
+
 
 * {
     -webkit-box-sizing: border-box;
@@ -19,7 +12,6 @@
 }
 
 body {
-    font-family: "Poppins-Regular";
     color: #333;
     font-size: 13px;
     margin: 0;
@@ -29,7 +21,6 @@ input,
 textarea,
 select,
 button {
-    font-family: "Poppins-Regular";
     color: #333;
     font-size: 13px;
 }
@@ -92,7 +83,6 @@ a:hover {
 .inner h3 {
     text-transform: uppercase;
     font-size: 25px;
-    font-family: "Poppins-SemiBold";
     text-align: center;
     margin-bottom: 28px;
 }
@@ -138,7 +128,6 @@ input {
 .form-control::-webkit-input-placeholder {
     font-size: 13px;
     color: gray;
-    font-family: "Poppins-Regular";
 }
 
 .btn-default {
@@ -155,19 +144,16 @@ input {
 .form-control::-moz-placeholder {
     font-size: 13px;
     color: gray;
-    font-family: "Poppins-Regular";
 }
 
 .form-control:-ms-input-placeholder {
     font-size: 13px;
     color: gray;
-    font-family: "Poppins-Regular";
 }
 
 .form-control:-moz-placeholder {
     font-size: 13px;
     color: gray;
-    font-family: "Poppins-Regular";
 }
 
 select {
