@@ -198,7 +198,7 @@
             <div class="col-lg-9 col-md-9 col-sm-9">
                 <div class="row">
                     <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                        <!-- <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="discography__item">
                                 <div class="center">
                                     <a href="<?php echo e(url('web/productDetail')); ?>">
@@ -211,45 +211,20 @@
                                     <a href="#"><img src="<?php echo e(asset('img/buynow.png')); ?>" style="width:85px" alt="" /></a>
                                     <a href="#"><img src="<?php echo e(asset('img/addtocart.png')); ?>" style="width:85px" alt="" /></a>
                                 </div>
-
-
-                        <div class="single_player_container">
-                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1"
-                                data-url="<?php echo e(asset('music-files/1.mp3')); ?>"></div>
-                            <div class="jp-audio jp_container_1" role="application" aria-label="media player">
-                                <div class="jp-gui jp-interface">
-                                    <!-- Player Controls -->
-                                    <div class="player_controls_box">
-                                        <button class="jp-play player_button" tabindex="0"></button>
-                                    </div>
-                                    <!-- Progress Bar -->
-                                    <div class="player_bars">
-                                        <div class="jp-progress">
-                                            <div class="jp-seek-bar">
-                                                <div>
-                                                    <div class="jp-play-bar">
-                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
-                                    </div>
-                                    <!-- Volume Controls -->
-                                    <div class="jp-volume-controls">
-                                        <button class="jp-mute" tabindex="0"><i
-                                                class="fa fa-volume-down"></i></button>
-                                        <div class="jp-volume-bar">
-                                            <div class="jp-volume-bar-value" style="width: 0%;"></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
+                        </div> -->
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <a href="<?php echo e(url('web/productDetail')); ?>">
+                                <img src="<?php echo e(url('images/'.$p->image)); ?>" height=200px, width=200px/>
+                            </a>
                         </div>
-
-
-                            </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <h4><?php echo e($p->name); ?></h4>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <span><?php echo e($p->price); ?></span>
+                            <a href="#"><img src="<?php echo e(asset('img/buynow.png')); ?>" style="width:85px" alt="" /></a>
+                            <a href="#"><img src="<?php echo e(asset('img/addtocart.png')); ?>" style="width:85px" alt="" /></a>
                         </div>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <div class="col-lg-12">

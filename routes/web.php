@@ -85,7 +85,9 @@ Route::get('logout',[
     'as'=>'logout',
     'uses'=>'webController@logout'
 ]);
-    
+Route::get('web/profile',function(){
+    return view('web/profile');
+});
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');  

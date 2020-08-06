@@ -13,15 +13,11 @@
             role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
-                 <?php if(Route::has('register')): ?>
-            <?php if(Auth::user()->role=='admin'): ?>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link" style="background-color: #2e3b46">
                     <img src="<?php echo e(asset('img/admin.png')); ?>" class="brand-image img-circle elevation-2" alt="User Image">
                     <p style="color: ghostwhite; background-color: #2e3b46">
                         &nbsp;&nbsp;
-                        <?php echo e(Auth::user()->name); ?>
-
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
@@ -30,13 +26,14 @@
                         <a href="<?php echo e(route('logout')); ?>" class="nav-link">
                             <i class="nav-icon fas"></i>
                             <p style="color: ghostwhite">Log Out</p>
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST"
+                                        style="display: none;">
+                                    </form>
                         </a>
                     </li>
                 </ul>
             </li>
-            <?php endif; ?>
-            <?php endif; ?>
- 
+
         </ul>
 
         <!-- Sidebar Menu -->

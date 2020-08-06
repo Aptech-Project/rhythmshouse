@@ -37,10 +37,10 @@
                             <?php endif; ?>
                             <?php else: ?>
                             <li><a id="cart" href="<?php echo e(url('web/cart')); ?>"><i class="fa fa-shopping-cart"></i></a></li>
-                            <li><a href="<?php echo e(url('')); ?>"><i
+                            <li><a href="<?php echo e(url('web/profile')); ?>"><i
                                         class="fa fa-user-circle"></i>&nbsp;<?php echo e(Auth::user()->name); ?></a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">
-                                    <li><a href=""><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
+                                    <li><a href="<?php echo e(url('web/profile')); ?>"><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
                                     <li><a href=""><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
                                     <?php if(Auth::user()->role=='admin'): ?>
 

@@ -41,48 +41,8 @@ class webController extends Controller
     public function login() {
         return view('web.login');
     }
-    public function postLogin(Request $request) {
-        // $data = $request->only('username', 'password');
-        // if(Auth::attempt($data)){
-        //     $user = User::where('username', $request->username)->first();
-        //     if($user->role == 'customer') {
-        //         $idUser = $user->cust_id;
-        //         Session::put('logined', $idUser);
-        //         return redirect()->route('')->with(['login_success1'=>'Đăng nhập thành công!!!']);
-        //     }
-        //     if($user->role == 1) {
-        //         Session::put('ql', 1);
-        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'Đăng nhập thành công!!!']);
-        //     }
-        //     if($user->role == 2){
-        //         Session::put('qlsp', 2);
-        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'qlsp Đăng nhập thành công!!!']);
-        //     }
-        //     if($user->role == 3) {
-        //         Session::put('qldh', 3);
-        //         return redirect()->route('trangchuAdmin')->with(['login_success1'=>'Đăng nhập thành công!!!']);
-        //     }
-        // } else {
-        //     return back()->with(['login_fail1'=>'Thông tin đăng nhập không chính xác!!!']);
-        // }
-        $email = $request->input('email');
-        $pwd = $request->input('password');
-        $user = DB::table('user')->where('email',$email)->first();
-        if($user !=null && $user->password == $pwd && $user->role=='customer')
-        {
-            $id = $user->username;
-            Session::put('login', $id);
-            return redirect("web/index")->with(['user'=>$id]);
-        }
-        if($user !=null && $user->password == $pwd && $user->role=='admin')
-        {
-            $request->session()->push('admin',$user);
-            return redirect("admin/index");
-        }
-        else
-        {
-            return back()->with(['login_fail1'=>'Thông tin đăng nhập không chính xác!!!']);
-        }
+    public function profile(){
+        return view('web.profile');
     }
     //controller for UserCreate
     public function getRegister() {
@@ -91,35 +51,6 @@ class webController extends Controller
     public function logout() {
         Auth::logout();
         return back();
-    }
-    public function postRegister(Request $request) {
-        // nhận tất cả tham số vào mảng user
-        // $this ->validate($request,
-        // [
-        //     'email'=>'required|email|unique:user,email',
-        //     'password'=>'required|min:6|max:20',
-        //     'username'=>'required|unique:user,username'
-        //     'pwd2'=>'required|same:password',
-        // ],[
-        //     'email.required'=>'Vui long nhap Email',
-        //     'email.email'=>'Email Sai',
-        //     'email.unique'=>'Email nay da duoc su dung'
-        //     'password.required'=>'Enter Email',
-        //     'pwd2.same'=>'Mat khau khong giong nhau',
-        //     'password.min'=>'Mat khau it nhat 6 ki tu',
-        // ]
-        // );
-        $user = $request->all();
-        DB::table('user')->insert([
-            'email'=>$user['email'],
-            'password'=>$user['password'],
-            'username'=>$user['username'],
-            'address'=>$user['address'],
-            'birthday'=>($user['birthday']),
-            'name'=>$user['name'],
-            'phonenumber'=>$user['phonenumber']
-        ]);
-        return redirect()->action('webController@postRegister');
     }
         
 // Controller for product end

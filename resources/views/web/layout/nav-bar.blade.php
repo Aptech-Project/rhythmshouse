@@ -37,10 +37,10 @@
                             @endif
                             @else
                             <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a></li>
-                            <li><a href="{{ url('') }}"><i
+                            <li><a href="{{ url('web/profile') }}"><i
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">
-                                    <li><a href=""><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
+                                    <li><a href="{{ url('web/profile') }}"><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
                                     <li><a href=""><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
                                     @if(Auth::user()->role=='admin')
 
