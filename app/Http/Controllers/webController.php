@@ -21,8 +21,17 @@ class webController extends Controller
         return view('web.productDetail');
     }
     //phong
-    public function cart() {
-        return view('web.cart');
+    public function cart($id) {
+        $cart = DB::table('cart')->where('userid',$id)->first();
+        $idCart = $cart->id;
+        $cartdetail = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.*', 'product.*')
+            ->where('cartdetail.cartid',$id)
+            ->get();
+        // dd($cartdetail);
+        return view('web.cart')->with(['cartdetail'=> $cartdetail],['products'=>$products]);
     }
     public function shop() {
         return view('web.index2');
