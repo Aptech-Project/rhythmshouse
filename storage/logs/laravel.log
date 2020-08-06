@@ -9416,6 +9416,7 @@
 #48 C:\\xampp\\htdocs\\projectSem2\\branches\\dev\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #49 {main}
 "} 
+<<<<<<< Updated upstream
 [2020-08-06 11:58:18] local.ERROR: In order to use the Auth::routes() method, please install the laravel/ui package. {"exception":"[object] (RuntimeException(code: 0): In order to use the Auth::routes() method, please install the laravel/ui package. at D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Auth.php:56)
 [stacktrace]
 #0 D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\outes\\web.php(91): Illuminate\\Support\\Facades\\Auth::routes()
@@ -10963,6 +10964,131 @@
 #60 D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
 #61 D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #62 {main}
+=======
+[2020-08-06 14:40:48] local.ERROR: In order to use the Auth::routes() method, please install the laravel/ui package. {"exception":"[object] (RuntimeException(code: 0): In order to use the Auth::routes() method, please install the laravel/ui package. at D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Auth.php:56)
+[stacktrace]
+#0 D:\\Software\\XAMPP\\htdocs\hythmshouse\outes\\web.php(91): Illuminate\\Support\\Facades\\Auth::routes()
+#1 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('D:\\\\Software\\\\XAM...')
+#2 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(417): Illuminate\\Routing\\RouteFileRegistrar->register('D:\\\\Software\\\\XAM...')
+#3 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(374): Illuminate\\Routing\\Router->loadRoutes('D:\\\\Software\\\\XAM...')
+#4 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(134): Illuminate\\Routing\\Router->group(Array, 'D:\\\\Software\\\\XAM...')
+#5 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(63): Illuminate\\Routing\\RouteRegistrar->group('D:\\\\Software\\\\XAM...')
+#6 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(47): App\\Providers\\RouteServiceProvider->mapWebRoutes()
+#7 [internal function]: App\\Providers\\RouteServiceProvider->map()
+#8 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#9 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#11 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#12 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#13 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(87): Illuminate\\Container\\Container->call(Array)
+#14 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#15 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(35): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->boot()
+#16 [internal function]: App\\Providers\\RouteServiceProvider->boot()
+#17 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#18 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(867): Illuminate\\Container\\Container->call(Array)
+#23 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(850): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#24 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 22)
+#25 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): array_walk(Array, Object(Closure))
+#26 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#27 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#28 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#29 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(135): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#30 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#31 D:\\Software\\XAMPP\\htdocs\hythmshouse\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#32 {main}
+"} 
+[2020-08-06 14:46:51] local.ERROR: In order to use the Auth::routes() method, please install the laravel/ui package. {"exception":"[object] (RuntimeException(code: 0): In order to use the Auth::routes() method, please install the laravel/ui package. at D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Auth.php:56)
+[stacktrace]
+#0 D:\\Software\\XAMPP\\htdocs\hythmshouse\outes\\web.php(91): Illuminate\\Support\\Facades\\Auth::routes()
+#1 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('D:\\\\Software\\\\XAM...')
+#2 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(417): Illuminate\\Routing\\RouteFileRegistrar->register('D:\\\\Software\\\\XAM...')
+#3 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(374): Illuminate\\Routing\\Router->loadRoutes('D:\\\\Software\\\\XAM...')
+#4 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(134): Illuminate\\Routing\\Router->group(Array, 'D:\\\\Software\\\\XAM...')
+#5 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(63): Illuminate\\Routing\\RouteRegistrar->group('D:\\\\Software\\\\XAM...')
+#6 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(47): App\\Providers\\RouteServiceProvider->mapWebRoutes()
+#7 [internal function]: App\\Providers\\RouteServiceProvider->map()
+#8 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#9 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#11 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#12 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#13 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(87): Illuminate\\Container\\Container->call(Array)
+#14 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#15 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(35): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->boot()
+#16 [internal function]: App\\Providers\\RouteServiceProvider->boot()
+#17 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#18 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(867): Illuminate\\Container\\Container->call(Array)
+#23 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(850): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#24 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 22)
+#25 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): array_walk(Array, Object(Closure))
+#26 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#27 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#28 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#29 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(135): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#30 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#31 D:\\Software\\XAMPP\\htdocs\hythmshouse\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#32 {main}
+"} 
+[2020-08-06 14:47:07] local.ERROR: In order to use the Auth::routes() method, please install the laravel/ui package. {"exception":"[object] (RuntimeException(code: 0): In order to use the Auth::routes() method, please install the laravel/ui package. at D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Support\\Facades\\Auth.php:56)
+[stacktrace]
+#0 D:\\Software\\XAMPP\\htdocs\hythmshouse\outes\\web.php(91): Illuminate\\Support\\Facades\\Auth::routes()
+#1 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteFileRegistrar.php(35): require('D:\\\\Software\\\\XAM...')
+#2 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(417): Illuminate\\Routing\\RouteFileRegistrar->register('D:\\\\Software\\\\XAM...')
+#3 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\Router.php(374): Illuminate\\Routing\\Router->loadRoutes('D:\\\\Software\\\\XAM...')
+#4 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Routing\\RouteRegistrar.php(134): Illuminate\\Routing\\Router->group(Array, 'D:\\\\Software\\\\XAM...')
+#5 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(63): Illuminate\\Routing\\RouteRegistrar->group('D:\\\\Software\\\\XAM...')
+#6 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(47): App\\Providers\\RouteServiceProvider->mapWebRoutes()
+#7 [internal function]: App\\Providers\\RouteServiceProvider->map()
+#8 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#9 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#10 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#11 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#12 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#13 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(87): Illuminate\\Container\\Container->call(Array)
+#14 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider.php(36): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->loadRoutes()
+#15 D:\\Software\\XAMPP\\htdocs\hythmshouse\\app\\Providers\\RouteServiceProvider.php(35): Illuminate\\Foundation\\Support\\Providers\\RouteServiceProvider->boot()
+#16 [internal function]: App\\Providers\\RouteServiceProvider->boot()
+#17 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(33): call_user_func_array(Array, Array)
+#18 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Util.php(37): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#19 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(91): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#20 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#21 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Container\\Container.php(592): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#22 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(867): Illuminate\\Container\\Container->call(Array)
+#23 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(850): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\RouteServiceProvider))
+#24 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\RouteServiceProvider), 22)
+#25 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(851): array_walk(Array, Object(Closure))
+#26 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#27 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#28 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(151): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#29 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(135): Illuminate\\Foundation\\Http\\Kernel->bootstrap()
+#30 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Http\\Kernel.php(109): Illuminate\\Foundation\\Http\\Kernel->sendRequestThroughRouter(Object(Illuminate\\Http\\Request))
+#31 D:\\Software\\XAMPP\\htdocs\hythmshouse\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
+#32 {main}
+"} 
+[2020-08-06 14:50:46] local.ERROR: rename(D:\Software\XAMPP\htdocs\rhythmshouse\bootstrap\cache\pacAF58.tmp,D:\Software\XAMPP\htdocs\rhythmshouse\bootstrap\cache/packages.php): Access is denied. (code: 5) {"exception":"[object] (ErrorException(code: 0): rename(D:\\Software\\XAMPP\\htdocs\hythmshouse\\bootstrap\\cache\\pacAF58.tmp,D:\\Software\\XAMPP\\htdocs\hythmshouse\\bootstrap\\cache/packages.php): Access is denied. (code: 5) at D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php:159)
+[stacktrace]
+#0 [internal function]: Illuminate\\Foundation\\Bootstrap\\HandleExceptions->handleError(2, 'rename(D:\\\\Softw...', 'D:\\\\Software\\\\XAM...', 159, Array)
+#1 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Filesystem\\Filesystem.php(159): rename('D:\\\\Software\\\\XAM...', 'D:\\\\Software\\\\XAM...')
+#2 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(181): Illuminate\\Filesystem\\Filesystem->replace('D:\\\\Software\\\\XAM...', '<?php return ar...')
+#3 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(136): Illuminate\\Foundation\\PackageManifest->write(Array)
+#4 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(106): Illuminate\\Foundation\\PackageManifest->build()
+#5 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(89): Illuminate\\Foundation\\PackageManifest->getManifest()
+#6 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\PackageManifest.php(78): Illuminate\\Foundation\\PackageManifest->config('aliases')
+#7 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\RegisterFacades.php(26): Illuminate\\Foundation\\PackageManifest->aliases()
+#8 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(230): Illuminate\\Foundation\\Bootstrap\\RegisterFacades->bootstrap(Object(Illuminate\\Foundation\\Application))
+#9 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#10 D:\\Software\\XAMPP\\htdocs\hythmshouse\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#11 D:\\Software\\XAMPP\\htdocs\hythmshouse\\artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#12 {main}
+>>>>>>> Stashed changes
 "} 
 [2020-08-06 13:42:25] local.ERROR: Trying to get property 'name' of non-object (View: D:\Xampp\htdocs\rhythmhouse\branches\dev\resources\views\web\profile.blade.php) {"exception":"[object] (Facade\\Ignition\\Exceptions\\ViewException(code: 0): Trying to get property 'name' of non-object (View: D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\esources\\views\\web\\profile.blade.php) at D:\\Xampp\\htdocs\hythmhouse\\branches\\dev\esources\\views/web/profile.blade.php:138)
 [stacktrace]
