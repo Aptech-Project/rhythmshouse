@@ -30,7 +30,7 @@
                             <li id="membership"><a href="{{ url('web/membership') }}">Membership</a></li>
                             <li id="contact"><a href="{{ url('web/contact') }}">Contact</a></li>
                             @if (Session::has('login'))
-                            <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i>{{get('user')}}</a></li>
                             <li><a href="{{ url('') }}"><i class="fa fa-user-circle"></i>&nbsp;</a>
                                 <ul class="dropdown">
                                     <li><a href=""><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>

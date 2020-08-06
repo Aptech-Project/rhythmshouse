@@ -86,7 +86,7 @@ class webController extends Controller
         {
             $id = $user->username;
             Session::put('login', $id);
-            return redirect("web/index")->with(['user'=>$user]);
+            return redirect("web/index")->with(['user'=>$id]);
         }
         if($user !=null && $user->password == $pwd && $user->role=='admin')
         {
