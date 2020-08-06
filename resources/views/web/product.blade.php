@@ -198,34 +198,47 @@
             <div class="col-lg-9 col-md-9 col-sm-9">
                 <div class="row">
                     @foreach($products as $p)
-                        <!-- <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="discography__item">
-                                <div class="center">
-                                    <a href="{{ url('web/productDetail') }}">
-                                        <img src="{{ url('images/'.$p->image) }}" height=200px, width=200px/>
-                                    </a>
-                                </div>
-                                <div class="discography__item__text">
-                                    <span>{{ $p->price }}</span>
-                                    <h4>{{ $p->name }}</h4>
-                                    <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                                    <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
+                    <div class="col-lg-3 col-md-3 col-sm-3">
+                        <a href="{{ url('web/productDetail') }}">
+                            <img src="{{ url('images/'.$p->image) }}" height=200px, width=200px/>
+                        </a>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-7">
+                        <div class="song-artist">{{$p->artist}}</div>
+                        <div class="song-title">{{$p->name}}</div>
+                        <div class="single_player_container">
+                            <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1"
+                                data-url="{{ asset('music-files/1.mp3') }}"></div>
+                            <div class="jp-audio jp_container_1" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface">
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box">
+                                        <button class="jp-play player_button" tabindex="0"></button>
+                                    </div>
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars">
+                                        <div class="jp-progress">
+                                            <div class="jp-seek-bar">
+                                                <div>
+                                                    <div class="jp-play-bar">
+                                                        <div class="jp-current-time" role="timer" aria-label="time">0:00
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="jp-duration ml-auto" role="timer" aria-label="duration">00:00</div>
+                                    </div>
                                 </div>
                             </div>
-                        </div> -->
-                        <div class="col-lg-4 col-md-4 col-sm-4">
-                            <a href="{{ url('web/productDetail') }}">
-                                <img src="{{ url('images/'.$p->image) }}" height=200px, width=200px/>
-                            </a>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <h4>{{ $p->name }}</h4>
-                        </div>
-                        <div class="col-lg-2 col-md-2 col-sm-2">
-                            <span>{{ $p->price }}</span>
-                            <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:85px" alt="" /></a>
-                            <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:85px" alt="" /></a>
-                        </div>
+                        {{$p->description}}
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 center">
+                        <span style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</span><br>
+                        <button class="btn btn-success product-button"><span class="fa fa-money" style="font-size: 15px"> Buy now</span></button>
+                        <button type="button" class="btn btn-success product-button"><span class="fa fa-opencart" style="font-size: 15px"> Add to cart</span></button>
+                    </div>
                     @endforeach
                     <div class="col-lg-12">
                         <div class="pagination__links">
