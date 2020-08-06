@@ -28,11 +28,17 @@ class webController extends Controller
             ->join('product', 'cartdetail.productid', '=', 'product.id')
             ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
             ->select('cartdetail.*', 'product.*')
-            ->where('cartdetail.cartid',$id)
+            ->where('cartdetail.cartid',$idCart)
             ->get();
         // dd($cartdetail);
-        return view('web.cart')->with(['cartdetail'=> $cartdetail],['products'=>$products]);
+        $totalPrice[0]=0;
+        foreach ($cartdetail as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        // dd($totalPrice);    
+        return view('web.cart')->with(['cartdetail'=> $cartdetail,'totalPrice'=> $totalPrice]);
     }
+    
     public function shop() {
         return view('web.index2');
     }

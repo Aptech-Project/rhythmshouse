@@ -46,7 +46,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td class="p-price first-row">{{ $c -> price * $c->quanity}}</td>
+                                        <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
                                         <td class="close-td first-row"><i class="ti-close"></i></td>
                                         <td class="close-td first-row""><i class="ti-save"></i></td>
                                     </tr>
@@ -58,11 +58,12 @@
                     <div class="row">
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
+                                @foreach($totalPrice as $p)
                                 <ul>
-                                    <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                    <li class="cart-total">Total <span>$240.00</span></li>
+                                <li class="cart-total">Total <span> ${{ $p }}</span></li>
                                 </ul>
-                                <a href="#" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                @endforeach
+                                <a href="{{ url('web/index') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
                             </div>
                         </div>
                     </div>

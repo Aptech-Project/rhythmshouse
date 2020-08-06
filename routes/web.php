@@ -102,8 +102,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');  
 
-Route::get('cart/{id}', 'webController@cart');
-Route::get('gio-hang',[
-'as'=>'giohang',
-'uses'=>'CartController@getCart'
-]);
+Route::get('web/cart/{id}', 'webController@cart');
