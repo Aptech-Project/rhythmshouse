@@ -41,16 +41,43 @@ class webController extends Controller
     public function login() {
         return view('web.login');
     }
-    public function profile(){
-        return view('web.profile');
-    }
+    
     //controller for UserCreate
     public function getRegister() {
         return view('web.register');
     }
     public function logout() {
         Auth::logout();
-        return back();
+        return view('web.index');
+    }
+    public function postRegister(Request $request) {
+        // nhận tất cả tham số vào mảng user
+        // $this ->validate($request,
+        // [
+        //     'email'=>'required|email|unique:user,email',
+        //     'password'=>'required|min:6|max:20',
+        //     'username'=>'required|unique:user,username'
+        //     'pwd2'=>'required|same:password',
+        // ],[
+        //     'email.required'=>'Vui long nhap Email',
+        //     'email.email'=>'Email Sai',
+        //     'email.unique'=>'Email nay da duoc su dung'
+        //     'password.required'=>'Enter Email',
+        //     'pwd2.same'=>'Mat khau khong giong nhau',
+        //     'password.min'=>'Mat khau it nhat 6 ki tu',
+        // ]
+        // );
+        $user = $request->all();
+        DB::table('user')->insert([
+            'email'=>$user['email'],
+            'password'=>$user['password'],
+            'username'=>$user['username'],
+            'address'=>$user['address'],
+            'birthday'=>($user['birthday']),
+            'name'=>$user['name'],
+            'phonenumber'=>$user['phonenumber']
+        ]);
+        return redirect()->action('webController@postRegister');
     }
         
 // Controller for product end
@@ -58,22 +85,7 @@ class webController extends Controller
 
 // Controller for event start
     public function event() {
-        $event = DB::table('event')->where('status','Approved')->orderByDesc('id')->paginate(3);
-        $eventtop = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->first();
-        return view('web.event')->with(['event'=>$event, 'eventtop'=>$eventtop]);
-    }
-    public function eventClick($id) {
-        DB::table('event')
-            ->where('id', intval($id))
-            ->increment('views',1);
-        DB::table('event')
-            ->where('id', intval($id))
-            ->increment('totaldept',0.02);
-        return redirect('web/eventDetail/'.$id);
-    }
-    public function eventDetail($id) {
-        $eventD = DB::table('event')->where('id',intval($id))->first();
-        return view('web.eventDetail')->with(['eventD'=>$eventD]);
+        return view('web.event');
     }
     public function eventCreate($id) {
         $user = DB::table('user')
@@ -90,7 +102,7 @@ class webController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('web/eventCreate/'.$id)->with('alert','You can only choose file have tail jpg,png,jpeg');
+                return redirect('web/eventCreate/1')->with('alert','You can only choose file have tail jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images",$imageName);
@@ -115,11 +127,11 @@ class webController extends Controller
                 ]);
         return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
     }
-    public function eventManagerment($id=1) {
+    public function eventManagerment($id=2) {
         $users = DB::table('user')->where('id', intval($id))
         ->first();
         $eventmana = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
-        ->where('user.id', intval($id))->where('event.status','Approved')->orwhere('user.id', intval($id))->where('event.status','Canceled')
+        ->where('user.id', intval($id))->where('event.status','Approved')->orwhere('event.status','Canceled')
         ->get();
         $eventmana1 = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
         ->where('user.id', intval($id))->where('event.status','Processing')
@@ -142,7 +154,7 @@ class webController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('web/eventPaUp'.$id)->with('alert','You can only choose file have tail jpg,png,jpeg');
+                return redirect('productUpdate')->with('alert','You can only choose file have tail jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("public/images",$imageName);

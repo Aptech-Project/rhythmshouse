@@ -349,6 +349,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-5" for="username" style="text-align: left;"><i
+                                    class="fa fa-user"></i>&nbsp;UserName :*</label>
+                            <div class="col-sm-9">
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter Username"
+                                    name="username">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label col-sm-5" for="password" style="text-align: left;"><i
                                     class="fa fa-lock" aria-hidden="true"></i>&nbsp;Password :*</label>
                             <div class="col-sm-9">
@@ -368,34 +382,36 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="username" style="text-align: left;"><i
-                                    class="fa fa-user"></i>&nbsp;UserName :*</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="username" placeholder="Enter Username"
-                                    name="username">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="address" style="text-align: left;"><i
                                     class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Address :</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="address" placeholder="Enter Address"
-                                    name="address">
+                                <input type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" id="address" name="address">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="birthday" style="text-align: left;"><i
                                     class="fa fa-birthday-cake" aria-hidden="true"></i>&nbsp;Birthday :</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="birthday" name="birthday">
+                                <input type="date" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" id="birthday" name="birthday">
+                                @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="name" style="text-align: left;"><i
                                     class="fa fa-male" aria-hidden="true"></i>&nbsp;Name :</label>
                             <div class="col-sm-9">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter Your Name" sname="name">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Enter Your Name" name="name">
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -407,8 +423,12 @@
                             <label class="control-label col-sm-5" for="phonenumber" style="text-align: left;"><i
                                     class="fa fa-phone" aria-hidden="true"></i>&nbsp;Phone Number :</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="phonenumber"
-                                    placeholder="Enter Phone Number" name="phonenumber">
+                                <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" placeholder="Enter Phone Number">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="form-group">

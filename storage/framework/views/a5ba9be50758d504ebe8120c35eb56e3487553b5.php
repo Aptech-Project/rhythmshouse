@@ -364,6 +364,34 @@ unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-sm-5" for="username" style="text-align: left;"><i
+                                    class="fa fa-user"></i>&nbsp;UserName :*</label>
+                            <div class="col-sm-9">
+                                <input id="username" type="text" class="form-control <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" placeholder="Enter Username"
+                                    name="username">
+                                <?php $__errorArgs = ['username'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label col-sm-5" for="password" style="text-align: left;"><i
                                     class="fa fa-lock" aria-hidden="true"></i>&nbsp;Password :*</label>
                             <div class="col-sm-9">
@@ -397,27 +425,57 @@ unset($__errorArgs, $__bag); ?>
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-sm-5" for="username" style="text-align: left;"><i
-                                    class="fa fa-user"></i>&nbsp;UserName :*</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="username" placeholder="Enter Username"
-                                    name="username">
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="address" style="text-align: left;"><i
                                     class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Address :</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="address" placeholder="Enter Address"
-                                    name="address">
+                                <input type="text" id="address" class="form-control <?php $__errorArgs = ['address'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="address" value="<?php echo e(old('address')); ?>" required autocomplete="address" id="address" name="address">
+                                <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="birthday" style="text-align: left;"><i
                                     class="fa fa-birthday-cake" aria-hidden="true"></i>&nbsp;Birthday :</label>
                             <div class="col-sm-9">
-                                <input type="date" class="form-control" id="birthday" name="birthday">
+                                <input type="date" id="birthday" class="form-control <?php $__errorArgs = ['birthday'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="birthday" value="<?php echo e(old('birthday')); ?>" required autocomplete="birthday" id="birthday" name="birthday">
+                                <?php $__errorArgs = ['birthday'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="form-group">
@@ -431,7 +489,7 @@ if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
-unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" required autocomplete="name" autofocus placeholder="Enter Your Name" sname="name">
+unset($__errorArgs, $__bag); ?>" name="name" value="<?php echo e(old('name')); ?>" required autocomplete="name" autofocus placeholder="Enter Your Name" name="name">
                                 <?php $__errorArgs = ['name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
@@ -450,8 +508,26 @@ unset($__errorArgs, $__bag); ?>
                             <label class="control-label col-sm-5" for="phonenumber" style="text-align: left;"><i
                                     class="fa fa-phone" aria-hidden="true"></i>&nbsp;Phone Number :</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="phonenumber"
-                                    placeholder="Enter Phone Number" name="phonenumber">
+                                <input id="phonenumber" type="text"  type="text" class="form-control <?php $__errorArgs = ['phonenumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" name="phonenumber" value="<?php echo e(old('phonenumber')); ?>" required autocomplete="phonenumber" placeholder="Enter Phone Number">
+                                <?php $__errorArgs = ['phonenumber'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong><?php echo e($message); ?></strong>
+                                    </span>
+                                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                             </div>
                         </div>
                         <div class="form-group">
