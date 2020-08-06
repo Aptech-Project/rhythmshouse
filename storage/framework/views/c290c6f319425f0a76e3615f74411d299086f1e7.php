@@ -1,37 +1,42 @@
 <aside class="main-sidebar elevation-4" style="position: fixed; background-color: #2e3b46">
     <!-- Brand Logo -->
     <a href="<?php echo e(url('admin/index')); ?>" class="brand-link" style="background-color: #1a2732">
-        <img src="<?php echo e(asset('img/Logo-black1.png')); ?>"
-             alt="Managed Page"
-             class="brand-image img-circle elevation-3"
-             style="opacity: .8">
+        <img src="<?php echo e(asset('img/Logo-black1.png')); ?>" alt="Managed Page" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
         <span class="brand-text" style="color: ghostwhite">Manager Page</span>
     </a>
- 
+
     <!-- Sidebar -->
-    <div class="sidebar" style="background-color: #2e3b46"> 
+    <div class="sidebar" style="background-color: #2e3b46">
         <!-- Sidebar user (optional) -->
-        <ul class="nav nav-pills nav-sidebar flex-column user-panel mt-3 pb-3 mb-3 d-flex" data-widget="treeview" role="menu" data-accordion="false">
+        <ul class="nav nav-pills nav-sidebar flex-column user-panel mt-3 pb-3 mb-3 d-flex" data-widget="treeview"
+            role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                  with font-awesome or any other icon font library -->
+                 <?php if(Route::has('register')): ?>
+            <?php if(Auth::user()->role=='admin'): ?>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link" style="background-color: #2e3b46">
                     <img src="<?php echo e(asset('img/admin.png')); ?>" class="brand-image img-circle elevation-2" alt="User Image">
                     <p style="color: ghostwhite; background-color: #2e3b46">
                         &nbsp;&nbsp;
-                        Admin
+                        <?php echo e(Auth::user()->name); ?>
+
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="<?php echo e(url('product/index')); ?>" class="nav-link">
+                        <a href="<?php echo e(route('logout')); ?>" class="nav-link">
                             <i class="nav-icon fas"></i>
                             <p style="color: ghostwhite">Log Out</p>
                         </a>
                     </li>
                 </ul>
-            </li>          
+            </li>
+            <?php endif; ?>
+            <?php endif; ?>
+ 
         </ul>
 
         <!-- Sidebar Menu -->
@@ -167,6 +172,4 @@
         <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
-</aside>
- 
-<?php /**PATH D:\Xampp\htdocs\rhythmhouse\branches\dev\resources\views/admin/layout/main-sidebar.blade.php ENDPATH**/ ?>
+</aside><?php /**PATH D:\Xampp\htdocs\rhythmhouse\branches\dev\resources\views/admin/layout/main-sidebar.blade.php ENDPATH**/ ?>
