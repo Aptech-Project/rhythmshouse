@@ -140,15 +140,15 @@
                     <h6>
                     {{ Auth::user()->email }}
                     </h6>
-                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <p>Rank 8/10</p><br>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#profiletab" role="tab"
-                                aria-controls="home" aria-selected="true">About</a>
+                                aria-controls="home" aria-selected="true">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Timeline</a>
+                                aria-controls="profile" aria-selected="false">Edit Profile</a>
                         </li>
                     </ul>
                 </div>

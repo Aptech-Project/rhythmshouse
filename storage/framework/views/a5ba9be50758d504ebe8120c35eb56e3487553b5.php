@@ -508,7 +508,7 @@ unset($__errorArgs, $__bag); ?>
                             <label class="control-label col-sm-5" for="phonenumber" style="text-align: left;"><i
                                     class="fa fa-phone" aria-hidden="true"></i>&nbsp;Phone Number :</label>
                             <div class="col-sm-9">
-                                <input id="phonenumber" type="text"  type="text" class="form-control <?php $__errorArgs = ['phonenumber'];
+                                <input id="phonenumber" type="text" class="form-control <?php $__errorArgs = ['phonenumber'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
