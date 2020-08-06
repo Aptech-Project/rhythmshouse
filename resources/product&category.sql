@@ -78,3 +78,14 @@ INSERT INTO `category` (`id`, `categoryname`) VALUES
 (12, 'Soft Rock');
 
 
+--Support - Phong
+$cartid =  DB::table('cart')
+            ->join('user', 'cart.userid', '=', 'user.id')
+            ->select('user.id')
+            ->where('user.id',$id)
+            ->first();
+$cartitems = DB::table('cartitem')
+            ->join('cart', 'cartitem.cartid', '=', 'cart.id')
+            ->select('cartitem.*')
+            ->where('cartitem.cartid',$cartid)
+            ->get();
