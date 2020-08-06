@@ -1,14 +1,13 @@
 <!-- {{ asset(' ') }} -->
 <!-- Header Section Begin -->
 <style>
-    .dropdown{
-        background-color: rgba(112, 0, 175, 0.8); !important; 
-        margin-left:-500% !important;
-        width:115px !important;
-        border-bottom-right-radius: 10px !important;
-        border-top-left-radius:10px;
-        border-bottom-left-radius: 10px !important;
-    }
+.dropdown {
+    background-color: rgba(112, 0, 175, 0.8);
+    width: 170px !important;
+    border-bottom-right-radius: 10px !important;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px !important;
+}
 </style>
 <header class="header">
     <div class="container">
@@ -29,20 +28,35 @@
                             <li id="event"><a href="{{ url('web/event') }}">Event</a></li>
                             <li id="membership"><a href="{{ url('web/membership') }}">Membership</a></li>
                             <li id="contact"><a href="{{ url('web/contact') }}">Contact</a></li>
-                            @if (Session::has('login'))
-                            <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i>{{get('user')}}</a></li>
-                            <li><a href="{{ url('') }}"><i class="fa fa-user-circle"></i>&nbsp;</a>
-                                <ul class="dropdown">
+                            @guest
+                            <li style="padding-left:0px;"><a href="{{ url('web/login') }}"><i class="fa fa-sign-in"
+                                        aria-hidden="true"></i>&nbsp;Login</i></a></li>
+                            @if (Route::has('register'))
+                            <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i
+                                        class="fa fa-sign-out"></i>&nbsp; Register</a></li>
+                            @endif
+                            @else
+                            <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="{{ url('') }}"><i
+                                        class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
+                                <ul class="dropdown" aria-labelledby="navbarDropdown">
                                     <li><a href=""><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
                                     <li><a href=""><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
-                                    <li><a href="{{route('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a></li>
+                                    @if(Auth::user()->role=='admin')
+
+                                    <li><a href="{{url('admin/index')}}"><i class="fa fa-tasks"></i>&nbsp;Manager
+                                            Admin</a></li>
+                                    @endif
+                                    <li><a href="{{ route('logout')}}"><i class="fa fa-sign-out"></i>&nbsp;Log Out</a>
+                                    </li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
                                 </ul>
                             </li>
-                            {{-- @dd(Session::get('login')); --}}
-                            @else
-                            <li style="padding-left:0px;"><a href="{{ url('web/login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Login</i></a></li>
-                            <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i class="fa fa-sign-out"></i>&nbsp; Register</a></li>
-                            @endif
+                            @endguest
+
                         </ul>
                     </nav>
                 </div>

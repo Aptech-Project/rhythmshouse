@@ -13,7 +13,7 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+    });
     Route::get('admin/index', 'adminController@index');
 
 
@@ -65,26 +65,25 @@ Route::get('web/product', 'webController@product');
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');
 Route::get('web/membership', 'webController@membership');
+Route::get('web/cart', 'webController@cart');
 Route::get('web/shop', 'webController@shop');
 Route::get('web/order', 'webController@order');
 Route::get('web/productDetail', 'webController@productDetail');
 Route::get('web/comment', 'webController@comment');
 //Register and Login Route
-
-Route::get('web/register', 'webController@register');
-Route::get('web/register', 'webController@getRegister');
-Route::post('web/register', 'webController@postRegister');
 Route::get('web/index', 'webController@index');
-Route::get('web/login', 'webController@login');
-Route::post('web/login', 'webController@postLogin');
-Route::get('web/login', 'webController@login');
+
+Route::get('web/login',function(){
+    return view('web/login');
+});
+Route::get('web/register',function(){
+    return view('web/register');
+});
 Route::get('logout',[
     'as'=>'logout',
     'uses'=>'webController@logout'
 ]);
-//cart
-Route::get('web/cart/{id}', 'webController@cart');
-Route::get('gio-hang',[
-    'as'=>'giohang',
-    'uses'=>'CartController@getCart'
-]);
+    
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
