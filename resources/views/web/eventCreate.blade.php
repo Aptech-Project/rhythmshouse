@@ -73,7 +73,7 @@
                                         </li>
                                         <li>
                                             <b>Description:</b>
-                                            <p><input type="text" class="form-control" id="txt-eventdescription" name="eventdescription" required></p>
+                                            <textarea type="text" class="form-control" id="txt-eventdescription" name="eventdescription" required> </textarea>
                                         </li>
                                         <li>
                                             <b>Image:</b>

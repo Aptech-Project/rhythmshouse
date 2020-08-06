@@ -58,9 +58,11 @@ Route::get('web/product', 'webController@product');
     Route::get('web/event', 'webController@event');
     Route::get('web/eventCreate/{id}', 'webController@eventCreate');
     Route::post('web/posteventCreate/{id}', 'webController@postEventCreate');
-    Route::get('web/eventManagerment/2', 'webController@eventManagerment');
+    Route::get('web/eventManagerment/1', 'webController@eventManagerment');
     Route::get('web/eventPartnerUpdate/{id}', 'webController@eventPaUp');
     Route::post('web/posteventPartnerUpdate/{id}', 'webController@postEventPaUp');
+    Route::get('web/eventClick/{id}', 'webController@eventClick');
+    Route::get('web/eventDetail/{id}', 'webController@eventDetail');
 
 Route::get('web/about', 'webController@about');
 Route::get('web/contact', 'webController@contact');

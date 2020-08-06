@@ -49,6 +49,7 @@
                             <thead>
                             <tr>
                                 <th>EventId</th>
+                                <th>EventName</th>
                                 <th>RegisterDate</th>
                                 <th>Views</th> 
                                 <th>Total Dept ($)</th>
@@ -59,6 +60,7 @@
                             @foreach($revenueevent as $e)
                             <tr>
                                 <td>{{ $e->id }}</td>
+                                <td>{{ $e->name }}</td>
                                 <td>{{ $e->registerdate }}</td>
                                 <td>{{ $e->views }}</td>
                                 <td>${{ $e->totaldept }}</td>
@@ -67,7 +69,7 @@
                             @endforeach
                             <tfoot>
                                 <tr>
-                                    <th colspan="3" style="text-align:right">Total:</th>
+                                    <th colspan="4" style="text-align:right">Total:</th>
                                     <th colspan="1" style="text-align:center">${{$revenueevent -> sum('totaldept')}}</th>
                                     <th colspan="1" style="text-align:center">${{$revenueevent -> sum('haspaid')}}</th> 
                                 </tr>

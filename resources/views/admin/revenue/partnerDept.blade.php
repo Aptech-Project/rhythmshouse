@@ -22,6 +22,7 @@
                         <table id="dept" class="table table-bordered table-hover" style="text-align: center">
                             <thead>
                             <tr>
+                                <th>PartnerID</th>
                                 <th>PartnerName</th>
                                 <th>EventId</th>
                                 <th>EventName</th>
@@ -36,6 +37,7 @@
                             <tbody>
                             @foreach($dept as $e)
                             <tr>
+                                <td>{{ $e->userid }}</td>
                                 <td>{{ $e->username }}</td>
                                 <td>{{ $e->id }}</td>
                                 <td>{{ $e->name }}</td>
@@ -46,7 +48,7 @@
                                 
                                 <td class="text-center">  
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/revenue/deptUpdate/'.$e->id) }}">
-                                        <i class="fas fa-pencil-alt"></i> Update
+                                        <i class="fas fa-pencil-alt"></i>
                                     </a>
                                 </td>
                             </tr>

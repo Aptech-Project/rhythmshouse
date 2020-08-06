@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Event Description:</label>
-                                    <input type="text" class="form-control" id="txt-name" name="description" value="{{ $eventpaup->description }}">
+                                    <textarea type="text" class="form-control" id="txt-name" name="description" value="{{ $eventpaup->description }}"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="image">Image:</label><br>

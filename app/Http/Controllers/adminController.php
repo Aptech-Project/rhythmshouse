@@ -12,7 +12,7 @@ class adminController extends Controller
         $earnThisyear = DB::table('order')->whereYear('deliverydate','=',now()->year)->get();
         $receivable = DB::table('event')->where('status','Approved')->orwhere('status','Canceled')->get();
         $pendingRequest = DB::table('event')->where('status','Processing')->get();
-        $pendingRequest1 = DB::table('event')->where('todate','<',date('Y-m-d'))->get();
+        $pendingRequest1 = DB::table('event')->where('status','Approved')->where('todate','<',now())->get();
         return view('admin.index')->with(['earnLastmonth'=>$earnLastmonth, 'earnThisyear'=>$earnThisyear, 'receivable'=>$receivable,
                                           'pendingRequest'=>$pendingRequest, 'pendingRequest1'=>$pendingRequest1]);
     }

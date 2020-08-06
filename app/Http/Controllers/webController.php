@@ -127,7 +127,22 @@ class webController extends Controller
 
 // Controller for event start
     public function event() {
-        return view('web.event');
+        $event = DB::table('event')->where('status','Approved')->orderByDesc('id')->paginate(3);
+        $eventtop = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->first();
+        return view('web.event')->with(['event'=>$event, 'eventtop'=>$eventtop]);
+    }
+    public function eventClick($id) {
+        DB::table('event')
+            ->where('id', intval($id))
+            ->increment('views',1);
+        DB::table('event')
+            ->where('id', intval($id))
+            ->increment('totaldept',0.02);
+        return redirect('web/eventDetail/'.$id);
+    }
+    public function eventDetail($id) {
+        $eventD = DB::table('event')->where('id',intval($id))->first();
+        return view('web.eventDetail')->with(['eventD'=>$eventD]);
     }
     public function eventCreate($id) {
         $user = DB::table('user')
@@ -144,7 +159,7 @@ class webController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('web/eventCreate/1')->with('alert','You can only choose file have tail jpg,png,jpeg');
+                return redirect('web/eventCreate/'.$id)->with('alert','You can only choose file have tail jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images",$imageName);
@@ -169,11 +184,11 @@ class webController extends Controller
                 ]);
         return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
     }
-    public function eventManagerment($id=2) {
+    public function eventManagerment($id=1) {
         $users = DB::table('user')->where('id', intval($id))
         ->first();
         $eventmana = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
-        ->where('user.id', intval($id))->where('event.status','Approved')->orwhere('event.status','Canceled')
+        ->where('user.id', intval($id))->where('event.status','Approved')->orwhere('user.id', intval($id))->where('event.status','Canceled')
         ->get();
         $eventmana1 = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')
         ->where('user.id', intval($id))->where('event.status','Processing')
@@ -196,7 +211,7 @@ class webController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('productUpdate')->with('alert','You can only choose file have tail jpg,png,jpeg');
+                return redirect('web/eventPaUp'.$id)->with('alert','You can only choose file have tail jpg,png,jpeg');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("public/images",$imageName);
