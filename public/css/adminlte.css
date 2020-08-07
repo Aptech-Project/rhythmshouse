@@ -29859,3 +29859,9 @@ a.text-muted:hover {
   color: #ffffff;
 }
 /*# sourceMappingURL=adminlte.css.map */
+/* haiduong */
+.center {
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+}

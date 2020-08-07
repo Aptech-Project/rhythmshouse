@@ -1,0 +1,125 @@
+.center {
+	margin: 0 auto;
+	width: 70%;
+	text-align: center;
+}
+.offers-table {
+	margin: 2vw auto;
+	width: 100%;
+	text-align: center;
+	font-size: 1vw;
+	font-family: Kotta One;
+}
+.page-name {
+	text-align: left;
+	font-size: 4vw;
+	font-family: Oswald;
+	margin-left: 15vw;
+	margin-top: 7vw;
+	color: white;
+	text-shadow: 3px 3px 5px white;
+}
+.product-info {
+	text-align: left;
+	margin-top: 1vw;
+	margin-left: 12px;
+	font-size: 1.2vw;
+	font-family: Kotta One;
+}
+.product-detail {
+	margin-top: -420px;
+	text-align: center;
+	font-size: 20px;
+	font-family: Kotta One;
+}
+.account-info {
+	text-align: left;
+	margin-left: 12px;
+	font-size: 15px;
+	font-family: Kotta One;
+	line-height: 1.6;
+}
+.book-description{
+	text-align: justify;
+	margin-left: 13px;
+	font-family: Kotta One;
+	margin-top: 10px;
+	font-size: 1.1vw;
+}
+.song-title {
+	margin-top: -10px;
+	margin-bottom: -10px;
+	text-align: center;
+	font-family: Gravitas One;
+	font-weight: 300;
+	text-shadow: 10px 10px 10px #909090;
+	font-size: 150%;
+}	
+.song-artist {
+	margin-top: 0;
+	margin-bottom: 0;
+	text-align: center;
+	font-family: Great Vibes;
+	text-shadow: 1px 1px 1px #909090;
+	font-size: 200%;
+}
+.product-button {
+	width: 150px;
+	margin-top: 10px;
+}
+.register-button {
+	width: 12vw;
+	margin-top: 3vw;
+	color: white;
+	font-size: 1.5vw;
+	text-shadow: 1px 1px 1px #909090;
+}
+.nav-button{
+	margin-left: 0.5vw;
+	margin-right: -2vw;
+	margin-top: 0.7vw;
+	color: #8D8D8D;
+	background:none;
+	outline: none;
+	border:none;
+}
+.star-rating {
+	text-align: left;
+	margin-left: 10px;
+	font-size: 1.2vw;
+}
+
+.vote-info {
+	text-align: left;
+	font-size: 1.0vw;
+}
+.membership-offers{
+	text-align: left;
+	margin-left: -2vw;
+	font-size: 1.2vw;
+	font-family: Kotta One; 
+	line-height: 1.8;
+}
+.product-row {
+	background-image: url('../img/whitebackground.jpg');
+	border-collapse: inherit;
+	border-spacing: 15px 15px;
+	box-shadow: 10px 10px 10px #909090;
+	border: 1px solid #
+}
+
+.background-fixed {
+	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed; /*fit background on scroll*/
+}
+
+.solo-background {
+	box-shadow: 10px 10px 10px #909090;
+}
+.checkout-body {
+	font-family: Arial;
+	font-size: 17px;
+	padding: 8px;
+}

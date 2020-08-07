@@ -1,5 +1,6 @@
+    <!-- {{ asset('') }} -->
     <!-- Footer Section Begin -->
-    <footer class="footer spad set-bg" data-setbg="img/footer-bg.png">
+    <footer class="footer spad set-bg" data-setbg="{{ asset('img/footer-bg.png') }}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6">

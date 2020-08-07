@@ -20,6 +20,16 @@
     <link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/slicknav.min.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css">
+    <!-- HaiDuong css -->
+    <link rel="stylesheet" href="{{ asset('css/haiduong.css') }}" type="text/css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.css') }}">
+    <!--font-->
+    <link href="https://fonts.googleapis.com/css?family=Gravitas One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Luckiest Guy" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kotta One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Great Vibes" rel="stylesheet">
 </head>
 
 <body>
@@ -54,5 +64,9 @@
     <!-- Music Plugin -->
     <script src="{{ asset('js/jquery.jplayer.min.js') }}"></script>
     <script src="{{ asset('js/jplayerInit.js') }}"></script>
+    <!-- DataTables -->
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 </body>
+@yield('function')
 </html>

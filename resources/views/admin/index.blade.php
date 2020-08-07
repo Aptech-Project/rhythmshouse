@@ -1,85 +1,181 @@
 @extends('admin.layout.header')
-@section('title', 'product index')
+@section('title', 'index')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>DataTables</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">DataTables</li>
-                    </ol>
-                </div>
-            </div>
-        </div><!-- /.container-fluid -->
-    </section>
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
 
-    <!-- Main content -->
-    <section class="content">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">DataTable with minimal features & hover style</h3>
-                    </div>
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                        <table id="product" class="table table-bordered table-hover">
-                            <thead>
-                            <tr>
-                                <th>Product Id</th>
-                                <th>Product Name</th>
-                                <th>Price</th>
-                                <th>Image</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($products as $p)
-                            <tr>
-                                <td>{{ $p->id }}</td>
-                                <td>{{ $p->name }}</td>
-                                <td>{{ $p->price }}</td>
-                                <td><img width="100px" src="{{ url('images/'.$p->image) }}"/></td>
-                                <td class="text-right">
-                                    <a class="btn btn-primary btn-sm" href="{{ url('admin/productView/'.$p->id) }}">
-                                        <i class="fas fa-folder"></i> View
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="{{ url('admin/productUpdate/'.$p->id) }}">
-                                        <i class="fas fa-pencil-alt"></i> Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('product/productDelete/'.$p->id) }}">
-                                        <i class="fas fa-trash"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
         </div>
-        <!-- /.row -->
-    </section>
+
+        <!-- Content Row -->
+        <div class="row">
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Last Month)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">${{ $earnLastmonth-> sum('totalmoney')}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (This Year)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">${{ $earnThisyear-> sum('totalmoney')}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Earnings (Monthly) Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Earnings (Event)</div>
+                    <div class="row no-gutters align-items-center">
+                      <div class="col-auto">
+                        <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">${{$receivable-> sum('haspaid')}}</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pending Requests Card Example -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Event Requests</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pendingRequest-> count('status')}}</div>
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Event Out of Date</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{$pendingRequest1-> count('todate')}}</div>
+                  </div>
+                  <div class="col-auto">
+                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row">
+
+          <!-- Area Chart -->
+          <div class="col-xl-8 col-lg-7">
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div class="chart-area">
+                  <div id="linechart" style="height: 300px; width: 100%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pie Chart -->
+          <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+              <!-- Card Header - Dropdown -->
+              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                <div class="dropdown no-arrow">
+                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                    <div class="dropdown-header">Dropdown Header:</div>
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </div>
+                </div>
+              </div>
+              <!-- Card Body -->
+              <div class="card-body">
+                <div class="chart-pie pt-4 pb-2">
+                  <canvas id="myPieChart"></canvas>
+                </div>
+                <div class="mt-4 text-center small">
+                  <span class="mr-2">
+                    <i class="fas fa-circle text-primary"></i> Direct
+                  </span>
+                  <span class="mr-2">
+                    <i class="fas fa-circle text-success"></i> Social
+                  </span>
+                  <span class="mr-2">
+                    <i class="fas fa-circle text-info"></i> Referral
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- End of Main Content -->
 @endsection
 @section('script-section')
-    <script>
-        $(function () {
-            $('#product').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-            });
-        });
-    </script>
+<!--Script for chart-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Total money'],
+    ['Work', 8],
+    ['Eat', 2],
+    ['TV', 4],
+    ['Gym', 2],
+    ['Sleep', 8]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Earnings This Year'};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+    chart.draw(data, options);
+  }
+  </script>
+
 @endsection
