@@ -68,23 +68,10 @@ class webController extends Controller
         Auth::logout();
         return view('web.index');
     }
+    public function profileUser() {
+        return view('web.profile');
+    }
     public function postRegister(Request $request) {
-        // nhận tất cả tham số vào mảng user
-        // $this ->validate($request,
-        // [
-        //     'email'=>'required|email|unique:user,email',
-        //     'password'=>'required|min:6|max:20',
-        //     'username'=>'required|unique:user,username'
-        //     'pwd2'=>'required|same:password',
-        // ],[
-        //     'email.required'=>'Vui long nhap Email',
-        //     'email.email'=>'Email Sai',
-        //     'email.unique'=>'Email nay da duoc su dung'
-        //     'password.required'=>'Enter Email',
-        //     'pwd2.same'=>'Mat khau khong giong nhau',
-        //     'password.min'=>'Mat khau it nhat 6 ki tu',
-        // ]
-        // );
         $user = $request->all();
         DB::table('user')->insert([
             'email'=>$user['email'],
@@ -97,7 +84,39 @@ class webController extends Controller
         ]);
         return redirect()->action('webController@postRegister');
     }
-        
+    public function editUser(){
+        if(Auth::User()){
+            $user=User::find(Auth::user()->id);
+            if($user){
+                return view('web.profile')->withUser($user);
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
+    public function update(Request $req){
+        $user=User::find(Auth::user()->id);
+        if($user){
+            $validate=$req->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phonenumber' => ['required','numeric','digits_between:9,11',],
+            'birthday' => ['required','before:now'],
+            'address' => ['required', 'string', 'max:255'],
+            ]);
+            $user->password= Hash::make($req['password']);
+            $user->name=$req['name'];
+            $user->birthday=$req['birthday'];
+            $user->address=$req['address'];
+            $user->phonenumber=$req['phonenumber'];
+            $user->save();
+            return redirect()->back();
+        }else{
+            redirect()->back();
+        }
+    }
 // Controller for product end
 
 

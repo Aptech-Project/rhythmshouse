@@ -52,12 +52,13 @@
     }
 
     .profile-edit-btn {
+        background-color:black;
         border: none;
         border-radius: 1.5rem;
         width: 70%;
         padding: 2%;
         font-weight: 600;
-        color: #6c757d;
+        color: white;
         cursor: pointer;
     }
 
@@ -143,18 +144,18 @@
                     <p>Rank 8/10</p><br>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#profiletab" role="tab"
-                                aria-controls="home" aria-selected="true">Profile</a>
+                            <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                            aria-controls="profile" aria-selected="true">Edit Profile</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
-                                aria-controls="profile" aria-selected="false">Edit Profile</a>
+                            <a class="nav-link " id="home-tab" data-toggle="tab" href="#profiletab" role="tab"
+                                aria-controls="home" aria-selected="false">Profile</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="col-md-2">
-                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+                
             </div>
         </div>
         <div class="row">
@@ -163,14 +164,14 @@
                     <p><i class="fa fa-house-user"></i>Personal Information</p>
                     <a href=""></i> Profile</a><br /><br />
                     <a href=""></i>Sign up as a partner</a><br /><br />
-                    <a href="">My Event</a><br /><br />
+                    <a href="{{url('web/eventManagerment/'.$user->id)}}">My Event</a><br /><br />
                     <p>Action</p>
                     <a href="">Logout</a>
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="tab-content profile-tab" id="myTabContent">
-                    <div class="tab-pane fade show active" id="profiletab" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="tab-pane fade " id="profiletab" role="tabpanel" aria-labelledby="home-tab">
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Name</label>
@@ -212,54 +213,120 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <form action="{{ url('web/update') }}"method="post">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Experience</label>
+                                <label>Email:</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Expert</p>
+                            <input id="email" value="{{$user['email'] }}" readonly type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter email"
+                                    name="email">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Hourly Rate</label>
+                                <label>UserName</label>
                             </div>
                             <div class="col-md-6">
-                                <p>10$/hr</p>
+                            <input id="username" value="{{$user['username'] }}" readonly type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter Username"
+                                    name="username">
+                                @error('username')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Total Projects</label>
+                                <label>Password</label>
                             </div>
                             <div class="col-md-6">
-                                <p>230</p>
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"  required autocomplete="new-password" placeholder="Enter password"
+                                    name="password">
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>English Level</label>
+                                <label>Confirm PassWord</label>
                             </div>
                             <div class="col-md-6">
-                                <p>Expert</p>
+                                <input id="password-confirm"  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
-                                <label>Availability</label>
+                                <label>Name</label>
                             </div>
                             <div class="col-md-6">
-                                <p>6 months</p>
+                            <input id="name" value="{{$user['name'] }}" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" placeholder="Enter Your Name" name="name">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
-                                <label>Your Bio</label><br />
-                                <p>Your detail description</p>
+                            <div class="col-md-6">
+                                <label>BirthDay</label>
+                            </div>
+                            <div class="col-md-6">
+                            <input type="date" value="{{$user['birthday'] }}" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" id="birthday" name="birthday">
+                                @error('birthday')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-md-6">
+                            <input type="text" value="{{$user['address'] }}" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" id="address" name="address">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone Number</label>
+                            </div>
+                            <div class="col-md-6">
+                            <input id="phonenumber" value="{{$user['phonenumber'] }}" type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" placeholder="Enter Phone Number">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                            </div>
+                            <div class="col-md-6">
+                            <br><button type="submit" class="profile-edit-btn" name="btnAddMore">Edit Profile</button>
                             </div>
                         </div>
                     </div>
+                <form>
                 </div>
             </div>
         </div>

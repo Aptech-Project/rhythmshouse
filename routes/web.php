@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
     });
 //Admin Route    
-Route::get('admin/index', 'adminController@index');
-Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(){
 
+Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(){
+    Route::get('index', 'adminController@index');
     //Product Route
     Route::get('product/productList', 'adminController@productList');
     Route::get('product/productCreate', 'adminController@productCreate');
@@ -50,7 +50,6 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('category/categoryUpdate/{id}', 'adminController@categoryUpdate');
     Route::post('category/postCategoryUpdate/{id}', 'adminController@postCategoryUpdate');
     Route::get('category/categoryDelete/{id}', 'adminController@categoryDelete');
-
 });
 
 
@@ -59,7 +58,7 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
 Route::get('web/product', 'webController@product');
 Route::get('web/index', 'webController@index');
 
-Route::prefix('web')->name('web')->middleware('checkLogin')->group(function(){
+Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(){
     //event
     Route::get('eventCreate/{id}', 'webController@eventCreate');
     Route::post('posteventCreate/{id}', 'webController@postEventCreate');
@@ -67,11 +66,13 @@ Route::prefix('web')->name('web')->middleware('checkLogin')->group(function(){
     Route::get('eventPartnerUpdate/{id}', 'webController@eventPaUp');
     Route::post('posteventPartnerUpdate/{id}', 'webController@postEventPaUp');  
     //cart
-    Route::get('profile',function(){
-        return view('web/profile');
-    });
-    
+
+    //profile
+    Route::get('profile', 'webController@profileUser');
+    Route::get('profile', 'webController@editUser');
+    Route::post('profile', 'webController@update');
 });
+
     //Event Route
     Route::get('web/event', 'webController@event');
     Route::get('web/eventClick/{id}', 'webController@eventClick');
