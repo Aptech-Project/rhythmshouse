@@ -12,7 +12,7 @@
                         <h4>Music festival start in</h4>
                     </div>
                     <div class="countdown__timer">
-                        <div>
+                        <div class="countdown__item">
                             <span id="days"></span>
                             <p>days</p>
                         </div>
@@ -137,5 +137,5 @@
         document.getElementById("demo").innerHTML = "EXPIRED";
       }
     }, 1000);
-    </script>
+</script>
 @endsection

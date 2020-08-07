@@ -10,8 +10,11 @@ use Session;
 class webController extends Controller
 {
     public function index() {
-        return view('web.index');
+        $evt = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->take(6)->get();
+        $evttop = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->first();
+        return view('web.index')->with(['evt'=>$evt,'evttop'=>$evttop]);
     }
+
 // Controller for product start
     public function product() {
         $products = DB::table('product')->get();
@@ -157,7 +160,7 @@ public function postEventCreate(Request $request,$id) {
             ]);
     return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
 }
-public function eventManagerment($id=3) {
+public function eventManagerment($id) {
     $users = DB::table('user')->where('id', intval($id))
     ->first();
     $eventmana = DB::table('user')->join('event','user.id','=','event.userid')->select('user.*','event.*')

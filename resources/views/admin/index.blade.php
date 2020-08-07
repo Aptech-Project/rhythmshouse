@@ -98,23 +98,11 @@
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                 <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
               </div>
               <!-- Card Body -->
               <div class="card-body">
                 <div class="chart-area">
-                  <canvas id="myAreaChart"></canvas>
+                  <div id="linechart" style="height: 300px; width: 100%;"></div>
                 </div>
               </div>
             </div>
@@ -163,16 +151,31 @@
     <!-- End of Main Content -->
 @endsection
 @section('script-section')
-    <script>
-        $(function () {
-            $('#product').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-            });
-        });
-    </script>
+<!--Script for chart-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  // Load google charts
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  
+  // Draw the chart and set the chart values
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    ['Task', 'Total money'],
+    ['Work', 8],
+    ['Eat', 2],
+    ['TV', 4],
+    ['Gym', 2],
+    ['Sleep', 8]
+  ]);
+  
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title':'Earnings This Year'};
+  
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.LineChart(document.getElementById('linechart'));
+    chart.draw(data, options);
+  }
+  </script>
+
 @endsection

@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
     });
 //Admin Route    
-
+Route::get('admin/index', 'adminController@index');
 Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(){
-    Route::get('index', 'adminController@index');
+
     //Product Route
     Route::get('product/productList', 'adminController@productList');
     Route::get('product/productCreate', 'adminController@productCreate');
@@ -63,7 +63,7 @@ Route::prefix('web')->name('web')->middleware('checkLogin')->group(function(){
     //event
     Route::get('eventCreate/{id}', 'webController@eventCreate');
     Route::post('posteventCreate/{id}', 'webController@postEventCreate');
-    Route::get('eventManagerment/3', 'webController@eventManagerment');
+    Route::get('eventManagerment/{id}', 'webController@eventManagerment');
     Route::get('eventPartnerUpdate/{id}', 'webController@eventPaUp');
     Route::post('posteventPartnerUpdate/{id}', 'webController@postEventPaUp');  
     //cart
