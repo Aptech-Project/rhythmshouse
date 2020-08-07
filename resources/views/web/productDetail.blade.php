@@ -41,7 +41,7 @@
                     <div class="track__content">
                         <div class="single_player_container">
                             <div class="jp-jplayer jplayer" data-ancestor=".jp_container_1"
-                                data-url="{{ asset('music-files/mylove.mp3') }}"></div>
+                                data-url="{{ asset('music-files/'.$p->demo) }}"></div>
                             <div class="jp-audio jp_container_1" role="application" aria-label="media player">
                                 <div class="jp-gui jp-interface">
                                     <!-- Player Controls -->
@@ -83,7 +83,7 @@
                     <div>
                         <div class="col-md-10 offset-md-1 product-detail">{{$p->description}}</div>
                             <div class="discography__item__text">
-                            <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
+                            <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 25px; padding-bottom: 30px" class="center">Price: {{$p->price}}$</p>
                                 <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:200px" alt="" /></a>
                                 <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:200px" alt="" /></a>
                             </div>
@@ -97,7 +97,7 @@
                                     </div>
                                     <div class="col-lg-6 col-md-6">
                                         <ul class="right__widget">
-                                            <li>230 Purchases</li>
+                                            <li>Genre: {{$c->categoryname}}</li>
                                             <li>18 Feedbacks</li>
                                         </ul>
                                     </div>

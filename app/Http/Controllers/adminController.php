@@ -24,7 +24,8 @@ class adminController extends Controller
     return view('admin.product.productList')->with(['products'=>$products]);
     }
     public function productCreate() {
-        return view('admin.product.productCreate');
+        $categories = DB::table('category')->get();
+        return view('admin.product.productCreate')->with(['categories'=>$categories]);
     }
     public function postProductCreate(Request $request) {
         // nhận tất cả tham số vào mảng product
@@ -36,7 +37,7 @@ class adminController extends Controller
             $extension = $file->getClientOriginalExtension();
             if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
             {
-                return redirect('admin/product/productCreate')->with('loi','You can choose only jpg,png,jpeg file');
+                return redirect('admin/product/productCreate')->with('Error','You can choose only jpg,png,jpeg file');
             }
             $imageName = $file->getClientOriginalName();
             $file->move("images",$imageName);
@@ -45,14 +46,30 @@ class adminController extends Controller
         {
             $imageName = null;
         }
-
+        // xử lý mp3 vào thư mục
+        if($request->hasFile('demo'))
+        {
+            $file=$request->file('demo');
+            $extension = $file->getClientOriginalExtension();
+            if($extension != 'mp3')
+            {
+                return redirect('admin/product/productCreate')->with('Error','You can choose only mp3 file');
+            }
+            $demoName = $file->getClientOriginalName();
+            $file->move("music-files",$demoName);
+        }
+        else
+        {
+            $demoName = null;
+        }
         DB::table('product')->insert([
             'name'=>$product['name'],
             'artist'=>$product['artist'],
             'author'=>$product['author'],
             'price'=>intval($product['price']),
             'description'=>$product['description'],
-            'image'=>$imageName
+            'image'=>$imageName,
+            'demo'=>$demoName
         ]);
         // ->pluck: return an array
         // ->value: return an value

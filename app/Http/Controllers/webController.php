@@ -17,20 +17,39 @@ class webController extends Controller
 
 // Controller for product start
     public function product() {
-        $products = DB::table('product')->get();
+        $products = DB::table('product')->paginate(5);
+        $lastestProducts = DB::table('product')->orderBy('id','desc')->take(10)->get();
         $categories = DB::table('category')->get();
         $songCountByCategories = DB::table('productcategory')
         ->join('category', 'category.categoryname', '=', 'productcategory.categoryname')
         ->select(DB::raw('count(*) as total'))
         ->groupBy('productcategory.categoryname')
         ->get();
-        return view('web.product')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories]);
+        return view('web.product')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
     }
     public function productDetail($id) {
         $p = DB::table('product')
             ->where('id', intval($id))
             ->first();
-        return view('web.productDetail', ['p'=>$p]);
+        $c = DB::table('productcategory')
+        ->where('productid', intval($id))
+        ->first();
+        return view('web.productDetail', ['p'=>$p, 'c'=>$c]);
+    }
+    public function productByCategory($categoryname) {
+        $products = DB::table('product')
+        ->join('productcategory', 'product.id', '=', 'productcategory.productid')
+        ->select('product.*')
+        ->where('productcategory.categoryname', $categoryname)
+        ->paginate(5);
+        $lastestProducts = DB::table('product')->orderBy('id','desc')->take(10)->get();
+        $categories = DB::table('category')->get();
+        $songCountByCategories = DB::table('productcategory')
+        ->join('category', 'category.categoryname', '=', 'productcategory.categoryname')
+        ->select(DB::raw('count(*) as total'))
+        ->groupBy('productcategory.categoryname')
+        ->get();
+        return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
     }
     //phong
     public function cart($id) {
@@ -126,7 +145,6 @@ class webController extends Controller
             redirect()->back();
         }
     }
-// Controller for product end
 
 
 // Controller for event start

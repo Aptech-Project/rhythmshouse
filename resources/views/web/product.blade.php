@@ -26,76 +26,22 @@
                 </div>
                 <div class="row">
                     <div class="videos__slider owl-carousel">
+                        @foreach($lastestProducts as $p)
                         <div class="col-lg-3">
                             <div class="videos__item">
-                                <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-1.jpg') }}">
-                                    <!-- <a href="https://www.youtube.com/watch?v=yJg-Y5byMMw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
-                                </div>
+                                <a href="{{ url('web/productDetail/'.$p->id) }}">
+                                    <div class="videos__item__pic set-bg" data-setbg="{{ url('images/'.$p->image) }}"></div>
+                                </a>
                                 <div class="videos__item__text">
-                                    <h5>Electric Love Festival 2019 - The Opening Ceremony</h5>
+                                    <h5>{{$p->name}}</h5>
                                     <ul>
-                                        <li>12.00 $</li>
-                                        <li>Dec 17, 2019</li>
+                                        <li>{{$p->price}} $</li>
+                                        <li>{{$p->artist}}</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-3">
-                            <div class="videos__item">
-                                <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-2.jpg') }}">
-                                    <!-- <a href="https://www.youtube.com/watch?v=K4DyBUG242c?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
-                                </div>
-                                <div class="videos__item__text">
-                                    <h5>Tiësto - Live Electric Daisy Carnival Las Vegas 2019</h5>
-                                    <ul>
-                                        <li>15.00 $</li>
-                                        <li>Dec 17, 2019</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="videos__item">
-                                <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-3.jpg') }}">
-                                    <!-- <a href="https://www.youtube.com/watch?v=3nQNiWdeH2Q?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
-                                </div>
-                                <div class="videos__item__text">
-                                    <h5>Martin Garrix - Live @ Ultra Music Festival Miami 2019</h5>
-                                    <ul>
-                                        <li>19.00 $</li>
-                                        <li>Dec 17, 2019</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="videos__item">
-                                <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-4.jpg') }}">
-                                    <!-- <a href="https://www.youtube.com/watch?v=Srqs4CitU2U?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
-                                </div>
-                                <div class="videos__item__text">
-                                    <h5>Armin van Buuren live at Tomorrowland 2019</h5>
-                                    <ul>
-                                        <li>21 $</li>
-                                        <li>Dec 17, 2019</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="videos__item">
-                                <div class="videos__item__pic set-bg" data-setbg="{{ asset('img/videos/videos-3.jpg') }}">
-                                    <!-- <a href="https://www.youtube.com/watch?v=vBGiFtb8Rpw?autoplay=1" class="play-btn video-popup"><i class="fa fa-play"></i></a> -->
-                                </div>
-                                <div class="videos__item__text">
-                                    <h5>Martin Garrix - Live @ Ultra Music Festival Miami 2019</h5>
-                                    <ul>
-                                        <li>11 $</li>
-                                        <li>Dec 17, 2019</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -134,70 +80,28 @@
                         </div>
                     </div>
                     <br />
-                    <!-- sidebar-search end-->
-                    <!-- Category start -->
-                    <!-- <div class="accordion" id="accordionExample">
-                        <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color: black; font-size: 19px;">
-                                        Category Group #1
-                                    </button>
-                                </h5>
-                            </div>
-
-                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    #1
-                                </div>
-                                <div class="card-body">
-                                    #2
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col-lg-9 col-md-9 col-sm-9" style="padding:0px">
+                            @foreach($categories as $c)
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a href="{{ url('web/product/'.$c->categoryname) }}">
+                                        {{$c->categoryname}}
+                                    </a>
+                                </li>
+                            </ul>
+                            @endforeach
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="color: black; font-size: 19px;">
-                                        Category Group #2
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    #1
-                                </div>
-                                <div class="card-body">
-                                    #2
-                                </div>
-                            </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3" style="padding:0px">
+                            @foreach($songCountByCategories as $sc)
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between align-items-center" style="padding-left:15px">
+                                <span class=" badge-primary badge-pill">{{$sc->total}}</span>
+                                </li>
+                            </ul>
+                            @endforeach
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <h5 class="mb-0">
-                                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="color: black; font-size: 19px;">
-                                        Category Group #3
-                                    </button>
-                                </h5>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                            <div class="card-body">
-                                    #1
-                                </div>
-                                <div class="card-body">
-                                    #2
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                    @foreach($categories as $c)
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            {{$c->categoryname}}
-                            <span class="badge badge-primary badge-pill">14</span>
-                        </li>
-                    </ul>
-                    @endforeach
+                    </div>
                     <!-- Category end -->
                 </div>
             </div>
@@ -233,6 +137,8 @@
                 </div>
                 <br>
                 @endforeach
+                Showing {{($products->currentPage()-1)* $products->perPage()+($products->total() ? 1:0)}} to {{($products->currentPage()-1)*$products->perPage()+count($products)}}  of  {{$products->total()}}  Songs
+                <div style="padding-left:36%">{{$products->links()}}</div>
             </div>
             <!-- Product list end -->
         </div>
