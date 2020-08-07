@@ -12273,3 +12273,11 @@
 #48 C:\\xampp\\htdocs\hythmshouse\\public\\index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #49 {main}
 "} 
+[2020-08-07 21:56:36] local.ERROR: Cannot redeclare App\Http\Controllers\webController::deleteCart() {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare App\\Http\\Controllers\\webController::deleteCart() at C:\\xampp\\htdocs\hythmshouse\\app\\Http\\Controllers\\webController.php:106)
+[stacktrace]
+#0 {main}
+"} 
+[2020-08-07 21:56:46] local.ERROR: Cannot redeclare App\Http\Controllers\webController::deleteCart() {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot redeclare App\\Http\\Controllers\\webController::deleteCart() at C:\\xampp\\htdocs\hythmshouse\\app\\Http\\Controllers\\webController.php:106)
+[stacktrace]
+#0 {main}
+"} 

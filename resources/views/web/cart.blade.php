@@ -41,9 +41,7 @@
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
-                                                    <span class="dec qtybtn">-</span>
-                                                <input type="text" value="{{$c->quanity}}">
-                                                <span class="inc qtybtn">+</span>
+                                                    <input id = "{{$c->id}}" type="text" value="{{$c->quanity}}">
                                                 </div>
                                             </div>
                                         </td>
@@ -84,6 +82,61 @@
            {{-- <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script> --}}
            <script src="{{ asset('assets/js/main.js') }}"></script>
            <script>
+                var proQty = $('.pro-qty');
+                proQty.prepend('<span class="dec qtybtn">-</span>');
+                proQty.append('<span class="inc qtybtn">+</span>');
+                    proQty.on('click', '.qtybtn', function () {
+                    var $button = $(this);
+                    var oldValue = $button.parent().find('input').val();
+                    var id = $button.parent().find('input').attr('id');
+                    
+                    if ($button.hasClass('inc')) {
+                        var newVal = parseFloat(oldValue) + 1;
+                    } else {
+                        // Don't allow decrementing below zero
+                        if (oldValue > 0) {
+                            var newVal = parseFloat(oldValue) - 1;
+                        } else {
+                            newVal = 0;
+                        }
+                    }
+                    $button.parent().find('input').val(newVal);
+                    getAjax(id,newVal)
+                    });
+                function getAjax(id,newVal){
+                    $.ajax({
+                       url:'changeQuanity/'+id+'/'+newVal,
+                       type:'Get',
+                    }).done(function(data){
+                        $("#list-cart").empty();
+                        $("#list-cart").html(data);
+                        showIconPlus();
+                    })
+                }
+
+                function showIconPlus() {
+                    var proQty = $('.pro-qty');
+                    proQty.prepend('<span class="dec qtybtn">-</span>');
+                    proQty.append('<span class="inc qtybtn">+</span>');
+                    proQty.on('click', '.qtybtn', function () {
+                        var $button = $(this);
+                        var oldValue = $button.parent().find('input').val();
+                        var id = $button.parent().find('input').attr('id');
+                        if ($button.hasClass('inc')) {
+                            var newVal = parseFloat(oldValue) + 1;
+                        } else {
+                            // Don't allow decrementing below zero
+                            if (oldValue > 0) {
+                                var newVal = parseFloat(oldValue) - 1;
+                            } else {
+                                newVal = 0;
+                            }
+                        }
+                        $button.parent().find('input').val(newVal);
+                        getAjax(id,newVal)
+                    });
+                }
+
                function deleteCartItem(id){
                    console.log(id);
                    $.ajax({
@@ -92,6 +145,7 @@
                    }).done(function(data){
                         $("#list-cart").empty();
                         $("#list-cart").html(data);
+                        showIconPlus();
                    })
                };
                

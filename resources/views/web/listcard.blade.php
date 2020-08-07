@@ -7,7 +7,6 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
-                <th>Save</th>
                 <th>Delete</th>
             </tr>
         </thead>
@@ -22,16 +21,13 @@
                     <td class="qua-col first-row">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <span class="dec qtybtn">-</span>
-                            <input type="text" value="{{$c->quanity}}">
-                            <span class="inc qtybtn">+</span>
+                                <input id = "{{$c->id}}" type="text" value="{{$c->quanity}}">
                             </div>
                         </div>
                     </td>
                     <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
                     {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}" class="ti-close"></a></td> --}}
                     <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )" class="ti-close"></i></td>
-                    <td class="close-td first-row""><i class="ti-save"></i></td>
                 </tr>
             
             @endforeach
