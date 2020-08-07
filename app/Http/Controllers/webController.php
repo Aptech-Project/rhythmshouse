@@ -53,27 +53,56 @@ class webController extends Controller
     }
     //phong
     public function cart($id) {
+        // dd($id);
         $cart = DB::table('cart')->where('userid',$id)->first();
+        // dd($cart);
         $idCart = $cart->id;
-        $cartdetail = DB::table('cartdetail')
+        $cartAll = DB::table('cartdetail')
             ->join('product', 'cartdetail.productid', '=', 'product.id')
             ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
-            ->select('cartdetail.*', 'product.*')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
             ->where('cartdetail.cartid',$idCart)
             ->get();
         // dd($cartdetail);
         $totalPrice[0]=0;
-        foreach ($cartdetail as $key) {
+        foreach ($cartAll as $key) {
             $totalPrice[0] += $key->price *$key->quanity;
         }
         // dd($totalPrice);    
-        return view('web.cart')->with(['cartdetail'=> $cartdetail,'totalPrice'=> $totalPrice]);
+        return view('web.cart')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
     
     public function shop() {
         return view('web.index2');
     }
-    
+
+    public function deleteCart(Request $request, $id) {
+        $cartdetail = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->first();
+        $idCart = $cartdetail->cartid;
+        $cart = DB::table('cart')
+                ->where('id', intval($idCart))
+                ->first();
+        $userid = $cart -> userid;
+        $c = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->delete();
+
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartdetail);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        // dd($totalPrice);    
+        return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+    }
     public function order() {
         return view('web.order');
     }

@@ -136,7 +136,20 @@ class adminController extends Controller
         return view('admin.order.detailOrder');
     }
     public function listOrder() {
-        return view('admin.order.listOrder');
+        $orders = DB::table('order')->get();
+        // $cartdetail = DB::table('cartdetail')
+        //     ->join('product', 'cartdetail.productid', '=', 'product.id')
+        //     ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+        //     ->select('cartdetail.*', 'product.*')
+        //     ->where('cartdetail.cartid',$idCart)
+        //     ->get();
+        // // dd($cartdetail);
+        // $totalPrice[0]=0;
+        // foreach ($cartdetail as $key) {
+        //     $totalPrice[0] += $key->price *$key->quanity;
+        // }
+        // dd($totalPrice);    
+        return view('admin.order.listOrder')->with(['orders'=>$orders]);
     }
     public function listComment() {
         return view('admin.comment.listComment');

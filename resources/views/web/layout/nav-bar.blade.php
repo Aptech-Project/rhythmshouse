@@ -36,7 +36,7 @@
                                         class="fa fa-sign-out"></i>&nbsp; Register</a></li>
                             @endif
                             @else
-                            <li><a id="cart" href="{{ url('web/cart') }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}"><i class="fa fa-shopping-cart"></i></a></li>
                             <li><a href="{{ url('web/profile') }}"><i
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">

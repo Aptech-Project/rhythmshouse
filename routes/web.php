@@ -66,7 +66,9 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('eventPartnerUpdate/{id}', 'webController@eventPaUp');
     Route::post('posteventPartnerUpdate/{id}', 'webController@postEventPaUp');  
     //cart
-
+    Route::get('cart/{id}', 'webController@cart');
+    Route::get('cart/delete/{id}', 'webController@deleteCart');
+ 
     //profile
     Route::get('profile', 'webController@profileUser');
     Route::get('profile', 'webController@editUser');
@@ -102,6 +104,4 @@ Route::get('web/register',function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');  
-
-Route::get('web/cart/{id}', 'webController@cart');
+Route::get('/home', 'HomeController@index')->name('home');

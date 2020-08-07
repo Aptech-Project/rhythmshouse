@@ -17,8 +17,8 @@
     <section class="shopping-cart spad" style="margin-bottom: 547px;margin-top:92px">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="cart-table" id="list-cart">
+                <div class="col-lg-12" id="list-cart">
+                    <div class="cart-table" >
                         <table>
                             <thead>
                                 <tr>
@@ -27,14 +27,13 @@
                                     <th>Price</th>
                                     <th>Quantity</th>
                                     <th>Total</th>
-                                    <th>Save</th>
                                     <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cartdetail as $c)
+                                @foreach($cartAll as $c)
                                     <tr>
-                                        <td class="cart-pic first-row"><img style="width: 170px;height:170px" src="{{ url('img/discography/'.$c->image ) }} " alt=""></td>
+                                        <td class="cart-pic first-row"><img style="width: 170px;height:170px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
                                         <td class="cart-title first-row">
                                             <h5>{{ $c -> name }}</h5>
                                         </td>
@@ -42,13 +41,15 @@
                                         <td class="qua-col first-row">
                                             <div class="quantity">
                                                 <div class="pro-qty">
+                                                    <span class="dec qtybtn">-</span>
                                                 <input type="text" value="{{$c->quanity}}">
+                                                <span class="inc qtybtn">+</span>
                                                 </div>
                                             </div>
                                         </td>
                                         <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
-                                        <td class="close-td first-row"><i class="ti-close"></i></td>
-                                        <td class="close-td first-row""><i class="ti-save"></i></td>
+                                        {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}" class="ti-close"></a></td> --}}
+                                        <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )" class="ti-close"></i></td>
                                     </tr>
                                 
                                 @endforeach
@@ -82,7 +83,19 @@
            <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
            {{-- <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script> --}}
            <script src="{{ asset('assets/js/main.js') }}"></script>
-   
+           <script>
+               function deleteCartItem(id){
+                   console.log(id);
+                   $.ajax({
+                       url:'delete/'+id ,
+                       type:'Get',
+                   }).done(function(data){
+                        $("#list-cart").empty();
+                        $("#list-cart").html(data);
+                   })
+               };
+               
+            </script> 
 @endsection
 
 <!-- Write function here -->
