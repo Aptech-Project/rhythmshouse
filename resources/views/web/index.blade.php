@@ -113,7 +113,7 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="track__all">
-                        <a href="#" class="primary-btn border-btn">View all tracks</a>
+                        <a href="{{ url('web/product') }}" class="primary-btn border-btn">View all tracks</a>
                     </div>
                 </div>
             </div>

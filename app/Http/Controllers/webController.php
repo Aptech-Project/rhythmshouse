@@ -18,10 +18,19 @@ class webController extends Controller
 // Controller for product start
     public function product() {
         $products = DB::table('product')->get();
-        return view('web.product')->with(['products'=>$products]);
+        $categories = DB::table('category')->get();
+        $songCountByCategories = DB::table('productcategory')
+        ->join('category', 'category.categoryname', '=', 'productcategory.categoryname')
+        ->select(DB::raw('count(*) as total'))
+        ->groupBy('productcategory.categoryname')
+        ->get();
+        return view('web.product')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories]);
     }
-    public function productDetail() {
-        return view('web.productDetail');
+    public function productDetail($id) {
+        $p = DB::table('product')
+            ->where('id', intval($id))
+            ->first();
+        return view('web.productDetail', ['p'=>$p]);
     }
     //phong
     public function cart($id) {
