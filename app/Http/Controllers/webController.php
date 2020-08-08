@@ -297,7 +297,7 @@ public function postEventCreate(Request $request,$id) {
         'description' =>$events['eventdescription'],
         'url2'        =>$imageName,
             ]);
-    return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
+    return redirect('web/eventManagerment/'.$id)->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
 }
 public function eventManagerment($id) {
     $users = DB::table('user')->where('id', intval($id))
@@ -310,14 +310,13 @@ public function eventManagerment($id) {
     ->get();
 return view('web.eventManagerment')->with(['users'=>$users,'eventmana'=>$eventmana,'eventmana1'=>$eventmana1]);
 }
-public function eventPaUp($id) {
+public function eventPaUp($id,$id1) {
     $eventpaup = DB::table('event')
-    ->where('id', intval($id))
+    ->where('id', intval($id1))
     ->first();
 return view('web.eventPartnerUpdate', ['eventpaup'=>$eventpaup]);
 }
-public function postEventPaUp(Request $request, $id) {
-    $eventuser = DB::table('user')->get();
+public function postEventPaUp(Request $request, $id, $id1) {
     $eventpaup = $request->all();    
     // xử lý upload hình vào thư mục
     if($request->hasFile('image'))
@@ -336,7 +335,7 @@ public function postEventPaUp(Request $request, $id) {
             ->first();
         $imageName = $e->url2;
     }
-    DB::table('event')->where('id',intval($id))->update([
+    DB::table('event')->where('id',intval($id1))->update([
         'url1'        =>$eventpaup['link'],
         'name'        =>$eventpaup['name'],
         'fromdate'    =>$eventpaup['fromdate'],
@@ -348,7 +347,7 @@ public function postEventPaUp(Request $request, $id) {
         'description' =>$eventpaup['description'],
         'url2'        =>$imageName,
             ]);
-    return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Update Event Successfully, Wait for admin to approve your Event.');
+    return redirect('web/eventManagerment/'.$id)->with('alert','Congratulation!!You Have Update Event Successfully, Wait for admin to approve your Event.');
 }
 // Controller for event end
 

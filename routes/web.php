@@ -63,8 +63,8 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('eventCreate/{id}', 'webController@eventCreate');
     Route::post('posteventCreate/{id}', 'webController@postEventCreate');
     Route::get('eventManagerment/{id}', 'webController@eventManagerment');
-    Route::get('eventPartnerUpdate/{id}', 'webController@eventPaUp');
-    Route::post('posteventPartnerUpdate/{id}', 'webController@postEventPaUp');  
+    Route::get('eventPartnerUpdate/{id}/{id1}', 'webController@eventPaUp');
+    Route::post('posteventPartnerUpdate/{id}/{id1}', 'webController@postEventPaUp');  
     //cart
     Route::get('cart/{id}', 'webController@cart');
     Route::get('cart/delete/{id}', 'webController@deleteCart');

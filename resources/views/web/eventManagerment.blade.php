@@ -79,7 +79,7 @@
                                 <td>${{ $e->totaldept }}</td>
                                 <td>${{ $e->haspaid }}</td>
                                 <th>
-                                    <a class="btn btn-info btn-sm" href="{{ url('web/eventPartnerUpdate/'.$e->id) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ url('web/eventPartnerUpdate/'.$e->userid.'/'.$e->id) }}">
                                         <i class="fas fa-pencil-alt"></i> update
                                     </a>
                                 </th>
