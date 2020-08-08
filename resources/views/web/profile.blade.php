@@ -162,11 +162,14 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p><i class="fa fa-house-user"></i>Personal Information</p>
-                    <a href=""></i> Profile</a><br /><br />
-                    <a href=""></i>Sign up as a partner</a><br /><br />
+                    <a href="{{ url('web/profile') }}"></i> Profile</a><br /><br />
+                    @if(Auth::user()->role=='customer')
+                    <a href="{{ url('web/partner') }}"></i>Sign up as a partner</a><br /><br />
+                    @elseif(Auth::user()->role=='partner')
                     <a href="{{url('web/eventManagerment/'.$user->id)}}">My Event</a><br /><br />
+                    @endif
                     <p>Action</p>
-                    <a href="">Logout</a>
+                    <a href="{{ route('logout')}}">Logout</a>
                 </div>
             </div>
             <div class="col-md-8">

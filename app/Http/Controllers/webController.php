@@ -192,6 +192,12 @@ class webController extends Controller
     public function profileUser() {
         return view('web.profile');
     }
+    public function getPartner() {
+        return view('web.partner');
+    }
+    public function getPartnerCs() {
+        return view('web.partnerSuccess');
+    }
     public function postRegister(Request $request) {
         $user = $request->all();
         DB::table('user')->insert([
@@ -238,7 +244,28 @@ class webController extends Controller
             redirect()->back();
         }
     }
-
+    public function editPartner(){
+        if(Auth::User()){
+            $user=User::find(Auth::user()->id);
+            if($user){
+                return view('web.partner')->withUser($user);
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
+    public function updatePartner(Request $req){
+        $user=User::find(Auth::user()->id);
+        if($user){
+            $user->role=$req['role'];
+            $user->save();
+            return view('web.partnerSuccess');
+        }else{
+            redirect()->back();
+        }
+    }
 
 // Controller for event start
 public function event() {

@@ -74,6 +74,10 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('profile', 'webController@profileUser');
     Route::get('profile', 'webController@editUser');
     Route::post('profile', 'webController@update');
+    Route::get('partner', 'webController@getPartner');
+    Route::get('partner', 'webController@editPartner');
+    Route::post('partner', 'webController@updatePartner');
+    Route::get('partnerSuccess', 'webController@getPartnerCs');
 });
 
     //Event Route
