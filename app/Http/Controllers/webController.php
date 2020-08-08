@@ -132,6 +132,41 @@ class webController extends Controller
         // dd($totalPrice);    
         return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
+    public function addCart($id){
+        $newProduct = DB::table('product')
+            ->where('id', $id)
+            ->first();
+        if(Auth::User() != null){
+                $cart = DB::table('cart')
+                        ->where('userid', Auth::User()->id)
+                        ->first();
+                $cartid = $cart->id;
+                $listCartDetail = DB::table('cartdetail')
+                                ->where('productid', intval($id))
+                                ->where('cartid', intval($cartid))
+                                ->first();
+                                // dd($listCartDetail);
+                if ($listCartDetail) {
+                    $quanity = DB::table('cartdetail')
+                        ->where('id', intval($listCartDetail->id))
+                        ->first();
+                    $q= $quanity->quanity;
+                        $updateQuanity = DB::table('cartdetail')
+                                        ->where('id', intval($listCartDetail->id))
+                                        ->update(['quanity' => intval($q)+1]);
+                        // dd($updateQuanity);
+                } else {
+                    $updateQuanity = DB::table('cartdetail')->insert([
+                                        'quanity' => 1,
+                                        'cartid' => intval($cartid),
+                                        'productid' => intval($id),
+                                    ]);
+                    // dd($updateQuanity);
+                }
+            return 'thanh-cong';
+        }
+    }
+    
     public function order() {
         return view('web.order');
     }

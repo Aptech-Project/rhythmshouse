@@ -8,6 +8,20 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px !important;
 }
+.count-prodct{
+    position: absolute;
+    right: -8px;
+    top: -1px;
+    height: 15px;
+    width: 15px;
+    background: #e7ab3c;
+    color: #ffffff;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 15px;
+}
 </style>
 <header class="header">
     <div class="container">
@@ -36,7 +50,7 @@
                                         class="fa fa-sign-out"></i>&nbsp; Register</a></li>
                             @endif
                             @else
-                            <li><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}"><i class="fa fa-shopping-cart"></i><span class="count-prodct">1</span></a></li>
                             <li><a href="{{ url('web/profile') }}"><i
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">

@@ -123,7 +123,7 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 center">
                         <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
                         <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
-                        <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
+                        <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
                     </div>
                     
                     <!-- <div class="col-lg-12">
