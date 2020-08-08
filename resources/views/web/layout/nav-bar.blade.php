@@ -22,11 +22,15 @@
     text-align: center;
     line-height: 15px;
 }
+.main{
+    width:95%;
+}
 </style>
 <header class="header">
-    <div class="container">
+    <div class="main">
         <div class="row">
-            <div class="col-lg-2 col-md-2">
+            <div class="col-lg-1 col-md-1"></div>
+            <div class="col-lg-1 col-md-1">
                 <div class="header__logo">
                     <a href="{{ url('web/index') }}"><span
                             style="font-weight:30px; font-size: 30px; color: white">RhythmHouse</span></a>
@@ -46,8 +50,7 @@
                             <li style="padding-left:0px;"><a href="{{ url('web/login') }}"><i class="fa fa-sign-in"
                                         aria-hidden="true"></i>&nbsp;Login</i></a></li>
                             @if (Route::has('register'))
-                            <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i
-                                        class="fa fa-sign-out"></i>&nbsp; Register</a></li>
+                            <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i class="fa fa-user-plus"></i>&nbsp; Register</a></li>
                             @endif
                             @else
                             <li><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}"><i class="fa fa-shopping-cart"></i><span class="count-prodct">1</span></a></li>
@@ -55,7 +58,6 @@
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">
                                     <li><a href="{{ url('web/profile') }}"><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
-                                    <li><a href=""><i class="fa fa-edit"></i>&nbsp;Edit</a></li>
                                     @if(Auth::user()->role=='admin')
 
                                     <li><a href="{{url('admin/index')}}"><i class="fa fa-tasks"></i>&nbsp;Manager
