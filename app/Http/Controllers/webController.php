@@ -187,7 +187,7 @@ class webController extends Controller
     }
     public function logout() {
         Auth::logout();
-        return view('web.index');
+        return redirect()->back();
     }
     public function profileUser() {
         return view('web.profile');

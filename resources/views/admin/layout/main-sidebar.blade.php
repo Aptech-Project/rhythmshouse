@@ -17,7 +17,7 @@
                 <a href="#" class="nav-link" style="background-color: #2e3b46">
                     <img src="{{ asset('img/admin.png') }}" class="brand-image img-circle elevation-2" alt="User Image">
                     <p style="color: ghostwhite; background-color: #2e3b46">
-                        &nbsp;&nbsp;
+                        &nbsp;&nbsp;{{ Auth::user()->name }}
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
