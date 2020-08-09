@@ -204,6 +204,16 @@ public function allUsers() {
             ->first();
         return view('admin.user.userDetail', ['us'=>$us]);
     }
+    public function contact() {
+        $ct = DB::table('contact')->get();
+        return view('admin.user.message')->with(['ct'=>$ct]);
+    }
+    public function deleteMessage($name) {
+        $us = DB::table('contact')
+            ->where('name', intval($name))
+            ->delete();
+        return redirect()->action('adminController@contact');
+    }
 //Controller for revenue start
 public function revenueDetails() {
     $revenueevent = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();

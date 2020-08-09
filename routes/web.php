@@ -36,8 +36,11 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::post('event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('event/deleteEvent/{id}', 'adminController@eventDelete');
     //User Route
+    Route::get('user/deleteUser/{id}', 'adminController@userDelete');
     Route::get('user/allUsers', 'adminController@allUsers');
     Route::get('user/userDetail/{id}', 'adminController@userDetail');
+    Route::get('user/message', 'adminController@contact');
+    Route::get('user/deleteMessage/{name}', 'adminController@deleteMessage');
     //Revenue Route
     Route::get('revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('revenue/partnerDept', 'adminController@partnerDept');
@@ -88,6 +91,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     //Other Route
     Route::get('web/about', 'webController@about');
     Route::get('web/contact', 'webController@contact');
+    Route::post('web/contact', 'webController@postContact')->name('contact');
     Route::get('web/membership', 'webController@membership');
     Route::get('web/shop', 'webController@shop');
     Route::get('web/order', 'webController@order');

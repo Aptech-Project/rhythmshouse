@@ -62,7 +62,7 @@
                                     </a>
                                 </td>
                                 <td class="text-right">
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/user/userDelete/'.$us->id) }}">
+                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/user/deleteUser/'.$us->id)}}">
                                         <i class="fas fa-trash"></i>
                                     </a>
 

@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'username' => ['required', 'string', 'max:255', 'unique:user', 'alpha_dash'],
             'phonenumber' => ['required','numeric','digits_between:9,11',],
-            'birthday' => ['required','before:now'],
+            'birthday' => ['required','before:now','after:-100 years'],
             'address' => ['required', 'string', 'max:255'],
         ]);
     }
@@ -73,7 +73,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'username'=> $data['username'],
-            'birthday'=> $data['bỉthday'],
+            'birthday'=> $data['birthday'],
             'phonenumber'=> $data['phonenumber'],
             'address'=>$data['address'],
         ]);

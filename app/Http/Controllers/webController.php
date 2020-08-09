@@ -200,18 +200,14 @@ class webController extends Controller
     public function getPartnerCs() {
         return view('web.partnerSuccess');
     }
-    public function postRegister(Request $request) {
-        $user = $request->all();
-        DB::table('user')->insert([
-            'email'=>$user['email'],
-            'password'=>$user['password'],
-            'username'=>$user['username'],
-            'address'=>$user['address'],
-            'birthday'=>($user['birthday']),
-            'name'=>$user['name'],
-            'phonenumber'=>$user['phonenumber']
+    public function postContact(Request $request) {
+        $cont = $request->all();
+        DB::table('contact')->insert([
+            'email'=>$cont['email'],
+            'name'=>$cont['name'],
+            'message'=>$cont['message']
         ]);
-        return redirect()->action('webController@postRegister');
+        return redirect()->action('webController@postContact');
     }
     public function editUser(){
         if(Auth::User()){

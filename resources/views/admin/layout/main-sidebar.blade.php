@@ -115,6 +115,12 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ url('admin/user/message') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Message</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ url('admin/user/userFeedback') }}" class="nav-link">
                                 <i class="nav-icon fas"></i>
                                 <p style="color: ghostwhite">Feedbacks</p>
