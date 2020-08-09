@@ -198,6 +198,12 @@ public function allUsers() {
             ->delete();
         return redirect()->action('adminController@allUsers');
     }
+    public function userDetail($id) {
+        $us = DB::table('user')
+            ->where('id', intval($id))
+            ->first();
+        return view('admin.user.userDetail', ['us'=>$us]);
+    }
 //Controller for revenue start
 public function revenueDetails() {
     $revenueevent = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();

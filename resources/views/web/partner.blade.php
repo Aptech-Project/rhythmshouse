@@ -124,12 +124,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                    <img src="../../public/img/customer.jpg"
                         alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
-                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -166,7 +162,7 @@
             <div class="tab-content profile-tab" id="myTabContent">
                 <div class="tab-pane fade show active" id="profiletab" role="tabpanel" aria-labelledby="home-tab">
                     <div class="row">
-                        <form action="{{ url('web/updatePartner') }}" method="post">
+                        <form action="{{ url('web/updatePartner') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
                             <h4 style="text-transform: uppercase;">Terms and Conditions for parties working with our website</h4>
                             <p>Please read the terms carefully if you agree to click on the last registration to become our partner</p>
@@ -180,6 +176,22 @@
                             <h5>II. About the rights and obligations of the parties</h5>
                             <p>1. Partner <br>Partners will be posted by our website promoting events that partners provide, and are allowed to mediate transactions through the website.</p>
                             <p>2. About us <br>- We must be entitled to 5% of the partner's profit <br>- We reserve the right to close your account and events if they violate the community guidelines from the website</p>
+                            <div class="col-md-12"><p style="color:red">Please add photos on the front and back of your ID for identification</p></div>
+                            <div class="col-md-2">
+                                <label>Photo 1</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="img1" type="file" class="form-control @error('img1') is-invalid @enderror" name="img1" required>
+                            </div>
+                            <div class="col-md-4"></div>
+                               
+                            <div class="col-md-2">
+                                <label>Photo 2</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="img2" type="file" class="form-control @error('img2') is-invalid @enderror" name="img2" required>
+                            </div>
+                            <div class="col-md-4"></div>
                             <div class="form-group">
                                 <div class="col-sm-16">
                                 <input type="checkbox" name="checkbox" id="option" value="{{old('option')}}" required>&nbsp;I agree with all of the above terms <br>

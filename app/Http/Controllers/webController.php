@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\User;
 use Session;
+use Image;
+use Hash;
 class webController extends Controller
 {
     public function index() {
@@ -260,6 +262,8 @@ class webController extends Controller
         $user=User::find(Auth::user()->id);
         if($user){
             $user->role=$req['role'];
+            $user->img1=$req['img1'];
+            $user->img2=$req['img2'];
             $user->save();
             return view('web.partnerSuccess');
         }else{

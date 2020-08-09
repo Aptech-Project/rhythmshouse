@@ -37,6 +37,7 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('event/deleteEvent/{id}', 'adminController@eventDelete');
     //User Route
     Route::get('user/allUsers', 'adminController@allUsers');
+    Route::get('user/userDetail/{id}', 'adminController@userDetail');
     //Revenue Route
     Route::get('revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('revenue/partnerDept', 'adminController@partnerDept');
