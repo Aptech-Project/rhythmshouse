@@ -169,9 +169,58 @@ class webController extends Controller
         }
     }
     
-    public function order() {
-        return view('web.order');
+    public function order() 
+    {
+        $user = DB::table('user')
+        ->where('id', intval(Auth::User()->id))
+        ->first();
+        // dd($user);
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+        
+        // dd($cart);
+        $idCart = $cart->id;
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartAll);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        
+        return view('web.order')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice,'user'=> $user]);
     }
+    
+    public function listOrder(Request $request) 
+    {
+        
+        $user = DB::table('user')
+        ->where('id', intval(Auth::User()->id))
+        ->first();
+        $all= $request->all();
+        dd($all['name']);
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+        
+        // dd($cart);
+        $idCart = $cart->id;
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartAll);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        
+        return view('web.index')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice,'user'=> $user]);
+    }
+
     public function comment() {
         return view('web.comment');
     }

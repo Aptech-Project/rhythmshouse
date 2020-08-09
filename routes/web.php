@@ -95,6 +95,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('web/membership', 'webController@membership');
     Route::get('web/shop', 'webController@shop');
     Route::get('web/order', 'webController@order');
+    Route::post('web/listOrder', 'webController@listOrder');
     Route::get('web/productDetail/{id}', 'webController@productDetail');
     Route::get('web/product/{categoryname}', 'webController@productByCategory');
     Route::get('web/comment', 'webController@comment');
