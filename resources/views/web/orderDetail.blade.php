@@ -72,7 +72,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Orders </h2>
+                    {{-- <h2>Orders Detail</h2> --}}
                     <br>
                 </div>
                 <div class="col-sm-6">
@@ -85,59 +85,9 @@
         </div><!-- /.container-fluid -->
     </section>
 <div class="body-order">
-<div class=" content-input">
-    <form id="formOrder" action="{{ url('web/postOrder') }}" method="post">
-        {{-- @foreach($user as $u) --}}
-        {{ csrf_field() }}
-    <section class="content">
-        <div class="">
-            <div class="col-12">
-                <div class="card">
-                    
-                    <!-- /.card-header -->
-                    <div class="card-body">
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">User Name</label>
-                                <input type="text" class="form-control" name="username" id="exampleInput"  id="name" value="{{$user->name}}">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Phone</label>
-                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Address</label>
-                                <input type="text" class="form-control"  name="address" id="address" value="{{$user->address}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Paymentmethod</label>
-                                <select name="paymentmethod"  class="form-control" id="cars">
-                                    <option value="1">SHIP COD</option>
-                                    {{-- <option value="2">Saab</option>
-                                    <option value="3">Opel</option> --}}
-                                  </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Note</label>
-                                <textarea type="text" class="form-control" name="note"  id="note" value="2020-07-28 23:19:00"></textarea>
-                            </div>
- 
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
-    </section>
-</div>
 <div class="">
     <!-- Main content -->
-    <section class="content" style="width: 120%;">
+    <section class="content" style="width: 150%;">
         <div class="">
             <div class="col-12">
                 <div class="card">
@@ -158,7 +108,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($cartAll as $c)
+                                @foreach($orderDetail as $c)
                                 <tr>
                                     <td class="">{{$c->id}}</td>
                                     <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
@@ -166,8 +116,8 @@
                                         {{$c->name}}
                                     </td>
                                     <td class="">{{$c->price}}</td>
-                                    <td class="">{{$c->quanity}}</td>
-                                    <td class="total-price">{{$c->price*$c->quanity}}</td>
+                                    <td class="">{{$c->quantity}}</td>
+                                    <td class="total-price">{{$c->price*$c->quantity}}</td>
                                     
                                 </tr>
                                 @endforeach
@@ -177,12 +127,11 @@
                     <div class="row" style="margin-right: 10px">
                         <div class="col-lg-4 offset-lg-8">
                             <div class="proceed-checkout">
-                                @foreach($totalPrice as $p)
-                                <ul>
-                                    <li class="cart-total">Total <span>${{$p}}</span></li>
-                                    <li class="cart-total" id="submitOrder"><span><button type="submit" class="btn btn-primary">Đặt hàng</button></span></li>
+                                
+                                <ul >
+                                    <li class="cart-total"  style="text-align: center"><a href="{{ url('web/listOrder') }}">Orders List</a></li>
                                 </ul>
-                                @endforeach
+                                
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ use App\User;
 use Session;
 use Image;
 use Hash;
+use Carbon\Carbon;
 class webController extends Controller
 {
     public function index() {
@@ -107,7 +108,7 @@ class webController extends Controller
         return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
 
-    public function deleteCart(Request $request, $id) {
+    public function deleteCart($id) {
         $cartdetail = DB::table('cartdetail')
                 ->where('id', intval($id))
                 ->first();
@@ -190,20 +191,18 @@ class webController extends Controller
         foreach ($cartAll as $key) {
             $totalPrice[0] += $key->price *$key->quanity;
         }
-        
         return view('web.order')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice,'user'=> $user]);
     }
     
-    public function listOrder(Request $request) 
+    public function postOrder(Request $request) 
     {
-        
+            
         $user = DB::table('user')
-        ->where('id', intval(Auth::User()->id))
-        ->first();
-        $all= $request->all();
-        dd($all['name']);
-        $cart = DB::table('cart')->where('userid',$user->id)->first();
+                ->where('id', intval(Auth::User()->id))
+                ->first();
         
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+ 
         // dd($cart);
         $idCart = $cart->id;
         $cartAll = DB::table('cartdetail')
@@ -217,10 +216,80 @@ class webController extends Controller
         foreach ($cartAll as $key) {
             $totalPrice[0] += $key->price *$key->quanity;
         }
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first(); 
+                
+        $date =Carbon::now();
+        $deliverydate = Carbon::tomorrow();
+        DB::table('order')->insert([
+            'address'=>$request['address'],
+            'receiver'=>$request['username'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'userid'=>$user->id,
+            'totalmoney'=>$totalPrice[0],
+            'note'=>$request['note'],
+            'date'=>$date,
+            'deliverydate'=>$deliverydate,
+            'paymentmethod'=>$request['paymentmethod'],
+        ]);
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first(); 
+        // dd($cartAll->quanity);
+        foreach($cartAll as $c){
+            DB::table('orderdetail')->insert([
+                'quantity'=>$c->quanity,
+                'orderid'=>$order->id,
+                'productid'=>$c->productid,
+            ]);
+        }
         
-        return view('web.index')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice,'user'=> $user]);
+        $c = DB::table('cartdetail')
+                ->where('cartid', intval($idCart))
+                ->delete();
+        return view('web.listOrder');
     }
 
+    public function listOrder() {
+
+        $user = DB::table('user')
+        ->where('id', intval(Auth::User()->id))
+        ->first();
+        // dd($user);
+        $order = DB::table('order')->where('userid',$user->id)->get();
+        // dd($order);
+        // $orderDetails = DB::table('orderdetail')
+        //                 ->where('orderid',intval($order->id))
+        //                 ->get();
+        //                 dd($orderDetails);
+        // $idCart = $cart->id;
+        // $cartAll = DB::table('cartdetail')
+        //     ->join('product', 'cartdetail.productid', '=', 'product.id')
+        //     ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+        //     ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+        //     ->where('cartdetail.cartid',$idCart)
+        //     ->get();
+        // // dd($orderDetails);
+        // $totalPrice[0]=0;
+        // foreach ($cartAll as $key) {
+        //     $totalPrice[0] += $key->price *$key->quanity;
+        // }
+        return view('web.listOrder')->with(['order'=> $order]);
+    }
+    public function orderDetail($id) {
+
+        $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+
+            return view('web.orderDetail')->with(['orderDetail'=> $orderDetail]);
+    }
     public function comment() {
         return view('web.comment');
     }

@@ -58,6 +58,7 @@
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">
                                     <li><a href="{{ url('web/profile') }}"><i class="fa fa-id-card"></i>&nbsp;Profile</a></li>
+                                    <li><a href="{{ url('web/listOrder') }}"><i class="fa fa-id-card"></i>&nbsp;Order</a></li>
                                     @if(Auth::user()->role=='admin')
 
                                     <li><a href="{{url('admin/index')}}"><i class="fa fa-tasks"></i>&nbsp;Manager
