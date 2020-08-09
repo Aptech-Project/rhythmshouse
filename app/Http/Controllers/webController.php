@@ -251,7 +251,7 @@ class webController extends Controller
         $c = DB::table('cartdetail')
                 ->where('cartid', intval($idCart))
                 ->delete();
-        return view('web.listOrder');
+            return redirect()->action('webController@listOrder');
     }
 
     public function listOrder() {
@@ -261,23 +261,6 @@ class webController extends Controller
         ->first();
         // dd($user);
         $order = DB::table('order')->where('userid',$user->id)->get();
-        // dd($order);
-        // $orderDetails = DB::table('orderdetail')
-        //                 ->where('orderid',intval($order->id))
-        //                 ->get();
-        //                 dd($orderDetails);
-        // $idCart = $cart->id;
-        // $cartAll = DB::table('cartdetail')
-        //     ->join('product', 'cartdetail.productid', '=', 'product.id')
-        //     ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
-        //     ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
-        //     ->where('cartdetail.cartid',$idCart)
-        //     ->get();
-        // // dd($orderDetails);
-        // $totalPrice[0]=0;
-        // foreach ($cartAll as $key) {
-        //     $totalPrice[0] += $key->price *$key->quanity;
-        // }
         return view('web.listOrder')->with(['order'=> $order]);
     }
     public function orderDetail($id) {
