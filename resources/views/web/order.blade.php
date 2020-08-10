@@ -97,21 +97,41 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputPassword1">User Name</label>
-                                <input type="text" class="form-control" name="username" id="exampleInput"  id="name" value="{{$user->name}}">
+                                <label for="exampleInputPassword1">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="username" id="exampleInput"  id="name" value="{{$user->name}}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1">Phone</label>
-                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
-                            </div>
+                                <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
+                                @error('phonenumber')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                             </div>
                             
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{$user->email}}">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Address</label>
-                                <input type="text" class="form-control"  name="address" id="address" value="{{$user->address}}">
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"  name="address" id="address" value="{{$user->address}}">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Paymentmethod</label>

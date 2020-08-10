@@ -105,6 +105,7 @@
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Total</th>
+                                <th>Edit</th>
                                 <th>Detail</th>
                             </tr>
                             </thead>
@@ -116,6 +117,11 @@
                                     <td class="">{{$c->date}}</td>
                                     <td class="">{{$c->status}}</td>
                                     <td class="total-price">{{$c->totalmoney}}</td>
+                                    @if ($c->status == 'processing')
+                                    <td style="color:blue" class="cart-total"><a href="{{ url('web/editOrder/'.$c->id) }}">Edit</a></td>
+                                    @else
+                                    <td style="color:Brown" class="cart-total"><a>Edit</a></td>
+                                    @endif
                                     <td style="color:blue" class="cart-total"><a href="{{ url('web/orderdetail/'.$c->id) }}">Click</a></td>
                                 </tr>
                                 @endforeach

@@ -190,12 +190,24 @@ class adminController extends Controller
     public function postOrder(Request $request) {
         $c=DB::table('order')->where('id', intval($request['id']))->first();
         // dd($c);
+        // dd($request['status']);
+        switch ($request['status']) {
+            case 'Processing':
+                $status = 'Processing';
+                break;
+            case 'Canceled':
+                $status = 'Canceled';
+                break;
+            case 'Delivering':
+                $status = 'Delivering';
+                break;
+            case 'Delivered':
+                $status = 'Delivered';
+                break;
+        }
+        // dd($status);
         DB::table('order')->where('id', intval($request['id']))->update([
-            'address'=>$request['address'],
-            'receiver'=>$request['receiver'],
-            'email'=>$request['email'],
-            'phonenumber'=>$request['phonenumber'],
-            'note'=>$request['note'],
+            'status'=>$request['status'],
         ]);
         return redirect()->action('adminController@listOrder');
     }

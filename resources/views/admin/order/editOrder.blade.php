@@ -39,23 +39,41 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">User Name</label>
-                            <input type="text" class="form-control" name="receiver" id="receiver" value="{{ $order->receiver }}">
+                            <input type="text" class="form-control" name="receiver" disabled id="receiver" value="{{ $order->receiver }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Status</label>
+                            <select name="status" class="form-control" id="status">
+                                <option selected>{{$order->status}}</option>
+                                @if (!($order->status == 'Processing'))
+                                    <option value="Processing">Processing</option>
+                                @endif
+                                @if (!($order->status == 'Canceled'))
+                                    <option value="Canceled">Canceled</option>
+                                @endif
+                                @if (!($order->status == 'Delivered'))
+                                    <option value="Delivered">Delivered</option>
+                                @endif
+                                @if (!($order->status == 'Delivering'))
+                                    <option value="Delivering">Delivering</option>
+                                @endif
+                              </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" name="email" id="email" value="{{ $order->email }}">
+                            <input type="text" class="form-control" name="email" disabled id="email" value="{{ $order->email }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Address</label>
-                            <input type="text" class="form-control" name="address" id="address" value="{{ $order->address }}">
+                            <input type="text" class="form-control" name="address" disabled id="address" value="{{ $order->address }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Phone</label>
-                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{ $order->phonenumber }}">
+                            <input type="text" class="form-control" name="phonenumber" disabled id="phonenumber" value="{{ $order->phonenumber }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note</label>
-                            <textarea type="text" class="form-control" name="note" id="note" value="{{ $order->note }}">{{ $order->note }}</textarea>
+                            <textarea type="text" class="form-control" name="note" disabled id="note" value="{{ $order->note }}">{{ $order->note }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                       </form>

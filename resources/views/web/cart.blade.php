@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-12" id="list-cart">
                     <div class="cart-table" >
-                        <table class="table-striped">
+                        <table class="">
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -49,7 +49,6 @@
                                         {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}" class="ti-close"></a></td> --}}
                                         <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )" class="ti-close"></i></td>
                                     </tr>
-                                
                                 @endforeach
                             </tbody>
                         </table>
@@ -61,8 +60,12 @@
                                 <ul>
                                 <li class="cart-total">Total <span> ${{ $p }}</span></li>
                                 </ul>
-                                @endforeach
+                                @if($p==0)
+                                    <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                @else
                                 <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                                @endif
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -105,7 +108,7 @@
                         var newVal = parseFloat(oldValue) + 1;
                     } else {
                         // Don't allow decrementing below zero
-                        if (oldValue > 0) {
+                        if (oldValue > 1) {
                             var newVal = parseFloat(oldValue) - 1;
                         } else {
                             newVal = 1;
@@ -185,5 +188,9 @@
     $(document).ready(function(){
         $("#cart").addClass("active");
     });
+    function checkCart(){
+        // alert("Please add prodcut")
+        alertify.success('Please add prodcut');
+    }
 </script>
 @endsection

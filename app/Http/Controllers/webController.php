@@ -269,8 +269,7 @@ class webController extends Controller
     }
     
     public function postOrder(Request $request) 
-    {
-            
+    { 
         $user = DB::table('user')
                 ->where('id', intval(Auth::User()->id))
                 ->first();
@@ -328,14 +327,40 @@ class webController extends Controller
             return redirect()->action('webController@listOrder');
     }
 
+    public function postEditOrder(Request $request) 
+    { 
+        // dd($request['id']);
+        DB::table('order')->where('id',$request['id'])->update([
+            'address'=>$request['address'],
+            'receiver'=>$request['username'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'note'=>$request['note'],
+        ]);
+        if ($request['status'] == '2') {
+            DB::table('order')->where('id',$request['id'])->update([
+                'status' => 'Canceled'
+            ]);
+        }
+        return redirect()->action('webController@listOrder');
+    }
+
     public function listOrder() {
 
         $user = DB::table('user')
         ->where('id', intval(Auth::User()->id))
         ->first();
         // dd($user);
-        $order = DB::table('order')->where('userid',$user->id)->get();
+        $order = DB::table('order')->where('userid',$user->id)->get();  
         return view('web.listOrder')->with(['order'=> $order]);
+    }
+    public function editOrder($id) {
+        // dd($id);
+        $order= DB::table('order')
+        ->where('id', intval($id))
+        ->first();
+        // dd($order);
+        return view('web.editOrder')->with(['order'=> $order]);
     }
     public function orderDetail($id) {
 

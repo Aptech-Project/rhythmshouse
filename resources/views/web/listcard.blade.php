@@ -41,8 +41,12 @@
             <ul>
             <li class="cart-total">Total <span> ${{ $p }}</span></li>
             </ul>
-            @endforeach
+            @if($p==0)
+                <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
+            @else
             <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+            @endif
+            @endforeach
         </div>
     </div>
 </div>
