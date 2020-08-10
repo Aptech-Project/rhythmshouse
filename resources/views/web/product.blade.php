@@ -134,7 +134,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-3 center">
                         <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
                         <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
-                        <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
+                        {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
+                        <a onclick="addCart({{$p->id}})" ><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
                     </div>
                     
                     <!-- <div class="col-lg-12">
@@ -156,6 +157,10 @@
     </div>
 </section>
 <!-- Product Section End -->
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<script>
+    
+</script>
 @endsection
 
 <!-- Write function here -->
@@ -172,5 +177,17 @@
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+  function addCart($id){
+        $.ajax({
+            url: 'cart/addCart/'+$id,
+            type: 'GET',
+        }).done(function(response){
+            console.log(response);
+            var proCart = $('#cart');
+            console.log(proCart);
+            // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
+            $('#countCart').text(response);
+        })
+    }
 </script>
 @endsection

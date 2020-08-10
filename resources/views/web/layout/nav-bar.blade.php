@@ -53,7 +53,11 @@
                             <li style="padding-left:-50px;"><a href="{{ url('web/register') }}"><i class="fa fa-user-plus"></i>&nbsp; Register</a></li>
                             @endif
                             @else
-                            <li><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}"><i class="fa fa-shopping-cart"></i><span class="count-prodct">1</span></a></li>
+                            <li ><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span id="countCart"class="count-prodct">
+                                    </span>
+                                </a></li>
                             <li><a href="{{ url('web/profile') }}"><i
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>
                                 <ul class="dropdown" aria-labelledby="navbarDropdown">

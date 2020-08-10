@@ -188,7 +188,9 @@ class webController extends Controller
                                     ]);
                     // dd($updateQuanity);
                 }
-            return 'thanh-cong';
+            $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
+            // dd($count);
+            return $count;
         }
     }
     
