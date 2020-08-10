@@ -13,6 +13,8 @@ CREATE TABLE `user` (
   `birthday` datetime DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
   `phonenumber` varchar(255) DEFAULT NULL,
+  `img1` varchar(255) DEFAULT NULL,
+  `img2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 
@@ -130,4 +132,12 @@ CREATE TABLE `feedbackdata` (
   `vote` int NOT NULL,
   CONSTRAINT FOREIGN KEY (`userid`) REFERENCES `user` (`id`),
   CONSTRAINT FOREIGN KEY (`productid`) REFERENCES `product` (`id`)
+);
+
+CREATE TABLE `contact` (
+  `id` int NOT NULL AUTO_INCREMENT, 
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`),
 );

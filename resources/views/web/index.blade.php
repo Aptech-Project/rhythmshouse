@@ -34,7 +34,7 @@
             </div>
             <div class="row">
                 <div class="event__slider owl-carousel">
-                    @foreach ($evt as $e)                    
+                    @foreach ($evt as $e)                 
                         <div class="col-lg-4">
                             <div class="event__item">
                                 <div class="event__item__pic set-bg" data-setbg="{{ url('images/'.$e->url2) }}">
