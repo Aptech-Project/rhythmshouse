@@ -132,11 +132,72 @@ class adminController extends Controller
         return view('admin.product.productDetail', ['p'=>$p]);
     }
     //phong
-    public function detailOrder() {
-        return view('admin.order.detailOrder');
-    }
+    // public function detailOrder() {
+    //     return view('admin.order.detailOrder');
+    // }
+    // public function listOrder() {
+    //     $orders = DB::table('order')->get();   
+    //     return view('admin.order.listOrder')->with(['orders'=>$orders]);
+    // }
+
     public function listOrder() {
-        return view('admin.order.listOrder');
+        $order = DB::table('order')->get();
+        return view('admin.order.listOrder')->with(['order'=> $order]);
+    }
+
+    public function detailOrder($id) {
+        $order = DB::table('order')->where('id', $id)->first();
+         $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+
+        $totalPrice[0]=0;
+        foreach ($orderDetail as $key) {
+            $totalPrice[0] += $key->price * $key->quantity;
+        }
+        return view('admin.order.detailOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
+    }
+
+    public function deleteOrder($id) {
+        // dd($id);
+
+        DB::table('orderdetail')
+            ->where('orderid', intval($id))
+            ->delete();
+
+        DB::table('order')
+            ->where('id', intval($id))
+            ->delete();
+        
+        return redirect()->action('adminController@listOrder');
+    }
+    public function editOrder($id) {
+        $order = DB::table('order')->where('id', $id)->first();
+         $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+
+        $totalPrice[0]=0;
+        foreach ($orderDetail as $key) {
+            $totalPrice[0] += $key->price * $key->quantity;
+        }
+        return view('admin.order.editOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
+    }
+    public function postOrder(Request $request) {
+        $c=DB::table('order')->where('id', intval($request['id']))->first();
+        // dd($c);
+        DB::table('order')->where('id', intval($request['id']))->update([
+            'address'=>$request['address'],
+            'receiver'=>$request['receiver'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'note'=>$request['note'],
+        ]);
+        return redirect()->action('adminController@listOrder');
     }
     public function listComment() {
         return view('admin.comment.listComment');
@@ -184,6 +245,22 @@ public function allUsers() {
             ->where('id', intval($id))
             ->delete();
         return redirect()->action('adminController@allUsers');
+    }
+    public function userDetail($id) {
+        $us = DB::table('user')
+            ->where('id', intval($id))
+            ->first();
+        return view('admin.user.userDetail', ['us'=>$us]);
+    }
+    public function contact() {
+        $ct = DB::table('contact')->get();
+        return view('admin.user.message')->with(['ct'=>$ct]);
+    }
+    public function deleteMessage($id) {
+        $us = DB::table('contact')
+            ->where('id', intval($id))
+            ->delete();
+        return redirect()->action('adminController@contact');
     }
 //Controller for revenue start
 public function revenueDetails() {

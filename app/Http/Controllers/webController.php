@@ -7,6 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\User;
 use Session;
+use Image;
+use Hash;
+use Carbon\Carbon;
 class webController extends Controller
 {
     public function index() {
@@ -51,31 +54,298 @@ class webController extends Controller
         ->get();
         return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
     }
+    public function seacrhProduct(Request $request) {
+        $products = DB::table('product')
+        ->join('productcategory', 'product.id', '=', 'productcategory.productid')
+        ->select('product.*')
+        ->where('productcategory.categoryname', $categoryname)
+        ->paginate(5);
+        $lastestProducts = DB::table('product')->orderBy('id','desc')->take(10)->get();
+        $categories = DB::table('category')->get();
+        $songCountByCategories = DB::table('productcategory')
+        ->join('category', 'category.categoryname', '=', 'productcategory.categoryname')
+        ->select(DB::raw('count(*) as total'))
+        ->groupBy('productcategory.categoryname')
+        ->get();
+        return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
+    }
     //phong
     public function cart($id) {
+        // dd($id);
+        
         $cart = DB::table('cart')->where('userid',$id)->first();
+        // dd($cart);
+        if(!$cart){
+            DB::table('cart')->insert([
+                'userid' => $id
+            ]);
+            $cart = DB::table('cart')->where('userid',$id)->first();
+        }
         $idCart = $cart->id;
-        $cartdetail = DB::table('cartdetail')
+        $cartAll = DB::table('cartdetail')
             ->join('product', 'cartdetail.productid', '=', 'product.id')
             ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
-            ->select('cartdetail.*', 'product.*')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
             ->where('cartdetail.cartid',$idCart)
             ->get();
         // dd($cartdetail);
         $totalPrice[0]=0;
-        foreach ($cartdetail as $key) {
+        foreach ($cartAll as $key) {
             $totalPrice[0] += $key->price *$key->quanity;
         }
         // dd($totalPrice);    
-        return view('web.cart')->with(['cartdetail'=> $cartdetail,'totalPrice'=> $totalPrice]);
+        return view('web.cart')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
     
     public function shop() {
         return view('web.index2');
     }
+    public function changeQuanity($id,$quanity) {
+
+        $cartdetail = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->first();
+        $idCart = $cartdetail->cartid;
+        $cart = DB::table('cart')
+                ->where('id', intval($idCart))
+                ->first();
+        $userid = $cart -> userid;
+
+        $c = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->update(['quanity' => intval($quanity)]);
+
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartdetail);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        // dd($totalPrice);    
+        return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+    }
+
+    public function deleteCart($id) {
+        $cartdetail = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->first();
+        $idCart = $cartdetail->cartid;
+        $cart = DB::table('cart')
+                ->where('id', intval($idCart))
+                ->first();
+        $userid = $cart -> userid;
+        $c = DB::table('cartdetail')
+                ->where('id', intval($id))
+                ->delete();
+
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartdetail);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        // dd($totalPrice);    
+        return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+    }
+    public function buynow($id) {
+        $newProduct = DB::table('product')
+            ->where('id', $id)
+            ->first();
+        if(Auth::User() != null){
+                $cart = DB::table('cart')
+                        ->where('userid', Auth::User()->id)
+                        ->first();
+                $cartid = $cart->id;
+                $listCartDetail = DB::table('cartdetail')
+                                ->where('productid', intval($id))
+                                ->where('cartid', intval($cartid))
+                                ->first();
+                                // dd($listCartDetail);
+                if ($listCartDetail) {
+                    $quanity = DB::table('cartdetail')
+                        ->where('id', intval($listCartDetail->id))
+                        ->first();
+                    $q= $quanity->quanity;
+                        $updateQuanity = DB::table('cartdetail')
+                                        ->where('id', intval($listCartDetail->id))
+                                        ->update(['quanity' => intval($q)+1]);
+                        // dd($updateQuanity);
+                } else {
+                    $updateQuanity = DB::table('cartdetail')->insert([
+                                        'quanity' => 1,
+                                        'cartid' => intval($cartid),
+                                        'productid' => intval($id),
+                                    ]);
+                    // dd($updateQuanity);
+                }
+            // $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
+            // dd($count);
+           
+        }  
+
+        return view('web.cart')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+    }
+    public function addCart($id){
+        $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+        // dd($cart);
+        
+        $newProduct = DB::table('product')
+            ->where('id', $id)
+            ->first();
+        if(Auth::User() != null){
+            if(!$cart){
+                DB::table('cart')->insert([
+                    'userid' => Auth::User()->id
+                ]);
+                $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+            }
+                $cart = DB::table('cart')
+                        ->where('userid', Auth::User()->id)
+                        ->first();
+                $cartid = $cart->id;
+                $listCartDetail = DB::table('cartdetail')
+                                ->where('productid', intval($id))
+                                ->where('cartid', intval($cartid))
+                                ->first();
+                                // dd($listCartDetail);
+                if ($listCartDetail) {
+                    $quanity = DB::table('cartdetail')
+                        ->where('id', intval($listCartDetail->id))
+                        ->first();
+                    $q= $quanity->quanity;
+                        $updateQuanity = DB::table('cartdetail')
+                                        ->where('id', intval($listCartDetail->id))
+                                        ->update(['quanity' => intval($q)+1]);
+                        // dd($updateQuanity);
+                } else {
+                    $updateQuanity = DB::table('cartdetail')->insert([
+                                        'quanity' => 1,
+                                        'cartid' => intval($cartid),
+                                        'productid' => intval($id),
+                                    ]);
+                    // dd($updateQuanity);
+                }
+            $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
+            // dd($count);
+                return $count;
+        }
+       
+    }
     
-    public function order() {
-        return view('web.order');
+    public function order() 
+    {   
+        
+        $user = DB::table('user')
+        ->where('id', intval(Auth::User()->id))
+        ->first();
+        // dd($user);
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+        
+        // dd($cart);
+        $idCart = $cart->id;
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->where('cartdetail.quanity','>',0)
+            ->get();
+        // dd($cartAll);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        return view('web.order')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice,'user'=> $user]);
+    }
+    
+    public function postOrder(Request $request) 
+    {
+            
+        $user = DB::table('user')
+                ->where('id', intval(Auth::User()->id))
+                ->first();
+        
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+ 
+        // dd($cart);
+        $idCart = $cart->id;
+        $cartAll = DB::table('cartdetail')
+            ->join('product', 'cartdetail.productid', '=', 'product.id')
+            ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
+            ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
+            ->where('cartdetail.cartid',$idCart)
+            ->get();
+        // dd($cartAll);
+        $totalPrice[0]=0;
+        foreach ($cartAll as $key) {
+            $totalPrice[0] += $key->price *$key->quanity;
+        }
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first(); 
+                
+        $date =Carbon::now();
+        $deliverydate = Carbon::tomorrow();
+        DB::table('order')->insert([
+            'address'=>$request['address'],
+            'receiver'=>$request['username'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'userid'=>$user->id,
+            'totalmoney'=>$totalPrice[0],
+            'note'=>$request['note'],
+            'date'=>$date,
+            'deliverydate'=>$deliverydate,
+            'paymentmethod'=>$request['paymentmethod'],
+        ]);
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first(); 
+        // dd($cartAll->quanity);
+        foreach($cartAll as $c){
+            DB::table('orderdetail')->insert([
+                'quantity'=>$c->quanity,
+                'orderid'=>$order->id,
+                'productid'=>$c->productid,
+            ]);
+        }
+        
+        $c = DB::table('cartdetail')
+                ->where('cartid', intval($idCart))
+                ->delete();
+            return redirect()->action('webController@listOrder');
+    }
+
+    public function listOrder() {
+
+        $user = DB::table('user')
+        ->where('id', intval(Auth::User()->id))
+        ->first();
+        // dd($user);
+        $order = DB::table('order')->where('userid',$user->id)->get();
+        return view('web.listOrder')->with(['order'=> $order]);
+    }
+    public function orderDetail($id) {
+
+        $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+
+            return view('web.orderDetail')->with(['orderDetail'=> $orderDetail]);
     }
     public function comment() {
         return view('web.comment');
@@ -94,23 +364,25 @@ class webController extends Controller
     }
     public function logout() {
         Auth::logout();
-        return view('web.index');
+        return redirect()->back();
     }
     public function profileUser() {
         return view('web.profile');
     }
-    public function postRegister(Request $request) {
-        $user = $request->all();
-        DB::table('user')->insert([
-            'email'=>$user['email'],
-            'password'=>$user['password'],
-            'username'=>$user['username'],
-            'address'=>$user['address'],
-            'birthday'=>($user['birthday']),
-            'name'=>$user['name'],
-            'phonenumber'=>$user['phonenumber']
+    public function getPartner() {
+        return view('web.partner');
+    }
+    public function getPartnerCs() {
+        return view('web.partnerSuccess');
+    }
+    public function postContact(Request $request) {
+        $cont = $request->all();
+        DB::table('contact')->insert([
+            'email'=>$cont['email'],
+            'name'=>$cont['name'],
+            'message'=>$cont['message']
         ]);
-        return redirect()->action('webController@postRegister');
+        return redirect()->action('webController@postContact');
     }
     public function editUser(){
         if(Auth::User()){
@@ -145,7 +417,30 @@ class webController extends Controller
             redirect()->back();
         }
     }
-
+    public function editPartner(){
+        if(Auth::User()){
+            $user=User::find(Auth::user()->id);
+            if($user){
+                return view('web.partner')->withUser($user);
+            }else{
+                return redirect()->back();
+            }
+        }else{
+            return redirect()->back();
+        }
+    }
+    public function updatePartner(Request $req){
+        $user=User::find(Auth::user()->id);
+        if($user){
+            $user->role=$req['role'];
+            $user->img1=$req['img1'];
+            $user->img2=$req['img2'];
+            $user->save();
+            return view('web.partnerSuccess');
+        }else{
+            redirect()->back();
+        }
+    }
 
 // Controller for event start
 public function event() {
@@ -204,7 +499,7 @@ public function postEventCreate(Request $request,$id) {
         'description' =>$events['eventdescription'],
         'url2'        =>$imageName,
             ]);
-    return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
+    return redirect('web/eventManagerment/'.$id)->with('alert','Congratulation!!You Have Create Event Successfully, Wait for admin to approve your Event.');
 }
 public function eventManagerment($id) {
     $users = DB::table('user')->where('id', intval($id))
@@ -217,14 +512,13 @@ public function eventManagerment($id) {
     ->get();
 return view('web.eventManagerment')->with(['users'=>$users,'eventmana'=>$eventmana,'eventmana1'=>$eventmana1]);
 }
-public function eventPaUp($id) {
+public function eventPaUp($id,$id1) {
     $eventpaup = DB::table('event')
-    ->where('id', intval($id))
+    ->where('id', intval($id1))
     ->first();
 return view('web.eventPartnerUpdate', ['eventpaup'=>$eventpaup]);
 }
-public function postEventPaUp(Request $request, $id) {
-    $eventuser = DB::table('user')->get();
+public function postEventPaUp(Request $request, $id, $id1) {
     $eventpaup = $request->all();    
     // xử lý upload hình vào thư mục
     if($request->hasFile('image'))
@@ -243,7 +537,7 @@ public function postEventPaUp(Request $request, $id) {
             ->first();
         $imageName = $e->url2;
     }
-    DB::table('event')->where('id',intval($id))->update([
+    DB::table('event')->where('id',intval($id1))->update([
         'url1'        =>$eventpaup['link'],
         'name'        =>$eventpaup['name'],
         'fromdate'    =>$eventpaup['fromdate'],
@@ -255,7 +549,7 @@ public function postEventPaUp(Request $request, $id) {
         'description' =>$eventpaup['description'],
         'url2'        =>$imageName,
             ]);
-    return redirect()->action('webController@eventManagerment')->with('alert','Congratulation!!You Have Update Event Successfully, Wait for admin to approve your Event.');
+    return redirect('web/eventManagerment/'.$id)->with('alert','Congratulation!!You Have Update Event Successfully, Wait for admin to approve your Event.');
 }
 // Controller for event end
 

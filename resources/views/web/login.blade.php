@@ -2,7 +2,9 @@
 @section('title', 'RhythmHouse | Login')
 @section('content')
 <style>
-
+    a:hover{
+        color:black;
+    }
 
     * {
         -webkit-box-sizing: border-box;
@@ -328,21 +330,21 @@
             {{ csrf_field() }}    
                 <div>
                 </div>
-                <h2 style="text-align:center; "><b></b></h2><br>
+                <h2 style="text-align:center; "><b>Login</b></h2><br>
                 <div style="padding-left:34%; padding-bottom:30px">
                     <img src="../../public/img/discography/disco-2.jpg">
                 </div>
                
                 <div class="form-group">
-                    <label class="control-label col-sm-4" for="email" style="text-align: left;"><i
-                            class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email :</label>
+                    <label class="control-label col-sm-4" for="login" style="text-align: left;"><i
+                            class="fa fa-envelope" aria-hidden="true"></i>&nbsp;Email/Username</label>
                     <div class="col-sm-8">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Enter email">
-                            @error('email')
+                        <input id="login" type="text" class="form-control {{ $errors->has('username')||$errors->has('email') ? 'is-invalid': ''}}" name="login" value="{{ old('username') ?:  old('email')}}" required autofocus placeholder="Enter Email address/ Username">
+                            @if($errors->has('username')||$errors->has('email'))
                                 <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    <strong>{{ $errors->first('username') ?:$errors->first('email') }}</strong>
                                 </span>
-                            @enderror
+                            @endif
                     </div>
                 </div>
                 <div class="form-group">

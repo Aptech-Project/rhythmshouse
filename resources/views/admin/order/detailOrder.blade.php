@@ -24,32 +24,37 @@
                 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form>
+                    <form >
+                        
                         <div class="form-group">
                           <label for="exampleInputEmail1">ID</label>
-                          <input type="text" class="form-control" disabled id="exampleInputEmail1" aria-describedby="emailHelp" value="1">
+                          <input type="text" class="form-control" disabled id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $order->id }}">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Date</label>
-                          <input type="text" class="form-control" disabled id="exampleInputPassword1" value="2020-07-28 23:19:00">
+                          <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->date }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">User Name</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="Phong">
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->receiver }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="phong@gmail.com">
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->email }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Address</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="Tân Bình, Hồ Chí Minh">
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->address }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone</label>
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->phonenumber }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note</label>
-                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="2020-07-28 23:19:00"></textarea>
+                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->note }}">{{ $order->note }}</textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ url('admin/orderdetail/'.$order->id) }}" type="button" class="btn btn-primary">Edit</a>
                       </form>
                 
                 <!-- /.card-body -->
@@ -67,7 +72,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Thông tin đơn hàng</h3>
+                    <h3 class="card-title">Order Detail</h3>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -83,39 +88,19 @@
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach($orderDetail as $or)
                             <tr>
-                                <td class="">1</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
+                                <td class="">{{ $or->id}}</td>
+                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ url('images/'.$or->image ) }} "  alt=""></td>
                                 <td class="">
-                                    UNTOLD FESTIVAL 2020
+                                    {{ $or->name}}
                                 </td>
-                                <td class="">$60.00</td>
-                                <td class="">2</td>
-                                <td class="total-price">$60.00</td>
+                                <td class="">${{ $or->price}}</td>
+                                <td class="">{{ $or->quantity}}</td>
+                             <td class="total-price">${{ $or->price* $or->quantity}}</td>
                                 
                             </tr>
-                            <tr>
-                                <td class="">2</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
-                                <td class="">
-                                    UNTOLD FESTIVAL 2020
-                                </td>
-                                <td class="">$60.00</td>
-                                <td class="">3</td>
-                                <td class="total-price">$60.00</td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="">3</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
-                                <td class="">
-                                    UNTOLD FESTIVAL 2020
-                                </td>
-                                <td class="">$60.00</td>
-                                <td class="">2</td>
-                                <td class="total-price">$60.00</td>
-                                
-                            </tr>
+                            @endforeach
                            
                         </tbody>
                     </table>
@@ -123,10 +108,11 @@
                 <div class="row" style="margin-right: 10px">
                     <div class="col-lg-4 offset-lg-8">
                         <div class="proceed-checkout">
+                            @foreach($totalPrice as $p)
                             <ul>
-                                <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                <li class="cart-total">Total <span>$240.00</span></li>
+                            <li class="cart-total">Total <span>${{$p}}</span></li>
                             </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>

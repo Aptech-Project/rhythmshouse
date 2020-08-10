@@ -93,7 +93,7 @@
         <div class="row">
 
           <!-- Area Chart -->
-          <div class="col-xl-8 col-lg-7">
+          <div class="col-xl-12">
             <div class="card shadow mb-4">
               <!-- Card Header - Dropdown -->
               <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -102,46 +102,7 @@
               <!-- Card Body -->
               <div class="card-body">
                 <div class="chart-area">
-                  <div id="linechart" style="height: 300px; width: 100%;"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Pie Chart -->
-          <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-              <!-- Card Header - Dropdown -->
-              <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                <div class="dropdown no-arrow">
-                  <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                  </a>
-                  <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                    <div class="dropdown-header">Dropdown Header:</div>
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-              <!-- Card Body -->
-              <div class="card-body">
-                <div class="chart-pie pt-4 pb-2">
-                  <canvas id="myPieChart"></canvas>
-                </div>
-                <div class="mt-4 text-center small">
-                  <span class="mr-2">
-                    <i class="fas fa-circle text-primary"></i> Direct
-                  </span>
-                  <span class="mr-2">
-                    <i class="fas fa-circle text-success"></i> Social
-                  </span>
-                  <span class="mr-2">
-                    <i class="fas fa-circle text-info"></i> Referral
-                  </span>
+                  <div id="chartContainer" style="height: 300px; width: 100%;"></div>
                 </div>
               </div>
             </div>
@@ -152,30 +113,42 @@
 @endsection
 @section('script-section')
 <!--Script for chart-->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  // Load google charts
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  
-  // Draw the chart and set the chart values
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    ['Task', 'Total money'],
-    ['Work', 8],
-    ['Eat', 2],
-    ['TV', 4],
-    ['Gym', 2],
-    ['Sleep', 8]
-  ]);
-  
-    // Optional; add a title and set the width and height of the chart
-    var options = {'title':'Earnings This Year'};
-  
-    // Display the chart inside the <div> element with id="piechart"
-    var chart = new google.visualization.LineChart(document.getElementById('linechart'));
-    chart.draw(data, options);
+<?php
+$dataPoints = 
+  array(
+  array("y" => 100, "label" => "January"),
+  array("y" => 250, "label" => "February"),
+  array("y" => 300, "label" => "March"),
+  array("y" => 400, "label" => "April"),
+  array("y" => 200, "label" => "May"),
+  array("y" => 500, "label" => "June"),
+  array("y" => 600, "label" => "July"),
+  array("y" => 100, "label" => "August"),
+  array("y" => 700, "label" => "September"),
+  array("y" => 500, "label" => "October"),
+  array("y" => 1500, "label" => "November"),
+  array("y" => 2000, "label" => "December") 
+  );
+?>
+<script>
+  window.onload = function () {
+   
+  var chart = new CanvasJS.Chart("chartContainer", {
+    title: {
+      text: "Salary Over a Year"
+    },
+    axisY: {
+      title: "Total Money"
+    },
+    data: [{
+      type: "line",
+      dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
+    }]
+  });
+  chart.render();
+   
   }
   </script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
 @endsection

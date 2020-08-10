@@ -32,7 +32,7 @@ INSERT INTO `product` (`id`, `name`, `artist`, `author`, `price`, `promotion`, `
 (30, 'Every Day I Love You', 'Boyzone', 'Gary Baker, Frank Joseph Myers', 17, NULL, '', 'edily.jpg', 'edily.mp3');
 -- Category
 INSERT INTO `category` (`id`, `categoryname`) VALUES
-(1, 'Piano');
+(1, 'Piano'),
 (2, 'Rock'),
 (3, 'Ballad'),
 (4, 'Guitar'),

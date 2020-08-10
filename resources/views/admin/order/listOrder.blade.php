@@ -41,50 +41,19 @@
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach($order as $o)
                             <tr>
-                                <td class="">1</td>
+                                <td class="">{{ $o->id }}</td>
                                 <td class="">
-                                    2020-07-28 23:19:00
+                                    {{ $o->date}}
                                 </td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price">$240.00</td>
-                                <td class=""><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="" style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
+                                <td class="">{{ $o->status }}</td>
+                                <td class="total-price">{{ $o->totalmoney }}</td>
+                                <td id="deleteOrder" class=""><i href="{{ url('admin/order/delete/'.$o->id) }}" class="fas fa-trash"></i> <a href="{{ url('admin/order/delete/'.$o->id) }}">Delete</a></i></td>
+                                <td id="editOrder" class="" style="color: blue;"><i href="{{ url('admin/orderdetail/'.$o->id) }}" class="fas fa-pencil-alt"></i> <a href="{{ url('admin/orderdetail/'.$o->id) }}">Edit</a></td>
+                                <td  id="viewOrder" class="" style="color: blue;"><i href="{{ url('admin/order/orderdetail/'.$o->id) }}" class="fas fa-folder"></i> <a href="{{ url('admin/order/orderdetail/'.$o->id) }}">View</a></td>
                             </tr>
-                            <tr>
-                                <td class="">2</td>
-                                <td class="">
-                                    2020-07-28 23:19:00
-                                </td>
-                                <td class="">Đã giao</td>
-                                <td class="total-price">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td ""><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
-                            </tr>
-                            <tr>
-                                <td class="">3</td>
-                                <td class="">
-                                    2020-07-28 23:19:00
-                                </td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price ">$240.00</td>
-                                <td class="close-td "><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td "style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
-                            </tr>
-                            <tr>
-                                <td class="">4</td>
-                                <td class="">
-                                    2020-07-28 23:19:00
-                                </td>
-                                <td class="">Chưa giao</td>
-                                <td class="total-price ">$240.00</td>
-                                <td class="close-td " ><i class="fas fa-trash"></i> Delete</i></td>
-                                <td class="close-td "style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

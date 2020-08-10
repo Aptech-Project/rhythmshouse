@@ -57,7 +57,7 @@
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
                                     <a class="btn btn-danger btn-sm" href="{{ url('admin/product/productDelete/'.$p->id) }}">
-                                        <i class="fas fa-trash"></i> Delete
+                                        <i class="fas fa-trash"></i> Hide
                                     </a>
                                 </td>
                             </tr>

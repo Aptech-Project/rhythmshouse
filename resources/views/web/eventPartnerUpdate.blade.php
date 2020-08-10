@@ -13,7 +13,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('web/posteventPartnerUpdate/'.$eventpaup->id) }}" method="post" enctype="multipart/form-data">
+                        <form role="form" action="{{ url('web/posteventPartnerUpdate/'.$eventpaup->userid.'/'.$eventpaup->id) }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">

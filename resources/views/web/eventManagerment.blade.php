@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-10">
-                <h1>Your Event</h1>
+                <h1>Event Managerment</h1>
             </div>
             <div class="col-sm-2">
                 <a href="{{ url('web/eventCreate/'.$users->id)}}">
@@ -79,7 +79,7 @@
                                 <td>${{ $e->totaldept }}</td>
                                 <td>${{ $e->haspaid }}</td>
                                 <th>
-                                    <a class="btn btn-info btn-sm" href="{{ url('web/eventPartnerUpdate/'.$e->id) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ url('web/eventPartnerUpdate/'.$e->userid.'/'.$e->id) }}">
                                         <i class="fas fa-pencil-alt"></i> update
                                     </a>
                                 </th>
@@ -88,6 +88,9 @@
                         </tbody>
                         
                     </table>
+                </div>
+                <div class="card-footer">
+                    <p>*NOTE: Your event could be approved after 3 days, in that time, you can update it, once the admin approved it, you have to send mail to admin to delete it to create new one</p>
                 </div>
                 
                 <!-- /.card-body -->

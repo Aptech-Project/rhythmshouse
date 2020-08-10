@@ -27,8 +27,12 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('product/productDelete/{id}', 'adminController@productDelete');
     Route::get('product/productDetail/{id}', 'adminController@productDetail');
     //Order Route
-    Route::get('order/detailOrder', 'adminController@detailOrder');
+    Route::get('order/orderdetail/{id}', 'adminController@detailOrder');
     Route::get('order/listOrder', 'adminController@listOrder');
+    // Route::get('web/orderdetail/{id}', 'webController@orderDetail');
+    Route::get('order/delete/{id}', 'adminController@deleteOrder');
+    Route::get('orderdetail/{id}', 'adminController@editOrder');
+    Route::post('postOrder', 'adminController@postOrder');
     //Event Route
     Route::get('event/eventList', 'adminController@eventList');
     Route::get('event/eventView/{id}', 'adminController@eventView');
@@ -36,7 +40,11 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::post('event/posteventUpdate/{id}', 'adminController@posteventUpdate');
     Route::get('event/deleteEvent/{id}', 'adminController@eventDelete');
     //User Route
+    Route::get('user/deleteUser/{id}', 'adminController@userDelete');
     Route::get('user/allUsers', 'adminController@allUsers');
+    Route::get('user/userDetail/{id}', 'adminController@userDetail');
+    Route::get('user/message', 'adminController@contact');
+    Route::get('user/deleteMessage/{id}', 'adminController@deleteMessage');
     //Revenue Route
     Route::get('revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('revenue/partnerDept', 'adminController@partnerDept');
@@ -55,22 +63,40 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
 
     
 //Web Route 
-Route::get('web/product', 'webController@product');
-Route::get('web/index', 'webController@index');
+    //Product
+    Route::get('web/product', 'webController@product');
+    Route::get('web/index', 'webController@index');
+    Route::get('web/productDetail/{id}', 'webController@productDetail');
+    Route::get('web/product/{categoryname}', 'webController@productByCategory');
+    Route::post('web/searchProduct', 'webController@searchProduct');
 
 Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(){
     //event
     Route::get('eventCreate/{id}', 'webController@eventCreate');
     Route::post('posteventCreate/{id}', 'webController@postEventCreate');
     Route::get('eventManagerment/{id}', 'webController@eventManagerment');
-    Route::get('eventPartnerUpdate/{id}', 'webController@eventPaUp');
-    Route::post('posteventPartnerUpdate/{id}', 'webController@postEventPaUp');  
+    Route::get('eventPartnerUpdate/{id}/{id1}', 'webController@eventPaUp');
+    Route::post('posteventPartnerUpdate/{id}/{id1}', 'webController@postEventPaUp');  
     //cart
-
+    Route::get('cart/{id}', 'webController@cart');
+    Route::get('cart/delete/{id}', 'webController@deleteCart');
+    Route::get('cart/changeQuanity/{id}/{quanity}', 'webController@changeQuanity');
+    Route::get('cart/addCart/{id}', 'webController@addCart');
+    Route::get('product/cart/addCart/{id}', 'webController@addCart');
+    Route::get('productDetail/cart/addCart/{id}', 'webController@addCart');
+    Route::get('cart/buynow/{id}', 'webController@buynow');
+    Route::get('order', 'webController@order');
+    Route::get('orderdetail/{id}', 'webController@orderDetail');
+    Route::get('listOrder', 'webController@listOrder');
+    Route::post('postOrder', 'webController@postOrder');
     //profile
     Route::get('profile', 'webController@profileUser');
     Route::get('profile', 'webController@editUser');
     Route::post('profile', 'webController@update');
+    Route::get('partner', 'webController@getPartner');
+    Route::get('partner', 'webController@editPartner');
+    Route::post('partner', 'webController@updatePartner');
+    Route::get('partnerSuccess', 'webController@getPartnerCs');
 });
 
     //Event Route
@@ -80,11 +106,10 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     //Other Route
     Route::get('web/about', 'webController@about');
     Route::get('web/contact', 'webController@contact');
+    Route::post('web/contact', 'webController@postContact')->name('contact');
     Route::get('web/membership', 'webController@membership');
     Route::get('web/shop', 'webController@shop');
-    Route::get('web/order', 'webController@order');
-    Route::get('web/productDetail/{id}', 'webController@productDetail');
-    Route::get('web/product/{categoryname}', 'webController@productByCategory');
+    
     Route::get('web/comment', 'webController@comment');
 //Register and Login Route
 
@@ -102,6 +127,4 @@ Route::get('web/register',function(){
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');  
-
-Route::get('web/cart/{id}', 'webController@cart');
+Route::get('/home', 'HomeController@index')->name('home');

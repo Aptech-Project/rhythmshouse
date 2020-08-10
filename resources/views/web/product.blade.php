@@ -66,20 +66,31 @@
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="col">
                     <!-- sidebar-search start-->
-                    <br />
-                    <div class="sidebar-search">
+                    <!-- <div class="sidebar-search">
                         <div>
                             <div class="input-group">
-                                <input type="text" class="form-control search-menu" placeholder="Search..." />
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </span>
-                                </div>
+                                <form role="form" action="{{ url('web/index') }}" method="post" enctype="multipart/form-data">
+                                    <input type="text" class="form-control search-menu" placeholder="Search..." width:60%/>
+                                    <div class="input-group-append">
+                                        <button type="button" type="submit" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="row">
+                        <form role="form" action="{{ url('web/searchProduct') }}" method="post" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." style="line-height: 20px;"/>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                    <button type="submit" class="btn btn-light" style="padding: 0px;"><i class="fa fa-search" aria-hidden="true" ></i></button>
+                                    </span>
+                                </div>
+                            </div>  
+                        </form>
                     </div>
-                    <br />
+                    <br>
                     <div class="row">
                         <div class="col-lg-9 col-md-9 col-sm-9" style="padding:0px">
                             @foreach($categories as $c)
@@ -107,7 +118,7 @@
             </div>
             <!-- Sidebar end -->
             <!-- Product list start -->
-            <div class="col-lg-9 col-md-9 col-sm-9">
+            <div class="col-lg-9 col-md-9 col-sm-9" id="productDiv">
                 @foreach($products as $p)
                 <div class="row product-row">
                     <div class="col-lg-3 col-md-3 col-sm-3">
@@ -122,8 +133,19 @@
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 center">
                         <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
-                        <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
-                        <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
+                        <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
+                        {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
+                        @if (Auth::User())
+                        <a  onclick="addCart({{$p->id}})" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
+                        @else
+                        
+                        <a  onclick="checklogin()" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
+                        @endif
+                    
                     </div>
                     
                     <!-- <div class="col-lg-12">
@@ -145,6 +167,18 @@
     </div>
 </section>
 <!-- Product Section End -->
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+<!-- JavaScript -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 @endsection
 
 <!-- Write function here -->
@@ -155,5 +189,25 @@
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });
+    $("#keyword").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#productDiv div").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  function checklogin(){
+    alertify.success('Please Login');
+  }
+  function addCart($id){
+        $.ajax({
+            url: 'cart/addCart/'+$id,
+            type: 'GET',
+        }).done(function(response){
+            console.log(response);
+            var proCart = $('#cart');
+            // console.log(proCart);
+            alertify.success('Add product success');
+        })
+    }
 </script>
 @endsection

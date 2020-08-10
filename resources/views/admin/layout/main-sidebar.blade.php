@@ -17,11 +17,17 @@
                 <a href="#" class="nav-link" style="background-color: #2e3b46">
                     <img src="{{ asset('img/admin.png') }}" class="brand-image img-circle elevation-2" alt="User Image">
                     <p style="color: ghostwhite; background-color: #2e3b46">
-                        &nbsp;&nbsp;
+                        &nbsp;&nbsp;{{ Auth::user()->name }}
                         <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
                 <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{ url('web/index') }}" class="nav-link">
+                            <i class="nav-icon fas"></i>
+                            <p style="color: ghostwhite">Go to web homepage</p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('logout')}}" class="nav-link">
                             <i class="nav-icon fas"></i>
@@ -112,6 +118,12 @@
                             <a href="{{ url('admin/user/allUsers') }}" class="nav-link">
                                 <i class="nav-icon fas"></i>
                                 <p style="color: ghostwhite">All Users</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url('admin/user/message') }}" class="nav-link">
+                                <i class="nav-icon fas"></i>
+                                <p style="color: ghostwhite">Message</p>
                             </a>
                         </li>
                         <li class="nav-item">

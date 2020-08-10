@@ -125,12 +125,8 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="profile-img">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+                    <img src="../../public/img/customer.jpg"
                         alt="" />
-                    <div class="file btn btn-lg btn-primary">
-                        Change Photo
-                        <input type="file" name="file" />
-                    </div>
                 </div>
             </div>
             <div class="col-md-6">
@@ -162,11 +158,14 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p><i class="fa fa-house-user"></i>Personal Information</p>
-                    <a href=""></i> Profile</a><br /><br />
-                    <a href=""></i>Sign up as a partner</a><br /><br />
+                    <a href="{{ url('web/profile') }}"></i> Profile</a><br /><br />
+                    @if(Auth::user()->role=='customer')
+                    <a href="{{ url('web/partner') }}"></i>Sign up as a partner</a><br /><br />
+                    @elseif(Auth::user()->role=='partner')
                     <a href="{{url('web/eventManagerment/'.$user->id)}}">My Event</a><br /><br />
+                    @endif
                     <p>Action</p>
-                    <a href="">Logout</a>
+                    <a href="{{ route('logout')}}">Logout</a>
                 </div>
             </div>
             <div class="col-md-8">

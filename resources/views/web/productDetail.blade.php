@@ -85,7 +85,7 @@
                             <div class="discography__item__text">
                             <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 25px; padding-bottom: 30px" class="center">Price: {{$p->price}}$</p>
                                 <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:200px" alt="" /></a>
-                                <a href="#"><img src="{{ asset('img/addtocart.png') }}" style="width:200px" alt="" /></a>
+                                <a onclick="addCart({{$p->id}})" ><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
                             </div>
                             <div class="blog__large__widget">
                                 <div class="row">
@@ -109,7 +109,18 @@
             </div>
         </div>
     </section>
-
+    <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 @endsection
 
 <!-- Write function here -->
@@ -120,5 +131,18 @@
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });
+    function addCart($id){
+        $.ajax({
+            url: 'cart/addCart/'+$id,
+            type: 'GET',
+        }).done(function(response){
+            console.log(response);
+            var proCart = $('#cart');
+            console.log(proCart);
+            // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
+            // $('#countCart').text(response);
+            alertify.success('Add product success');
+        })
+    }
 </script>
 @endsection

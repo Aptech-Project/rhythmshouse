@@ -55,9 +55,9 @@
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
                                     &ensp;
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/category/categoryDelete/'.$c->id) }}">
-                                        <i class="fas fa-trash"></i> Delete
-                                    </a>
+                                    <!-- <a class="btn btn-danger btn-sm" href="{{ url('admin/category/categoryDelete/'.$c->id) }}">
+                                        <i class="fas fa-trash"></i> Hide
+                                    </a> -->
                                 </td>
                             </tr>
                             @endforeach
