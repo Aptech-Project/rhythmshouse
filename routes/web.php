@@ -85,6 +85,10 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('product/cart/addCart/{id}', 'webController@addCart');
     Route::get('productDetail/cart/addCart/{id}', 'webController@addCart');
     Route::get('cart/buynow/{id}', 'webController@buynow');
+    Route::get('order', 'webController@order');
+    Route::get('orderdetail/{id}', 'webController@orderDetail');
+    Route::get('listOrder', 'webController@listOrder');
+    Route::post('postOrder', 'webController@postOrder');
     //profile
     Route::get('profile', 'webController@profileUser');
     Route::get('profile', 'webController@editUser');
@@ -105,10 +109,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::post('web/contact', 'webController@postContact')->name('contact');
     Route::get('web/membership', 'webController@membership');
     Route::get('web/shop', 'webController@shop');
-    Route::get('web/order', 'webController@order');
-    Route::get('web/orderdetail/{id}', 'webController@orderDetail');
-    Route::get('web/listOrder', 'webController@listOrder');
-    Route::post('web/postOrder', 'webController@postOrder');
+    
     Route::get('web/comment', 'webController@comment');
 //Register and Login Route
 
