@@ -31,6 +31,7 @@
                     <table id="ct" class="table table-bordered table-hover">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Email</th>
                                 <th>Name</th>
                                 <th>Message</th>
@@ -40,11 +41,12 @@
                         <tbody>
                             @foreach($ct as $ct)
                             <tr>
+                                <td>{{ $ct->id }}</td>
                                 <td>{{ $ct->email }}</td>
                                 <td>{{ $ct->name }}</td>
                                 <td>{{ $ct->message}}</td>
                                 <td class="text-right">
-                                <a class="btn btn-danger btn-sm" href="{{ url('admin/user/deleteMessage/'.$ct->name)}}">
+                                <a class="btn btn-danger btn-sm" href="{{ url('admin/user/deleteMessage/'.$ct->id)}}">
                                         <i class="fas fa-trash"></i>
                                     </a>
 

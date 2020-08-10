@@ -23,6 +23,12 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
+                        <a href="{{ url('web/index') }}" class="nav-link">
+                            <i class="nav-icon fas"></i>
+                            <p style="color: ghostwhite">Go to web homepage</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{ route('logout')}}" class="nav-link">
                             <i class="nav-icon fas"></i>
                             <p style="color: ghostwhite">Log Out</p>

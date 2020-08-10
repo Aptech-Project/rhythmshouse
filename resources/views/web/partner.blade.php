@@ -175,7 +175,7 @@
                             <p>If you violate the above community standards you will have your account locked out permanently.</p>
                             <h5>II. About the rights and obligations of the parties</h5>
                             <p>1. Partner <br>Partners will be posted by our website promoting events that partners provide, and are allowed to mediate transactions through the website.</p>
-                            <p>2. About us <br>- We must be entitled to 5% of the partner's profit <br>- We reserve the right to close your account and events if they violate the community guidelines from the website</p>
+                            <p>2. About us <br>- We will quote $1/50 view from you <br>- We reserve the right to close your account and events if they violate the community guidelines from the website</p>
                             <div class="col-md-12"><p style="color:red">Please add photos on the front and back of your ID for identification</p></div>
                             <div class="col-md-2">
                                 <label>Photo 1</label>

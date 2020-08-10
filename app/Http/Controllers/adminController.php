@@ -256,9 +256,9 @@ public function allUsers() {
         $ct = DB::table('contact')->get();
         return view('admin.user.message')->with(['ct'=>$ct]);
     }
-    public function deleteMessage($name) {
+    public function deleteMessage($id) {
         $us = DB::table('contact')
-            ->where('name', intval($name))
+            ->where('id', intval($id))
             ->delete();
         return redirect()->action('adminController@contact');
     }

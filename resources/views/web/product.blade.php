@@ -195,11 +195,7 @@
             console.log(proCart);
             // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
             // $('#countCart').text(response);
-<<<<<<< Updated upstream
             alertify.success('Add product success');
-=======
-            alertify.success('Product added to cart !');
->>>>>>> Stashed changes
         })
     }
 </script>

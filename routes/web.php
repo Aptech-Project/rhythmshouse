@@ -44,7 +44,7 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('user/allUsers', 'adminController@allUsers');
     Route::get('user/userDetail/{id}', 'adminController@userDetail');
     Route::get('user/message', 'adminController@contact');
-    Route::get('user/deleteMessage/{name}', 'adminController@deleteMessage');
+    Route::get('user/deleteMessage/{id}', 'adminController@deleteMessage');
     //Revenue Route
     Route::get('revenue/revenueDetails', 'adminController@revenueDetails');
     Route::get('revenue/partnerDept', 'adminController@partnerDept');

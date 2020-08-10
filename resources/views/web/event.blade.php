@@ -88,7 +88,7 @@
                 </div>
                 <div class="col-lg-12 order-lg-8">
                     <div class="pagination__links">
-                    <a href="#">>>>>Become Our Partner To Advertise Your Event</a>
+                    <a href="{{ url('web/profile') }}">>>>>Become Our Partner To Advertise Your Event</a>
                     </div>
                 </div>
             </div>
