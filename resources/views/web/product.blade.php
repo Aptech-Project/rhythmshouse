@@ -66,20 +66,31 @@
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="col">
                     <!-- sidebar-search start-->
-                    <br />
-                    <div class="sidebar-search">
+                    <!-- <div class="sidebar-search">
                         <div>
                             <div class="input-group">
-                                <input type="text" class="form-control search-menu" placeholder="Search..." />
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
-                                    </span>
-                                </div>
+                                <form role="form" action="{{ url('web/index') }}" method="post" enctype="multipart/form-data">
+                                    <input type="text" class="form-control search-menu" placeholder="Search..." width:60%/>
+                                    <div class="input-group-append">
+                                        <button type="button" type="submit" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="row">
+                        <form role="form" action="{{ url('web/searchProduct') }}" method="post" enctype="multipart/form-data">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." style="line-height: 20px;"/>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">
+                                    <button type="submit" class="btn btn-light" style="padding: 0px;"><i class="fa fa-search" aria-hidden="true" ></i></button>
+                                    </span>
+                                </div>
+                            </div>  
+                        </form>
                     </div>
-                    <br />
+                    <br>
                     <div class="row">
                         <div class="col-lg-9 col-md-9 col-sm-9" style="padding:0px">
                             @foreach($categories as $c)
@@ -107,7 +118,7 @@
             </div>
             <!-- Sidebar end -->
             <!-- Product list start -->
-            <div class="col-lg-9 col-md-9 col-sm-9">
+            <div class="col-lg-9 col-md-9 col-sm-9" id="productDiv">
                 @foreach($products as $p)
                 <div class="row product-row">
                     <div class="col-lg-3 col-md-3 col-sm-3">
@@ -155,5 +166,11 @@
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });
+    $("#keyword").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#productDiv div").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
 </script>
 @endsection

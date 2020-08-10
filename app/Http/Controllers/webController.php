@@ -54,6 +54,21 @@ class webController extends Controller
         ->get();
         return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
     }
+    public function seacrhProduct(Request $request) {
+        $products = DB::table('product')
+        ->join('productcategory', 'product.id', '=', 'productcategory.productid')
+        ->select('product.*')
+        ->where('productcategory.categoryname', $categoryname)
+        ->paginate(5);
+        $lastestProducts = DB::table('product')->orderBy('id','desc')->take(10)->get();
+        $categories = DB::table('category')->get();
+        $songCountByCategories = DB::table('productcategory')
+        ->join('category', 'category.categoryname', '=', 'productcategory.categoryname')
+        ->select(DB::raw('count(*) as total'))
+        ->groupBy('productcategory.categoryname')
+        ->get();
+        return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
+    }
     //phong
     public function cart($id) {
         // dd($id);

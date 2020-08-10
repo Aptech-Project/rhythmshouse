@@ -60,8 +60,12 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
 
     
 //Web Route 
-Route::get('web/product', 'webController@product');
-Route::get('web/index', 'webController@index');
+    //Product
+    Route::get('web/product', 'webController@product');
+    Route::get('web/index', 'webController@index');
+    Route::get('web/productDetail/{id}', 'webController@productDetail');
+    Route::get('web/product/{categoryname}', 'webController@productByCategory');
+    Route::post('web/searchProduct', 'webController@searchProduct');
 
 Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(){
     //event
@@ -99,8 +103,6 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('web/orderdetail/{id}', 'webController@orderDetail');
     Route::get('web/listOrder', 'webController@listOrder');
     Route::post('web/postOrder', 'webController@postOrder');
-    Route::get('web/productDetail/{id}', 'webController@productDetail');
-    Route::get('web/product/{categoryname}', 'webController@productByCategory');
     Route::get('web/comment', 'webController@comment');
 //Register and Login Route
 

@@ -68,16 +68,16 @@
                     <!-- sidebar-search start-->
                     <br />
                     <div class="sidebar-search">
-                        <div>
+                        <form role="form" action="{{ url('web/index') }}" method="post" enctype="multipart/form-data">
                             <div class="input-group">
-                                <input type="text" class="form-control search-menu" placeholder="Search..." />
+                                <input type="text" class="form-control search-menu" placeholder="Search..."/>
                                 <div class="input-group-append">
                                     <span class="input-group-text">
-                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    <button type="submit" class="btn btn-light" style="padding: 0px;"><i class="fa fa-search" aria-hidden="true"></i></button>
                                     </span>
                                 </div>
-                            </div>
-                        </div>
+                            </div>  
+                        </form>
                     </div>
                     <br />
                     <div class="row">
