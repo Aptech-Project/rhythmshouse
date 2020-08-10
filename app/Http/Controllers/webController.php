@@ -241,7 +241,8 @@ class webController extends Controller
     }
     
     public function order() 
-    {
+    {   
+        
         $user = DB::table('user')
         ->where('id', intval(Auth::User()->id))
         ->first();
@@ -255,6 +256,7 @@ class webController extends Controller
             ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
             ->select('cartdetail.id','cartdetail.quanity' ,'cartdetail.productid','product.name','product.image','product.price')
             ->where('cartdetail.cartid',$idCart)
+            ->where('cartdetail.quanity','>',0)
             ->get();
         // dd($cartAll);
         $totalPrice[0]=0;
