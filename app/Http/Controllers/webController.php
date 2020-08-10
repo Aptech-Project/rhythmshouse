@@ -72,8 +72,15 @@ class webController extends Controller
     //phong
     public function cart($id) {
         // dd($id);
+        
         $cart = DB::table('cart')->where('userid',$id)->first();
         // dd($cart);
+        if(!$cart){
+            DB::table('cart')->insert([
+                'userid' => $id
+            ]);
+            $cart = DB::table('cart')->where('userid',$id)->first();
+        }
         $idCart = $cart->id;
         $cartAll = DB::table('cartdetail')
             ->join('product', 'cartdetail.productid', '=', 'product.id')
