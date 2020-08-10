@@ -142,7 +142,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Thông tin đơn hàng</h3>
+                        <h3 class="card-title">Cart Detail</h3>
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -180,7 +180,7 @@
                                 @foreach($totalPrice as $p)
                                 <ul>
                                     <li class="cart-total">Total <span>${{$p}}</span></li>
-                                    <li class="cart-total" id="submitOrder"><span><button type="submit" class="btn btn-primary">Đặt hàng</button></span></li>
+                                    <li class="cart-total" id="submitOrder"><span><button type="submit" class="btn btn-primary">Order</button></span></li>
                                 </ul>
                                 @endforeach
                             </div>

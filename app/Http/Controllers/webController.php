@@ -236,8 +236,10 @@ class webController extends Controller
                 }
             $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
             // dd($count);
-            return $count;
+                return $count;
         }
+
+        return -1;
     }
     
     public function order() 
