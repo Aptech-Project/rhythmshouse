@@ -193,12 +193,10 @@
             console.log(response);
             var proCart = $('#cart');
             // console.log(proCart);
-            if (typeof response != 'number') { 
-                alertify.success('Please login');
-            } else{
-                alertify.success('Product added to cart !');}
+
             // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
             // $('#countCart').text(response);
+            alertify.success('Product added to cart !');
         })
     }
 </script>
