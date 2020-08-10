@@ -161,12 +161,16 @@ class adminController extends Controller
     }
 
     public function deleteOrder($id) {
+        // dd($id);
+
         DB::table('orderdetail')
             ->where('orderid', intval($id))
-            ->get();
+            ->delete();
+
         DB::table('order')
             ->where('id', intval($id))
             ->delete();
+        
         return redirect()->action('adminController@listOrder');
     }
     public function editOrder($id) {
