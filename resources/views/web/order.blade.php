@@ -123,7 +123,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Note</label>
-                                <textarea type="text" class="form-control" name="note"  id="note" value="2020-07-28 23:19:00"></textarea>
+                                <textarea type="text" class="form-control" name="note"  id="note" value=""></textarea>
                             </div>
  
                     <!-- /.card-body -->

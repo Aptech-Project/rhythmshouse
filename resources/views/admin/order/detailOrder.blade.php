@@ -52,7 +52,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note</label>
-                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->note }}"></textarea>
+                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->note }}">{{ $order->note }}</textarea>
                         </div>
                         <a href="{{ url('admin/orderdetail/'.$order->id) }}" type="button" class="btn btn-primary">Edit</a>
                       </form>

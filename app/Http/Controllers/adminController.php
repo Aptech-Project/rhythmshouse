@@ -184,9 +184,11 @@ class adminController extends Controller
         return view('admin.order.editOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
     }
     public function postOrder(Request $request) {
+        $c=DB::table('order')->where('id', intval($request['id']))->first();
+        // dd($c);
         DB::table('order')->where('id', intval($request['id']))->update([
             'address'=>$request['address'],
-            'receiver'=>$request['username'],
+            'receiver'=>$request['receiver'],
             'email'=>$request['email'],
             'phonenumber'=>$request['phonenumber'],
             'note'=>$request['note'],

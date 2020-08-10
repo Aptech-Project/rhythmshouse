@@ -28,31 +28,34 @@
                         {{ csrf_field()}}
                         <div class="form-group">
                           <label for="exampleInputEmail1">ID</label>
-                          <input type="text" class="form-control" name="id" disabled id="" aria-describedby="emailHelp" value="{{ $order->id }}">
+                          <input type="text" class="form-control" name="id" disabled id="id" aria-describedby="emailHelp" value="{{ $order->id }}">
                         </div>
+                        <div class="form-group" style="display: none;">
+                            <input type="text" class="form-control" name="id"  id="id" aria-describedby="emailHelp" value="{{ $order->id }}">
+                          </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Date</label>
-                          <input type="text" class="form-control" name="date" disabled  id="" value="{{ $order->date }}">
+                          <input type="text" class="form-control" name="date" disabled  id="date" value="{{ $order->date }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">User Name</label>
-                            <input type="text" class="form-control" name="receiver" id="" value="{{ $order->receiver }}">
+                            <input type="text" class="form-control" name="receiver" id="receiver" value="{{ $order->receiver }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" name="email" id="" value="{{ $order->email }}">
+                            <input type="text" class="form-control" name="email" id="email" value="{{ $order->email }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Address</label>
-                            <input type="text" class="form-control" name="address" id="" value="{{ $order->address }}">
+                            <input type="text" class="form-control" name="address" id="address" value="{{ $order->address }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Phone</label>
-                            <input type="text" class="form-control" name="phonenumber" id="" value="{{ $order->phonenumber }}">
+                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{ $order->phonenumber }}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Note</label>
-                            <textarea type="text" class="form-control" name="note" id="" value="{{ $order->note }}"></textarea>
+                            <textarea type="text" class="form-control" name="note" id="note" value="{{ $order->note }}">{{ $order->note }}</textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                       </form>
