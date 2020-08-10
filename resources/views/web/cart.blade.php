@@ -70,6 +70,7 @@
             </div>
         </div>
     </section>
+
            <!-- Js Plugins -->
            <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
            <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -80,6 +81,16 @@
            <script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
            <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
            {{-- <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script> --}}
+           <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    
+           <!-- CSS -->
+           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+           <!-- Default theme -->
+           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+           <!-- Semantic UI theme -->
+           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+           <!-- Bootstrap theme -->
+           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
            <script src="{{ asset('assets/js/main.js') }}"></script>
            <script>
                 var proQty = $('.pro-qty');
@@ -97,7 +108,8 @@
                         if (oldValue > 0) {
                             var newVal = parseFloat(oldValue) - 1;
                         } else {
-                            newVal = 0;
+                            newVal = 1;
+                                alertify.success('Click x button to remove this product');
                         }
                     }
                     $button.parent().find('input').val(newVal);
@@ -126,10 +138,11 @@
                             var newVal = parseFloat(oldValue) + 1;
                         } else {
                             // Don't allow decrementing below zero
-                            if (oldValue > 0) {
+                            if (oldValue > 1) {
                                 var newVal = parseFloat(oldValue) - 1;
                             } else {
-                                newVal = 0;
+                                newVal = 1;
+                                alertify.success('Click x button to remove this product');
                             }
                         }
                         $button.parent().find('input').val(newVal);
@@ -160,6 +173,10 @@
     padding-bottom: 60px !important;
     margin-top: -547px !important;
     height: 549px !important;
+    }
+    .cart-pic{
+        padding-top:10px !important;
+        padding-bottom:10px !important
     }
 </style>
 <!-- Write function here -->

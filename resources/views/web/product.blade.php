@@ -195,7 +195,7 @@
             console.log(proCart);
             // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
             // $('#countCart').text(response);
-            alertify.success('Đã thêm sp thành công');
+            alertify.success('Add product success');
         })
     }
 </script>
