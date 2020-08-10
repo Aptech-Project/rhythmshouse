@@ -24,42 +24,38 @@
                 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    
+                    <form >
                         
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">User Name</label>
-                                <input type="text" class="form-control" name="username" id="exampleInput"  id="name" value="{{$user->name}}">
-                            </div>
-                            <div class="form-group">
-                              <label for="exampleInputPassword1">Phone</label>
-                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Address</label>
-                                <input type="text" class="form-control"  name="address" id="address" value="{{$user->address}}">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Paymentmethod</label>
-                                <select name="paymentmethod"  class="form-control" id="cars">
-                                    <option value="1">SHIP COD</option>
-                                    {{-- <option value="2">Saab</option>
-                                    <option value="3">Opel</option> --}}
-                                  </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Note</label>
-                                <textarea type="text" class="form-control" name="note"  id="note" value="2020-07-28 23:19:00"></textarea>
-                            </div>
- 
-                    <!-- /.card-body -->
-   
-                        <button  type="button" class="btn btn-primary">Edit</button>
-                    
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">ID</label>
+                          <input type="text" class="form-control" disabled id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ $order->id }}">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Date</label>
+                          <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->date }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">User Name</label>
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->receiver }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Email</label>
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->email }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Address</label>
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->address }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Phone</label>
+                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->phonenumber }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Note</label>
+                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="{{ $order->note }}"></textarea>
+                        </div>
+                        <a href="{{ url('admin/orderdetail/'.$order->id) }}" type="button" class="btn btn-primary">Edit</a>
+                      </form>
                 
                 <!-- /.card-body -->
             </div>

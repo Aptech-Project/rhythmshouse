@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-12" id="list-cart">
                     <div class="cart-table" >
-                        <table>
+                        <table class="table">
                             <thead>
                                 <tr>
                                     <th>Image</th>

@@ -30,6 +30,9 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('order/orderdetail/{id}', 'adminController@detailOrder');
     Route::get('order/listOrder', 'adminController@listOrder');
     // Route::get('web/orderdetail/{id}', 'webController@orderDetail');
+    Route::get('order/delete/{id}', 'adminController@deleteOrder');
+    Route::get('orderdetail/{id}', 'adminController@editOrder');
+    Route::post('postOrder', 'adminController@postOrder');
     //Event Route
     Route::get('event/eventList', 'adminController@eventList');
     Route::get('event/eventView/{id}', 'adminController@eventView');

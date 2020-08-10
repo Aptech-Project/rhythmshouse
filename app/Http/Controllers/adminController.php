@@ -146,24 +146,52 @@ class adminController extends Controller
     }
 
     public function detailOrder($id) {
-        $order = DB::table('order')->where('id', $id)->get();
-
-        // dd($order);
-        // dd($id);
-
+        $order = DB::table('order')->where('id', $id)->first();
          $orderDetail = DB::table('orderdetail')
             ->join('product', 'orderdetail.productid', '=', 'product.id')
             ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
             ->where('orderdetail.orderid',$id)
             ->get();
-        // dd($orderDetail);
+
         $totalPrice[0]=0;
         foreach ($orderDetail as $key) {
             $totalPrice[0] += $key->price * $key->quantity;
         }
-
-    // dd($totalPrice);
         return view('admin.order.detailOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
+    }
+
+    public function deleteOrder($id) {
+        DB::table('orderdetail')
+            ->where('orderid', intval($id))
+            ->get();
+        DB::table('order')
+            ->where('id', intval($id))
+            ->delete();
+        return redirect()->action('adminController@listOrder');
+    }
+    public function editOrder($id) {
+        $order = DB::table('order')->where('id', $id)->first();
+         $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+
+        $totalPrice[0]=0;
+        foreach ($orderDetail as $key) {
+            $totalPrice[0] += $key->price * $key->quantity;
+        }
+        return view('admin.order.editOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
+    }
+    public function postOrder(Request $request) {
+        DB::table('order')->where('id', intval($request['id']))->update([
+            'address'=>$request['address'],
+            'receiver'=>$request['username'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'note'=>$request['note'],
+        ]);
+        return redirect()->action('adminController@listOrder');
     }
     public function listComment() {
         return view('admin.comment.listComment');
