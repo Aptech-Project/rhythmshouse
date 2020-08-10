@@ -42,7 +42,7 @@
             <li class="cart-total">Total <span> ${{ $p }}</span></li>
             </ul>
             @endforeach
-            <a href="{{ url('web/index') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+            <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
         </div>
     </div>
 </div>

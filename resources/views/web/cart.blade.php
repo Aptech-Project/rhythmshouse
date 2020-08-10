@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-12" id="list-cart">
                     <div class="cart-table" >
-                        <table class="table">
+                        <table class="table-striped">
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -33,7 +33,7 @@
                             <tbody>
                                 @foreach($cartAll as $c)
                                     <tr>
-                                        <td class="cart-pic first-row"><img style="width: 170px;height:170px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
+                                        <td class="cart-pic first-row"><img style="width: 90px;height:90px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
                                         <td class="cart-title first-row">
                                             <h5>{{ $c -> name }}</h5>
                                         </td>
