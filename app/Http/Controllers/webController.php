@@ -198,16 +198,17 @@ class webController extends Controller
     public function addCart($id){
         $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
         // dd($cart);
-        if(!$cart){
-            DB::table('cart')->insert([
-                'userid' => Auth::User()->id
-            ]);
-            $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
-        }
+        
         $newProduct = DB::table('product')
             ->where('id', $id)
             ->first();
         if(Auth::User() != null){
+            if(!$cart){
+                DB::table('cart')->insert([
+                    'userid' => Auth::User()->id
+                ]);
+                $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+            }
                 $cart = DB::table('cart')
                         ->where('userid', Auth::User()->id)
                         ->first();

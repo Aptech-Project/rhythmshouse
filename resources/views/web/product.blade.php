@@ -135,7 +135,17 @@
                         <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
                         <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
                         {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
-                        <a onclick="addCart({{$p->id}})" ><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
+                        @if (Auth::User())
+                        <a  onclick="addCart({{$p->id}})" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
+                        @else
+                        
+                        <a  onclick="checklogin()" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
+                        @endif
+                    
                     </div>
                     
                     <!-- <div class="col-lg-12">
@@ -185,6 +195,9 @@
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+  function checklogin(){
+    alertify.success('Please Login');
+  }
   function addCart($id){
         $.ajax({
             url: 'cart/addCart/'+$id,
@@ -192,9 +205,7 @@
         }).done(function(response){
             console.log(response);
             var proCart = $('#cart');
-            console.log(proCart);
-            // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
-            // $('#countCart').text(response);
+            // console.log(proCart);
             alertify.success('Add product success');
         })
     }
