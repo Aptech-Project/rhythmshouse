@@ -238,8 +238,7 @@ class webController extends Controller
             // dd($count);
                 return $count;
         }
-
-        return -1;
+       
     }
     
     public function order() 

@@ -135,7 +135,7 @@
                         <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
                         <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
                         {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
-                        <a  onclick="addCart({{$p->id}})" ><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
+                        <a onclick="addCart({{$p->id}})" ><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a>
                     </div>
                     
                     <!-- <div class="col-lg-12">
@@ -192,17 +192,10 @@
         }).done(function(response){
             console.log(response);
             var proCart = $('#cart');
-            // console.log(proCart);
-            if (typeof response != 'number') { 
-                alertify.success('Please login');
-            } else{
-                alertify.success('Product added to cart !');}
+            console.log(proCart);
             // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
             // $('#countCart').text(response);
-<<<<<<< HEAD
             alertify.success('Add product success');
-=======
->>>>>>> 243faf03b5bccac842d99d4a5ead5ffaea18a0c8
         })
     }
 </script>
