@@ -55,8 +55,8 @@
                             @else
                             <li ><a id="cart" href="{{ url('web/cart/'.Auth::user()->id) }}">
                                 <i class="fa fa-shopping-cart"></i>
-                                <span id="countCart"class="count-prodct">
-                                    </span>
+                                {{-- <span id="countCart"class="count-prodct">
+                                    </span> --}}
                                 </a></li>
                             <li><a href="{{ url('web/profile') }}"><i
                                         class="fa fa-user-circle"></i>&nbsp;{{ Auth::user()->name }}</a>

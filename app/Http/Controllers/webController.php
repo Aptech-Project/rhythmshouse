@@ -157,7 +157,53 @@ class webController extends Controller
         // dd($totalPrice);    
         return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
+    public function buynow($id) {
+        $newProduct = DB::table('product')
+            ->where('id', $id)
+            ->first();
+        if(Auth::User() != null){
+                $cart = DB::table('cart')
+                        ->where('userid', Auth::User()->id)
+                        ->first();
+                $cartid = $cart->id;
+                $listCartDetail = DB::table('cartdetail')
+                                ->where('productid', intval($id))
+                                ->where('cartid', intval($cartid))
+                                ->first();
+                                // dd($listCartDetail);
+                if ($listCartDetail) {
+                    $quanity = DB::table('cartdetail')
+                        ->where('id', intval($listCartDetail->id))
+                        ->first();
+                    $q= $quanity->quanity;
+                        $updateQuanity = DB::table('cartdetail')
+                                        ->where('id', intval($listCartDetail->id))
+                                        ->update(['quanity' => intval($q)+1]);
+                        // dd($updateQuanity);
+                } else {
+                    $updateQuanity = DB::table('cartdetail')->insert([
+                                        'quanity' => 1,
+                                        'cartid' => intval($cartid),
+                                        'productid' => intval($id),
+                                    ]);
+                    // dd($updateQuanity);
+                }
+            // $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
+            // dd($count);
+           
+        }  
+
+        return view('web.cart')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+    }
     public function addCart($id){
+        $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+        // dd($cart);
+        if(!$cart){
+            DB::table('cart')->insert([
+                'userid' => Auth::User()->id
+            ]);
+            $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+        }
         $newProduct = DB::table('product')
             ->where('id', $id)
             ->first();

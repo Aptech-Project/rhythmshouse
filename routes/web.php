@@ -82,6 +82,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('cart/delete/{id}', 'webController@deleteCart');
     Route::get('cart/changeQuanity/{id}/{quanity}', 'webController@changeQuanity');
     Route::get('cart/addCart/{id}', 'webController@addCart');
+    Route::get('cart/buynow/{id}', 'webController@buynow');
     //profile
     Route::get('profile', 'webController@profileUser');
     Route::get('profile', 'webController@editUser');

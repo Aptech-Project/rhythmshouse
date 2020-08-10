@@ -154,7 +154,7 @@
 @section('function')
 <script>
     $(document).ready(function () {
-        $("#product").addClass("active");
+        // $("#product").addClass("active");
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });

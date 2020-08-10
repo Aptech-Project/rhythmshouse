@@ -151,7 +151,17 @@
                
             </script> 
 @endsection
-
+<style>
+    .header{
+        background-color: #290849 !important;
+    }
+    .footer {
+        padding-top: 300px !important;
+    padding-bottom: 60px !important;
+    margin-top: -547px !important;
+    height: 549px !important;
+    }
+</style>
 <!-- Write function here -->
 @section('function')
 <script>
