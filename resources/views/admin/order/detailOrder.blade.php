@@ -24,33 +24,42 @@
                 
                 <!-- /.card-header -->
                 <div class="card-body">
-                    <form>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">ID</label>
-                          <input type="text" class="form-control" disabled id="exampleInputEmail1" aria-describedby="emailHelp" value="1">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Date</label>
-                          <input type="text" class="form-control" disabled id="exampleInputPassword1" value="2020-07-28 23:19:00">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">User Name</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="Phong">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Email</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="phong@gmail.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Address</label>
-                            <input type="text" class="form-control" disabled id="exampleInputPassword1" value="Tân Bình, Hồ Chí Minh">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Note</label>
-                            <textarea type="text" class="form-control" disabled id="exampleInputPassword1" value="2020-07-28 23:19:00"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                      </form>
+                    
+                        
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">User Name</label>
+                                <input type="text" class="form-control" name="username" id="exampleInput"  id="name" value="{{$user->name}}">
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Phone</label>
+                            <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <input type="text" class="form-control"  name="address" id="address" value="{{$user->address}}">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Paymentmethod</label>
+                                <select name="paymentmethod"  class="form-control" id="cars">
+                                    <option value="1">SHIP COD</option>
+                                    {{-- <option value="2">Saab</option>
+                                    <option value="3">Opel</option> --}}
+                                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Note</label>
+                                <textarea type="text" class="form-control" name="note"  id="note" value="2020-07-28 23:19:00"></textarea>
+                            </div>
+ 
+                    <!-- /.card-body -->
+   
+                        <button  type="button" class="btn btn-primary">Edit</button>
+                    
                 
                 <!-- /.card-body -->
             </div>
@@ -83,39 +92,19 @@
                         </tr>
                         </thead>
                         <tbody>
+                            @foreach($orderDetail as $or)
                             <tr>
-                                <td class="">1</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
+                                <td class="">{{ $or->id}}</td>
+                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ url('images/'.$or->image ) }} "  alt=""></td>
                                 <td class="">
-                                    UNTOLD FESTIVAL 2020
+                                    {{ $or->name}}
                                 </td>
-                                <td class="">$60.00</td>
-                                <td class="">2</td>
-                                <td class="total-price">$60.00</td>
+                                <td class="">${{ $or->price}}</td>
+                                <td class="">{{ $or->quantity}}</td>
+                             <td class="total-price">${{ $or->price* $or->quantity}}</td>
                                 
                             </tr>
-                            <tr>
-                                <td class="">2</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
-                                <td class="">
-                                    UNTOLD FESTIVAL 2020
-                                </td>
-                                <td class="">$60.00</td>
-                                <td class="">3</td>
-                                <td class="total-price">$60.00</td>
-                                
-                            </tr>
-                            <tr>
-                                <td class="">3</td>
-                                <td class="cart-pic first-row"><img style="width: 30px;height:30px" src="{{ asset('img/discography/disco-1.jpg' ) }} " alt=""></td>
-                                <td class="">
-                                    UNTOLD FESTIVAL 2020
-                                </td>
-                                <td class="">$60.00</td>
-                                <td class="">2</td>
-                                <td class="total-price">$60.00</td>
-                                
-                            </tr>
+                            @endforeach
                            
                         </tbody>
                     </table>
@@ -123,10 +112,11 @@
                 <div class="row" style="margin-right: 10px">
                     <div class="col-lg-4 offset-lg-8">
                         <div class="proceed-checkout">
+                            @foreach($totalPrice as $p)
                             <ul>
-                                <li class="subtotal">Subtotal <span>$240.00</span></li>
-                                <li class="cart-total">Total <span>$240.00</span></li>
+                            <li class="cart-total">Total <span>${{$p}}</span></li>
                             </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>

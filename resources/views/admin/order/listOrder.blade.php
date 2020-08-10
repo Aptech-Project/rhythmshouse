@@ -41,17 +41,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                            @foreach($orders as $o)
+                            @foreach($order as $o)
                             <tr>
                                 <td class="">{{ $o->id }}</td>
                                 <td class="">
                                     {{ $o->date}}
                                 </td>
                                 <td class="">{{ $o->status }}</td>
-                                <td class="total-price">{{ $o->total_price }}</td>
-                                <td id="deleteOrder" class=""><i class="fas fa-trash"></i> Delete</i></td>
-                                <td id="editOrder" class="" style="color: blue;"><i class="fas fa-pencil-alt"></i> Edit</td>
-                                <td id="viewOrder" class="" style="color: blue;"><i class="fas fa-folder"></i> View</td>
+                                <td class="total-price">{{ $o->totalmoney }}</td>
+                                <td id="deleteOrder" class=""><i href="{{ url('admin/deleteOrder/'.$o->id) }}" class="fas fa-trash"></i> Delete</i></td>
+                                <td id="editOrder" class="" style="color: blue;"><i href="{{ url('admin/orderdetail/'.$o->id) }}" class="fas fa-pencil-alt"></i> Edit</td>
+                                <td  id="viewOrder" class="" style="color: blue;"><i href="{{ url('admin/order/orderdetail/'.$o->id) }}" class="fas fa-folder"></i> <a href="{{ url('admin/order/orderdetail/'.$o->id) }}">View</a></td>
                             </tr>
                             @endforeach
                         </tbody>

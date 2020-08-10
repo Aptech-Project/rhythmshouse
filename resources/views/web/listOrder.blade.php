@@ -151,10 +151,10 @@
 <!-- Write function here -->
 @section('function')
 <script>
-    // $(document).ready(function () {
-    //     $("#product").addClass("active");
-    //     $("header:first").addClass("header--normal");
-    //     $("footer:first").addClass("footer--normal");
-    // });
+    $(document).ready(function () {
+        $("#product").addClass("active");
+        $("header:first").addClass("header--normal");
+        $("footer:first").addClass("footer--normal");
+    });
 </script>
 @endsection

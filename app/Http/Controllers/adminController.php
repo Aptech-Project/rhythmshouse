@@ -132,24 +132,38 @@ class adminController extends Controller
         return view('admin.product.productDetail', ['p'=>$p]);
     }
     //phong
-    public function detailOrder() {
-        return view('admin.order.detailOrder');
-    }
+    // public function detailOrder() {
+    //     return view('admin.order.detailOrder');
+    // }
+    // public function listOrder() {
+    //     $orders = DB::table('order')->get();   
+    //     return view('admin.order.listOrder')->with(['orders'=>$orders]);
+    // }
+
     public function listOrder() {
-        $orders = DB::table('order')->get();
-        // $cartdetail = DB::table('cartdetail')
-        //     ->join('product', 'cartdetail.productid', '=', 'product.id')
-        //     ->join('cart', 'cart.id', '=', 'cartdetail.cartid')
-        //     ->select('cartdetail.*', 'product.*')
-        //     ->where('cartdetail.cartid',$idCart)
-        //     ->get();
-        // // dd($cartdetail);
-        // $totalPrice[0]=0;
-        // foreach ($cartdetail as $key) {
-        //     $totalPrice[0] += $key->price *$key->quanity;
-        // }
-        // dd($totalPrice);    
-        return view('admin.order.listOrder')->with(['orders'=>$orders]);
+        $order = DB::table('order')->get();
+        return view('admin.order.listOrder')->with(['order'=> $order]);
+    }
+
+    public function detailOrder($id) {
+        $order = DB::table('order')->where('id', $id)->get();
+
+        // dd($order);
+        // dd($id);
+
+         $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+        // dd($orderDetail);
+        $totalPrice[0]=0;
+        foreach ($orderDetail as $key) {
+            $totalPrice[0] += $key->price * $key->quantity;
+        }
+
+    // dd($totalPrice);
+        return view('admin.order.detailOrder')->with(['order'=> $order,'orderDetail'=>$orderDetail,'totalPrice'=>$totalPrice]);
     }
     public function listComment() {
         return view('admin.comment.listComment');

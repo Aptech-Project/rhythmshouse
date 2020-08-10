@@ -27,8 +27,9 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('product/productDelete/{id}', 'adminController@productDelete');
     Route::get('product/productDetail/{id}', 'adminController@productDetail');
     //Order Route
-    Route::get('order/detailOrder', 'adminController@detailOrder');
+    Route::get('order/orderdetail/{id}', 'adminController@detailOrder');
     Route::get('order/listOrder', 'adminController@listOrder');
+    // Route::get('web/orderdetail/{id}', 'webController@orderDetail');
     //Event Route
     Route::get('event/eventList', 'adminController@eventList');
     Route::get('event/eventView/{id}', 'adminController@eventView');
