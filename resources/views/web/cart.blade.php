@@ -32,7 +32,7 @@
                             </thead>
                             <tbody>
                                 @foreach($cartAll as $c)
-                                    <tr>
+                                    <tr style="border:1px solid #ebebeb !important;">
                                         <td class="cart-pic first-row"><img style="width: 90px;height:90px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
                                         <td class="cart-title first-row">
                                             <h5>{{ $c -> name }}</h5>

@@ -140,12 +140,10 @@
                             <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
                         </a>
                         @else
-                        
                         <a  onclick="checklogin()" >
                             <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
                         </a>
                         @endif
-                    
                     </div>
                     
                     <!-- <div class="col-lg-12">
