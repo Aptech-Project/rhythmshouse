@@ -276,12 +276,16 @@ public function allUsers() {
     }
 //Controller for revenue start
 public function revenueDetails() {
-    $revenueevent = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    $revenueevent = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
+    ->where('status','Approved')->orwhere('status','Canceled')
+    ->get();
     $revenueorder = DB::table('order')->get();
     return view('admin.revenue.revenueDetails')->with(['revenueevent'=>$revenueevent,'revenueorder'=>$revenueorder]);
     }
 public function partnerDept() {
-    $dept = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
+    $dept = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')
+    ->where('status','Approved')->orwhere('status','Canceled')
+    ->get();
     return view('admin.revenue.partnerDept')->with(['dept'=>$dept]);
     }
 public function deptUpdate($id) {
@@ -291,10 +295,19 @@ public function deptUpdate($id) {
         return view('admin.revenue.deptUpdate', ['e'=>$e]);
     }
 public function postdeptUpdate(Request $request, $id) {
-        $haspaid = $request->input('haspaid');       
-        $e = DB::table('event')
+        $totaldept = $request->input('remaining');
+        $haspaid = $request->input('haspaid');   
+        $remain = $totaldept - $haspaid;
+        if($remain < 0 )
+        {
+            return redirect('admin/revenue/deptUpdate/'.$id)->with('alert','Has Paid must lower than Remaining');
+        }
+        DB::table('event')
                 ->where('id', intval($id))
                 ->update(['haspaid'=>floatval($haspaid)]);
+        DB::table('event')
+        ->where('id', intval($id))
+        ->update(['deptremaining'=>floatval($remain)]);
         return redirect()->action('adminController@partnerDept');
     }
 //Controller for revenue end

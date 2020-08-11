@@ -480,6 +480,9 @@ public function eventClick($id) {
     DB::table('event')
         ->where('id', intval($id))
         ->increment('totaldept',0.02);
+    DB::table('event')
+        ->where('id', intval($id))
+        ->increment('deptremaining',0.02);
     return redirect('web/eventDetail/'.$id);
 }
 public function eventDetail($id) {

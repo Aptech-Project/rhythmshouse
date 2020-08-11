@@ -54,6 +54,7 @@
                                 <th>Views</th> 
                                 <th>Total Dept ($)</th>
                                 <th>Has paid ($)</th>
+                                <th>Remaining ($)</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -65,6 +66,7 @@
                                 <td>{{ $e->views }}</td>
                                 <td>${{ $e->totaldept }}</td>
                                 <td>${{ $e->haspaid }}</td>
+                                <td>${{ $e->deptremaining }}</td>
                             </tr>
                             @endforeach
                             <tfoot>
@@ -72,6 +74,7 @@
                                     <th colspan="4" style="text-align:right">Total:</th>
                                     <th colspan="1" style="text-align:center">${{$revenueevent -> sum('totaldept')}}</th>
                                     <th colspan="1" style="text-align:center">${{$revenueevent -> sum('haspaid')}}</th> 
+                                    <th colspan="1" style="text-align:center">${{$revenueevent -> sum('deptremaining')}}</th>
                                 </tr>
                             </tfoot>
                         </table>

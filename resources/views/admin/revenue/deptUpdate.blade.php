@@ -13,7 +13,7 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form role="form" action="{{ url('admin/revenue/postdeptUpdate/'.$e->id) }}" method="post" enctype="multipart/form-data">
+                        <form role="form" name="myForm" onsubmit="return validateForm()" action="{{ url('admin/revenue/postdeptUpdate/'.$e->id) }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
                                 <div class="form-group">
@@ -29,8 +29,8 @@
                                     <input type="text" class="form-control" id="txt-name" name="name" value="{{ $e->artist }}" readonly>
                                 </div>
                                 <div class="form-group">
-                                    <label for="txt-name">Total Dept</label>
-                                    <input type="text" class="form-control" id="txt-totaldept" name="totaldept" value="{{ $e->totaldept }}" readonly>
+                                    <label for="txt-name">Dept Remaining</label>
+                                    <input type="text" class="form-control" id="txt-remaining" name="remaining" value="{{ $e->deptremaining }}" readonly>
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Has Paid</label>
@@ -57,4 +57,11 @@
             bsCustomFileInput.init();
         });
     </script>
+<script>
+    var msg = '{{Session::get('alert')}}';
+    var exist = '{{Session::has('alert')}}';
+    if(exist){
+      alert(msg);
+    }
+</script>
 @endsection

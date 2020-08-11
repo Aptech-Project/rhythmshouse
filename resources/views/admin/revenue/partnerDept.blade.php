@@ -30,6 +30,7 @@
                                 <th>Views</th> 
                                 <th>Total Dept</th>
                                 <th>Has paid</th>
+                                <th>Remaining</th>
                                 
                                 <th></th>
                             </tr>
@@ -45,6 +46,7 @@
                                 <td>{{ $e->views }}</td>
                                 <td>${{ $e->totaldept }}</td>
                                 <td>${{ $e->haspaid }}</td>
+                                <td>${{ $e->deptremaining }}</td>
                                 
                                 <td class="text-center">  
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/revenue/deptUpdate/'.$e->id) }}">

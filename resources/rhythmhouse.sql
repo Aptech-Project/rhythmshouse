@@ -66,7 +66,7 @@ CREATE TABLE `event` (
   `userid` int DEFAULT '0',
   `url1` varchar(255) DEFAULT NULL,
   `url2` varchar(255) DEFAULT NULL,
-  `url3` varchar(255) DEFAULT NULL,
+  `deptremaining` float DEFAULT '0',
   PRIMARY KEY (`id`),
   CONSTRAINT FOREIGN KEY (`userid`) REFERENCES `user` (`id`)
 );
