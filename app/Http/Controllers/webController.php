@@ -69,6 +69,42 @@ class webController extends Controller
         ->get();
         return view('web.productByCategory')->with(['products'=>$products, 'categories'=>$categories, 'songCountByCategories'=>$songCountByCategories, 'lastestProducts'=>$lastestProducts]);
     }
+    public function favorite($productId) {
+        $userId = Auth::User()->id;
+        $favoriteProduct = DB::table('favorite')
+                        ->where('userid', $userId)
+                        ->where('productid',$productId)
+                        ->first();
+        if(!$favoriteProduct){
+            DB::table('favorite')->insert([
+                'userid' => $userId,
+                'productid' => $productId
+            ]);
+        }else{
+            DB::table('favorite')
+                ->where('userid',$userId)
+                ->where('productid',$productId)
+                ->delete();
+        }
+    }
+    public function checkFavorite($productId) {
+        $userId = Auth::User()->id;
+        $favoriteProduct = DB::table('favorite')
+                        ->where('userid', $userId)
+                        ->where('productid',$productId)
+                        ->first();
+        if(!$favoriteProduct){
+            return response()->json(['check'=>'emptyheart']);
+        }
+    }
+    public function favoriteList($userId) {
+        $products = DB::table('product')
+        ->join('favorite', 'product.id', '=', 'favorite.productid')
+        ->select('product.*')
+        ->where('favorite.userid', $userId)
+        ->get();
+        return view('web.favoriteList')->with(['products'=>$products]);
+    }
     //phong
     public function cart($id) {
         // dd($id);

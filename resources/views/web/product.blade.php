@@ -132,7 +132,15 @@
                         <img src="{{ asset('img/line2.png') }}"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 center">
-                        <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
+                        <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">
+                            @if (Auth::User())
+                                <img src="{{ asset('img/emptyheart.svg') }}" style="width:25px" onclick="favorite(this, {{$p->id}})"/> 
+                            @else
+                                <img src="{{ asset('img/emptyheart.svg') }}" style="width:25px" onclick="checklogin()"/> 
+                            @endif
+                            
+                            Price: {{$p->price}}$
+                        </p>
                         <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
                         {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
                         @if (Auth::User())
@@ -206,6 +214,18 @@
             // console.log(proCart);
             alertify.success('Add product success');
         })
+    }
+    function favorite(e, $id){
+        if(e.src == "http://localhost/rhythmshouse/public/img/heart.svg"){
+            e.src = "{{ asset('img/emptyheart.svg') }}";
+            alertify.success('Removed from Favorite');
+        }else{
+            e.src = "{{ asset('img/heart.svg') }}";
+            alertify.success('Added to Favorite');
+        }
+        $.get({
+                url : 'favorite/'+$id
+                })
     }
 </script>
 @endsection

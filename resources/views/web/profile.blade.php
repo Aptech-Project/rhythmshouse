@@ -158,7 +158,8 @@
             <div class="col-md-4">
                 <div class="profile-work">
                     <p><i class="fa fa-house-user"></i>Personal Information</p>
-                    <a href="{{ url('web/profile') }}"></i> Profile</a><br /><br />
+                    <a href="{{ url('web/profile') }}"></i> Profile</a><br /><br/>
+                    <a href="{{ url('web/favoriteList/'.$user->id)}}"></i>My Favorite Product</a><br /><br />
                     @if(Auth::user()->role=='customer')
                     <a href="{{ url('web/partner') }}"></i>Sign up as a partner</a><br /><br />
                     @elseif(Auth::user()->role=='partner')

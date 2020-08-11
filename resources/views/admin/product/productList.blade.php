@@ -28,7 +28,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="product" class="table table-bordered table-hover">
+                        <table id="productList" class="table table-bordered table-hover">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -76,7 +76,7 @@
 @section('script-section')
     <script>
         $(function () {
-            $('#product').DataTable({
+            $('#productList').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": false,
