@@ -165,7 +165,16 @@ class webController extends Controller
         // dd($totalPrice);    
         return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
-
+    public function changeQuanityorder($id,$quanity) {
+        $newProduct = DB::table('product')
+            ->where('id', $id)
+            ->first();
+        $user = DB::table('user')
+            ->where('id', intval(Auth::User()->id))
+            ->first();
+        // dd($newProduct);
+        return view('web.ajaxOrderBuy')->with(['newProduct'=> $newProduct,'user'=> $user,'quanity'=>$quanity]);
+    }
     public function deleteCart($id) {
         $cartdetail = DB::table('cartdetail')
                 ->where('id', intval($id))
@@ -194,42 +203,22 @@ class webController extends Controller
         return view('web.listcard')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
     }
     public function buynow($id) {
+        $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+        if(!$cart){
+            DB::table('cart')->insert([
+                'userid' => Auth::User()->id
+            ]);
+            $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
+        }
         $newProduct = DB::table('product')
             ->where('id', $id)
             ->first();
-        if(Auth::User() != null){
-                $cart = DB::table('cart')
-                        ->where('userid', Auth::User()->id)
-                        ->first();
-                $cartid = $cart->id;
-                $listCartDetail = DB::table('cartdetail')
-                                ->where('productid', intval($id))
-                                ->where('cartid', intval($cartid))
-                                ->first();
-                                // dd($listCartDetail);
-                if ($listCartDetail) {
-                    $quanity = DB::table('cartdetail')
-                        ->where('id', intval($listCartDetail->id))
-                        ->first();
-                    $q= $quanity->quanity;
-                        $updateQuanity = DB::table('cartdetail')
-                                        ->where('id', intval($listCartDetail->id))
-                                        ->update(['quanity' => intval($q)+1]);
-                        // dd($updateQuanity);
-                } else {
-                    $updateQuanity = DB::table('cartdetail')->insert([
-                                        'quanity' => 1,
-                                        'cartid' => intval($cartid),
-                                        'productid' => intval($id),
-                                    ]);
-                    // dd($updateQuanity);
-                }
-            // $count = DB::table('cartdetail')->where('cartid',$cartid)->count();
-            // dd($count);
-           
-        }  
-
-        return view('web.cart')->with(['cartAll'=> $cartAll,'totalPrice'=> $totalPrice]);
+        $user = DB::table('user')
+            ->where('id', intval(Auth::User()->id))
+            ->first();
+        // dd($newProduct);
+        $quanity=1;
+        return view('web.orderBuyNow')->with(['newProduct'=> $newProduct,'user'=> $user,'quanity'=>$quanity]);
     }
     public function addCart($id){
         $cart = DB::table('cart')->where('userid',Auth::User()->id)->first();
@@ -305,7 +294,7 @@ class webController extends Controller
     }
     
     public function postOrder(Request $request) 
-    { 
+    {
         $user = DB::table('user')
                 ->where('id', intval(Auth::User()->id))
                 ->first();
@@ -330,7 +319,7 @@ class webController extends Controller
                 ->orderBy('id', 'desc')
                 ->first(); 
                 
-        $date =Carbon::now();
+        $date =Carbon::now('Asia/Ho_Chi_Minh');
         $deliverydate = Carbon::tomorrow();
         DB::table('order')->insert([
             'address'=>$request['address'],
@@ -363,6 +352,48 @@ class webController extends Controller
             return redirect()->action('webController@listOrder');
     }
 
+    public function postOrderBuyNow(Request $request) 
+    {
+        $user = DB::table('user')
+                ->where('id', intval(Auth::User()->id))
+                ->first();
+        
+        $cart = DB::table('cart')->where('userid',$user->id)->first();
+        $products =DB::table('product')->where('id',$request['productid'])->first();
+        // dd($cart);
+        $idCart = $cart->id;
+        $totalPrice=$products->price*$request['quanity'];
+        // dd($totalPrice);
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first();
+        $date =Carbon::now('Asia/Ho_Chi_Minh');
+        $deliverydate = Carbon::tomorrow();
+        DB::table('order')->insert([
+            'address'=>$request['address'],
+            'receiver'=>$request['username'],
+            'email'=>$request['email'],
+            'phonenumber'=>$request['phonenumber'],
+            'userid'=>$user->id,
+            'totalmoney'=>$totalPrice,
+            'note'=>$request['note'],
+            'date'=>$date,
+            'deliverydate'=>$deliverydate,
+            'paymentmethod'=>$request['paymentmethod'],
+        ]);
+        $order = DB::table('order')
+                ->where('userid',$user->id)
+                ->orderBy('id', 'desc')
+                ->first(); 
+        
+        DB::table('orderdetail')->insert([
+            'quantity'=>$request['quanity'],
+            'orderid'=>$order->id,
+            'productid'=>$products->id,
+        ]);
+            return redirect()->action('webController@listOrder');
+    }
     public function postEditOrder(Request $request) 
     { 
         // dd($request['id']);
@@ -516,9 +547,6 @@ public function eventClick($id) {
     DB::table('event')
         ->where('id', intval($id))
         ->increment('totaldept',0.02);
-    DB::table('event')
-        ->where('id', intval($id))
-        ->increment('deptremaining',0.02);
     return redirect('web/eventDetail/'.$id);
 }
 public function eventDetail($id) {

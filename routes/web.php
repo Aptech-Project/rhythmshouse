@@ -83,6 +83,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('cart/{id}', 'webController@cart');
     Route::get('cart/delete/{id}', 'webController@deleteCart');
     Route::get('cart/changeQuanity/{id}/{quanity}', 'webController@changeQuanity');
+    Route::get('cart/buynow/changeQuanityorder/{id}/{quanity}', 'webController@changeQuanityorder');
     Route::get('cart/addCart/{id}', 'webController@addCart');
     Route::get('product/cart/addCart/{id}', 'webController@addCart');
     Route::get('productDetail/cart/addCart/{id}', 'webController@addCart');
@@ -92,6 +93,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('orderdetail/{id}', 'webController@orderDetail');
     Route::get('listOrder', 'webController@listOrder');
     Route::post('postOrder', 'webController@postOrder');
+    Route::post('postOrderBuyNow', 'webController@postOrderBuyNow');
     Route::post('postEditOrder', 'webController@postEditOrder');
     //profile
     Route::get('profile', 'webController@profileUser');

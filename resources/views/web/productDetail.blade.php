@@ -84,8 +84,8 @@
                         <div class="col-md-10 offset-md-1 product-detail">{{$p->description}}</div>
                             <div class="discography__item__text">
                             <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 25px; padding-bottom: 30px" class="center">Price: {{$p->price}}$</p>
-                                <a href="#"><img src="{{ asset('img/buynow.png') }}" style="width:200px" alt="" /></a>
-                                @if (Auth::User())
+                            <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
+                            @if (Auth::User())
                                 <a  onclick="addCart({{$p->id}})" >
                                     <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
                                 </a>
