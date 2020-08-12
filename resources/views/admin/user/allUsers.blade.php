@@ -38,10 +38,10 @@
                                 <th>Address</th>
                                 <th>Birthday</th>
                                 <th>Phone Number</th>
+                                <th>Role</th>
                                 <th>Img1</th>
                                 <th>Img2</th>
                                 <th>View</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,18 +54,13 @@
                                 <td>{{ $us->address}}</td>
                                 <td>{{ $us->birthday}}</td>
                                 <td>{{ $us->phonenumber}}</td>
+                                <td>{{ $us->role}}</td>
                                 <td>{{ $us->img1}}</td>
                                 <td>{{ $us->img2}}</td>
                                 <td class="text-right">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/user/userDetail/'.$us->id) }}">
                                         <i class="fas fa-folder"></i>
                                     </a>
-                                </td>
-                                <td class="text-right">
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/user/deleteUser/'.$us->id)}}">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-
                                 </td>
                             </tr>
                             @endforeach
@@ -86,7 +81,7 @@ $(function() {
     $('#user').DataTable({
         "paging": true,
         "lengthChange": false,
-        "searching": false,
+        "searching": true,
         "ordering": true,
         "info": true,
         "autoWidth": false,
