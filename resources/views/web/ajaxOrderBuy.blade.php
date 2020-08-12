@@ -50,7 +50,7 @@
     </div>
     <div class="">
         <!-- Main content -->
-        <section class="content" style="width: 100%;">
+        <section class="content" style="width: 100%;min-width: 845px;">
             <div class="">
                 <div class="col-12">
                     <div class="card">
