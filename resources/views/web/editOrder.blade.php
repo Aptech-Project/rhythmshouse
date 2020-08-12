@@ -100,23 +100,40 @@
                         </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Name</label>
-                                <input type="text" class="form-control" name="username" id="exampleInput"  id="name" value="{{$order->receiver}}">
-                                
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{$order->receiver}}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                               <label for="exampleInputPassword1">Phone</label>
-                                <input type="text" class="form-control " name="phonenumber" id="phonenumber" value="{{$order->phonenumber}}">
-                             </div>
+                                <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" name="phonenumber" id="phonenumber" value="{{$order->phonenumber}}">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Email</label>
-                                <input type="text" class="form-control" name="email" id="email" value="{{$order->email}}">
-                                
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{$order->email}}">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Address</label>
-                                <input type="text" class="form-control"  name="address" id="address" value="{{$order->address}}">
-                              
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"  name="address" id="address" value="{{$order->address}}">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Paymentmethod</label>

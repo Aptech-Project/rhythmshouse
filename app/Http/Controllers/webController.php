@@ -10,6 +10,8 @@ use Session;
 use Image;
 use Hash;
 use Carbon\Carbon;
+use Validator;
+
 class webController extends Controller
 {
     public function index() {
@@ -321,9 +323,20 @@ class webController extends Controller
                 
         $date =Carbon::now('Asia/Ho_Chi_Minh');
         $deliverydate = Carbon::tomorrow();
+        $validate = Validator::make($request->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'phonenumber' => ['required','numeric','digits_between:9,11',],
+            'address' => ['required', 'string', 'max:255'],
+            'email' => ['required','email'],
+            ]);
+        if($validate->fails()){
+            return  back()
+                        ->withErrors($validate)
+                        ->withInput();
+        }
         DB::table('order')->insert([
             'address'=>$request['address'],
-            'receiver'=>$request['username'],
+            'receiver'=>$request['name'],
             'email'=>$request['email'],
             'phonenumber'=>$request['phonenumber'],
             'userid'=>$user->id,
@@ -397,6 +410,17 @@ class webController extends Controller
     public function postEditOrder(Request $request) 
     { 
         // dd($request['id']);
+        $validate = Validator::make($request->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'phonenumber' => ['required','numeric','digits_between:9,11',],
+            'address' => ['required', 'string', 'max:255'],
+            'email' => ['required','email'],
+            ]);
+        if($validate->fails()){
+            return  back()
+                        ->withErrors($validate)
+                        ->withInput();
+        }
         DB::table('order')->where('id',$request['id'])->update([
             'address'=>$request['address'],
             'receiver'=>$request['username'],
