@@ -560,7 +560,16 @@ public function eventCreate($id) {
 return view('web.eventCreate')->with(['user'=>$user]);
 }
 public function postEventCreate(Request $request,$id) {
-    $events = $request->all();    
+    $events = $request->all();  
+    $fromdate = $request->input('eventfromdate');
+    $todate = $request->input('eventtodate');
+    //bắt lỗi date
+    if ($fromdate < (now()->addDays(5))) {
+        return redirect()->back()->with('alert','From Date must greater than Today 5 days');
+    }
+    if ($todate < $fromdate) {
+        return redirect()->back()->with('alert','To Date must greater than From Date');
+    } 
     // xử lý upload hình vào thư mục
     if($request->hasFile('image1'))
     {
@@ -568,7 +577,7 @@ public function postEventCreate(Request $request,$id) {
         $extension = $file->getClientOriginalExtension();
         if($extension != 'jpg' && $extension != 'png' && $extension !='jpeg')
         {
-            return redirect('web/eventCreate/'.$id)->with('alert','You can only choose file have tail jpg,png,jpeg');
+            return redirect()->back()->with('alert','You can only choose file have tail jpg,png,jpeg');
         }
         $imageName = $file->getClientOriginalName();
         $file->move("images",$imageName);
@@ -582,8 +591,8 @@ public function postEventCreate(Request $request,$id) {
         'registerdate'=>$events['eventregister'],
         'url1'        =>$events['eventlink'],
         'name'        =>$events['eventname'],
-        'fromdate'    =>$events['eventfromdate'],
-        'todate'      =>$events['eventtodate'],
+        'fromdate'    =>$fromdate,
+        'todate'      =>$todate,
         'address'     =>$events['eventaddress'],
         'ticketprice' =>$events['eventprice'],
         'type'        =>$events['eventtype'],
@@ -611,7 +620,18 @@ public function eventPaUp($id,$id1) {
 return view('web.eventPartnerUpdate', ['eventpaup'=>$eventpaup]);
 }
 public function postEventPaUp(Request $request, $id, $id1) {
-    $eventpaup = $request->all();    
+    $eventpaup = $request->all(); 
+    $registerdate = $request->input('registerdate'); 
+    $day = Carbon::parse($registerdate)->addDays(5);
+    $fromdate = $request->input('fromdate');
+    $todate = $request->input('todate');
+    //bắt lỗi date
+    if ($fromdate < $day) {
+        return redirect()->back()->with('alert','From Date must greater than Register Date 5 days');
+    }
+    if ($todate < $fromdate) {
+        return redirect()->back()->with('alert','To Date must greater than From Date');
+    }   
     // xử lý upload hình vào thư mục
     if($request->hasFile('image'))
     {

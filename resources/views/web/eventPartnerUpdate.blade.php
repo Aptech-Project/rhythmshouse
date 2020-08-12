@@ -16,9 +16,19 @@
                         <form role="form" action="{{ url('web/posteventPartnerUpdate/'.$eventpaup->userid.'/'.$eventpaup->id) }}" method="post" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <div class="card-body">
-                                <div class="form-group">
-                                    <label for="txt-id">Event Id:</label>
-                                    <input type="text" class="form-control" id="txt-id" name="id" value="{{ $eventpaup->id }}" readonly>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="txt-id">Event Id:</label>
+                                            <input type="text" class="form-control" id="txt-id" name="id" value="{{ $eventpaup->id }}" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="txt-id">Register Date:</label>
+                                            <input type="text" class="form-control" id="txt-registerdate" name="registerdate" value="{{ $eventpaup->registerdate }}" readonly>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Event Name:</label>

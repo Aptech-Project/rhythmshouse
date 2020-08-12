@@ -36,6 +36,7 @@
                             <th>Views</th> 
                             <th>Total Dept</th>
                             <th>Has paid</th>
+                            <th>Remaining</th>
                         </tr>
                         </thead>
                         <tbody>                       
@@ -48,9 +49,18 @@
                                 <td>{{ $e->views }}</td>
                                 <td>${{ $e->totaldept }}</td>
                                 <td>${{ $e->haspaid }}</td>
+                                <td>${{ $e->deptremaining }}</td>
                             </tr>
                             @endforeach
                         </tbody>
+                        <tfoot>
+                            <tr>
+                                <th colspan="5" style="text-align:right">Total:</th>
+                                <th colspan="1" style="text-align:center">${{$eventmana -> sum('totaldept')}}</th>
+                                <th colspan="1" style="text-align:center">${{$eventmana -> sum('haspaid')}}</th> 
+                                <th colspan="1" style="text-align:center">${{$eventmana -> sum('deptremaining')}}</th>
+                            </tr>
+                        </tfoot>
                         
                     </table>
                     <br><br>
@@ -62,23 +72,21 @@
                             <th>EventName</th>
                             <th>RegisterDate</th>
                             <th>Status</th>
-                            <th>Views</th> 
-                            <th>Total Dept</th>
-                            <th>Has paid</th>
+                            <th>Poster</th> 
+                            <th>Link</th>
                             <th></th>
                         </tr>
                         </thead>
                         <tbody>                       
                             @foreach($eventmana1 as $e)
-                            <tr>
-                                <td>{{ $e->id }}</td>
-                                <td>{{ $e->name }}</td>
-                                <td>{{ $e->registerdate }}</td>
-                                <td>{{ $e->status }}</td>
-                                <td>{{ $e->views }}</td>
-                                <td>${{ $e->totaldept }}</td>
-                                <td>${{ $e->haspaid }}</td>
-                                <th>
+                            <tr style="t">
+                                <td style="vertical-align: middle">{{ $e->id }}</td>
+                                <td style="vertical-align: middle">{{ $e->name }}</td>
+                                <td style="vertical-align: middle">{{ $e->registerdate }}</td>
+                                <td style="vertical-align: middle">{{ $e->status }}</td>
+                                <td class="text-center"><img width="100px" src="{{ url('images/'.$e->url2) }}"/></td>
+                                <td style="vertical-align: middle">{{ $e->url1 }}</td>
+                                <th style="vertical-align: middle">
                                     <a class="btn btn-info btn-sm" href="{{ url('web/eventPartnerUpdate/'.$e->userid.'/'.$e->id) }}">
                                         <i class="fas fa-pencil-alt"></i> update
                                     </a>

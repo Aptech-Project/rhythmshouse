@@ -12,7 +12,7 @@
                     </div>
                     <!-- /.card-header -->
                     <!-- card-body start -->
-                    <form role="form" action="{{ url('web/posteventCreate/'.$user->id) }}" method="post" enctype="multipart/form-data" name="myForm">
+                    <form role="form" action="{{ url('web/posteventCreate/'.$user->id) }}" method="post" enctype="multipart/form-data" name="myForm" onsubmit="return validateForm()">
                         {{ csrf_field() }}
                     <div class="card-body">
                         
@@ -22,7 +22,7 @@
                                 <div class="col-6 form-group">
                                     <ul>
                                         <li>
-                                            <span><b>Register Date:</b> <input type="datetime-local" class="form-control" id="txt-eventregister" name="eventregister" required ></span>
+                                            <span><b>Register Date:</b> <input class="form-control" id="txt-eventregister" name="eventregister" value="<?php echo now(); ?>" readonly ></span>
                                         </li>
                                     
                                     </ul>
@@ -120,12 +120,11 @@
     });
 </script>
 <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
- 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            bsCustomFileInput.init();
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        bsCustomFileInput.init();
+    });
+</script>
 <script>
     var msg = '{{Session::get('alert')}}';
     var exist = '{{Session::has('alert')}}';
@@ -138,6 +137,8 @@
         alert("You have Cancel creating an event!!!");
     }
 </script>
+
+
 
 
 @endsection
