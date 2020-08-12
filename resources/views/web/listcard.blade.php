@@ -1,5 +1,5 @@
-<div class="cart-table" >
-    <table>
+<div class="cart-table">
+    <table class="">
         <thead>
             <tr>
                 <th>Image</th>
@@ -12,24 +12,26 @@
         </thead>
         <tbody>
             @foreach($cartAll as $c)
-                <tr style="border: 1px solid #ebebeb !important;">
-                    <td class="cart-pic first-row" style="padding-top: 10px; padding-bottom: 10px"><img style="width: 90px;height:90px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
-                    <td class="cart-title first-row">
-                        <h5>{{ $c -> name }}</h5>
-                    </td>
-                    <td class="p-price first-row">{{ $c -> price }}</td>
-                    <td class="qua-col first-row">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input id = "{{$c->id}}" type="text" value="{{$c->quanity}}">
-                            </div>
+            <tr style="border:1px solid #ebebeb !important;">
+                <td class="cart-pic first-row"><img style="width: 90px;height:90px"
+                        src="{{ url('images/'.$c->image ) }} " alt=""></td>
+                <td class="cart-title first-row">
+                    <h5>{{ $c -> name }}</h5>
+                </td>
+                <td class="p-price first-row">{{ $c -> price }}</td>
+                <td class="qua-col first-row">
+                    <div class="quantity">
+                        <div class="pro-qty">
+                            <input id="{{$c->id}}" type="text" value="{{$c->quanity}}">
                         </div>
-                    </td>
-                    <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
-                    {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}" class="ti-close"></a></td> --}}
-                    <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )" class="ti-close"></i></td>
-                </tr>
-            
+                    </div>
+                </td>
+                <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
+                {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}"
+                class="ti-close"></a></td> --}}
+                <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )"
+                        class="ti-close"></i></td>
+            </tr>
             @endforeach
         </tbody>
     </table>
@@ -39,10 +41,10 @@
         <div class="proceed-checkout">
             @foreach($totalPrice as $p)
             <ul>
-            <li class="cart-total">Total <span> ${{ $p }}</span></li>
+                <li class="cart-total">Total <span> ${{ $p }}</span></li>
             </ul>
             @if($p==0)
-                <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
+            <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
             @else
             <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
             @endif

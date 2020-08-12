@@ -12,91 +12,93 @@
 <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/slicknav.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" type="text/css">
-
-    <!-- Shopping Cart Section Begin -->
-    <section class="shopping-cart spad" style="margin-bottom: 547px;margin-top:92px">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12" id="list-cart">
-                    <div class="cart-table" >
-                        <table class="">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th class="p-name">Product Name</th>
-                                    <th>Price</th>
-                                    <th>Quantity</th>
-                                    <th>Total</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($cartAll as $c)
-                                    <tr style="border:1px solid #ebebeb !important;">
-                                        <td class="cart-pic first-row"><img style="width: 90px;height:90px" src="{{ url('images/'.$c->image ) }} " alt=""></td>
-                                        <td class="cart-title first-row">
-                                            <h5>{{ $c -> name }}</h5>
-                                        </td>
-                                        <td class="p-price first-row">{{ $c -> price }}</td>
-                                        <td class="qua-col first-row">
-                                            <div class="quantity">
-                                                <div class="pro-qty">
-                                                    <input id = "{{$c->id}}" type="text" value="{{$c->quanity}}">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
-                                        {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}" class="ti-close"></a></td> --}}
-                                        <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )" class="ti-close"></i></td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 offset-lg-8">
-                            <div class="proceed-checkout">
-                                @foreach($totalPrice as $p)
-                                <ul>
+<style>
+    .footer.spad {
+        padding-top: 300px;
+    padding-bottom: 60px;
+}
+</style>
+<!-- Shopping Cart Section Begin -->
+<section class="shopping-cart spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" id="list-cart">
+                <div class="cart-table">
+                    <table class="">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th class="p-name">Product Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($cartAll as $c)
+                            <tr style="border:1px solid #ebebeb !important;">
+                                <td class="cart-pic first-row"><img style="width: 90px;height:90px"
+                                        src="{{ url('images/'.$c->image ) }} " alt=""></td>
+                                <td class="cart-title first-row">
+                                    <h5>{{ $c -> name }}</h5>
+                                </td>
+                                <td class="p-price first-row">{{ $c -> price }}</td>
+                                <td class="qua-col first-row">
+                                    <div class="quantity">
+                                        <div class="pro-qty">
+                                            <input id="{{$c->id}}" type="text" value="{{$c->quanity}}">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="p-price first-row">${{ $c -> price * $c->quanity}}</td>
+                                {{-- <td class="close-td first-row"><a href="{{ url('web/cart/delete/'.$c->id) }}"
+                                class="ti-close"></a></td> --}}
+                                <td class="close-td first-row"><i onclick="deleteCartItem( {{ $c->id }} )"
+                                        class="ti-close"></i></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 offset-lg-8">
+                        <div class="proceed-checkout">
+                            @foreach($totalPrice as $p)
+                            <ul>
                                 <li class="cart-total">Total <span> ${{ $p }}</span></li>
-                                </ul>
-                                @if($p==0)
-                                    <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
-                                @else
-                                <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
-                                @endif
-                                @endforeach
-                            </div>
+                            </ul>
+                            @if($p==0)
+                            <a onclick="checkCart()" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            @else
+                            <a href="{{ url('web/order') }}" class="proceed-btn">PROCEED TO CHECK OUT</a>
+                            @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-           <!-- Js Plugins -->
-           <script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
-           <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery.nice-select.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery.zoom.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery.dd.min.js') }}"></script>
-           <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
-           {{-- <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script> --}}
-           <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
-    
-           <!-- CSS -->
-           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-           <!-- Default theme -->
-           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-           <!-- Semantic UI theme -->
-           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-           <!-- Bootstrap theme -->
-           <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
-           <script src="{{ asset('assets/js/main.js') }}"></script>
-           <script>
-                var proQty = $('.pro-qty');
+<!-- Js Plugins -->
+<script src="{{ asset('assets/js/jquery-3.3.1.min.js') }}"></script>
+
+{{-- <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script> --}}
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+<script src="{{ asset('assets/js/main.js') }}"></script>
+<script>
+    var proQty = $('.pro-qty');
                 proQty.prepend('<span class="dec qtybtn">-</span>');
                 proQty.append('<span class="inc qtybtn">+</span>');
                     proQty.on('click', '.qtybtn', function () {
@@ -165,28 +167,16 @@
                    })
                };
                
-            </script> 
+</script>
 @endsection
-<style>
-    .header{
-        background-color: #290849 !important;
-    }
-    .footer {
-        padding-top: 300px !important;
-    padding-bottom: 60px !important;
-    margin-top: -547px !important;
-    height: 549px !important;
-    }
-    .cart-pic{
-        padding-top:10px !important;
-        padding-bottom:10px !important
-    }
-</style>
+
 <!-- Write function here -->
 @section('function')
 <script>
     $(document).ready(function(){
         $("#cart").addClass("active");
+        $("header:first").addClass("header--normal");
+        $("footer:first").addClass("footer--normal");
     });
     function checkCart(){
         // alert("Please add prodcut")
