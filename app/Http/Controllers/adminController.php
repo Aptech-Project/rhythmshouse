@@ -218,7 +218,7 @@ class adminController extends Controller
 
 // Controller for event start
 public function eventList() {
-    $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->orderBy('id','desc')->get();
+    $events = DB::table('event')->join('user','event.userid','=','user.id')->select('event.*','user.username')->get();
     return view('admin.event.eventList')->with(['events'=>$events]);
     }
 public function eventView($id) {
@@ -240,9 +240,17 @@ public function postEventUpdate(Request $request, $id) {
                 ->update(['status'=>$status]);
         return redirect()->action('adminController@eventList');
     }
-public function eventDelete($id) {
-        $e = DB::table('event')
+public function eventDelete(Request $request,$id) {
+    $status = $request->input('status');
+    $remaining = $request->input('remaining');
+    /*if(strcmp($status,"Approved")|| strcmp($status,"Processing")){
+        return redirect()->back()->with('alert','You Cannot Delete this');
+    }*/
+
+        DB::table('event')
             ->where('id', intval($id))
+            ->where('status','Canceled')
+            ->where('deptremaining','=','0')
             ->delete();
         return redirect()->action('adminController@eventList');
     }

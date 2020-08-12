@@ -29,6 +29,7 @@
                                 <th>Status</th>
                                 <th>Views</th>
                                 <th>Total Dept</th>
+                                <th>Remaining</th>
                                 <th>UserName</th>
                                 <th></th>
                             </tr>
@@ -40,9 +41,10 @@
                                 <td style="vertical-align: middle">{{ $e->name }}</td>
                                 <td style="vertical-align: middle">{{ $e->fromdate }}</td>
                                 <td style="vertical-align: middle">{{ $e->todate }}</td>
-                                <td style="vertical-align: middle">{{ $e->status }}</td>
+                                <td style="vertical-align: middle" name="status" id="evt-status">{{ $e->status }}</td>
                                 <td style="vertical-align: middle">{{ $e->views }}</td>
                                 <td style="vertical-align: middle">${{ $e->totaldept }}</td>
+                                <td style="vertical-align: middle" name="remaining" id="evt-remaining">${{ $e->deptremaining }}</td>
                                 <td style="vertical-align: middle">{{ $e->username }}</td>
                                 <td class="text-center">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/event/eventView/'.$e->id) }}">
@@ -51,7 +53,7 @@
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/event/eventUpdate/'.$e->id) }}">
                                         <i class="fas fa-pencil-alt"></i> 
                                     </a><br><br>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/event/deleteEvent/'.$e->id) }}">
+                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/event/deleteEvent/'.$e->id) }}" onclick="alertcancel()">
                                         <i class="fas fa-trash"></i> 
                                     </a>
                                 </td>
@@ -80,5 +82,13 @@
                 "autoWidth": true,
             });
         });
+    </script>
+
+    <script>
+        var status = document.getElementById("evt-status").value;
+        var remaining = document.getElementById("evt-remaining").value;
+        function alertcancel() {
+                alert("If Status is Canceled and Remaining is $0 => It's has been deleted. Else it will not");       
+        }
     </script>
 @endsection

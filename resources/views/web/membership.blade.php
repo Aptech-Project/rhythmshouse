@@ -1,4 +1,4 @@
-<!-- ') }} -->
+
 @extends('web.layout.header')
 @section('title', 'RhythmHouse | Membership')
 @section('content')
@@ -61,10 +61,12 @@
                         </tbody>
                     </table>
                     <div style="text-align: center">
+                        <a href="{{ url('web/register') }}">
                         <button class="btn btn-info" style="width: 12vw;margin-top: 3vw;color: white;font-size: 1.5vw;text-shadow: 1px 1px 1px #909090;">
                             Register Now
-                        </button><br>
-                        <a href="#" data-toggle="modal" data-target="#">Already a member? Login now</a><br><br><br>
+                        </button>
+                        </a><br>
+                        <a href="{{ url('web/login') }}">Already a member? Login now</a><br><br><br>
                     </div>
             <!--./offers content-->
         
