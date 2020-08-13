@@ -147,12 +147,12 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Status</label>
                                 <select name="status" id="status" class="form-control" >
-                                    @if(old('status')=='1')
-                                    <option selected>Processing</option>
-                                    <option value="2">Canceled</option>
+                                    @if(old('status')=='Processing')
+                                    <option selected value="Processing">Processing</option>
+                                    <option value="Canceled">Canceled</option>
                                     @else
-                                    <option selected>Canceled</option>
-                                    <option value="1">Processing</option>
+                                    <option selected value="Canceled">Canceled</option>
+                                    <option value="Processing">Processing</option>
                                     @endif
                                   </select>
                             </div>
@@ -214,8 +214,8 @@
                             <div class="form-group">
                                 <label for="exampleInputPassword1">Status</label>
                                 <select name="status" id="status" class="form-control" >
-                                    <option value="1">Processing</option>
-                                    <option value="2">Canceled</option>
+                                    <option value="Processing">Processing</option>
+                                    <option value="Canceled">Canceled</option>
                                   </select>
                             </div>
                             <div class="form-group">

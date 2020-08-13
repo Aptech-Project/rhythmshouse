@@ -9,35 +9,111 @@
                         
                         <!-- /.card-header -->
                         <div class="card-body">
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Name</label>
-                                    <input type="text" class="form-control" name="username"  id="name" value="{{$user->name}}">
-                                </div>
-                                <div class="form-group">
+                          @if (count($errors) > 0)
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  id="name" value="{{old('name')}}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label for="exampleInputPassword1">Phone</label>
-                                    <input type="text" class="form-control" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Email</label>
-                                    <input type="text" class="form-control" name="email" id="email" value="{{$user->email}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Address</label>
-                                    <input type="text" class="form-control"  name="address" id="address" value="{{$user->address}}">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Paymentmethod</label>
-                                    <select name="paymentmethod"  class="form-control" id="cars">
-                                        <option value="1">SHIP COD</option>
-                                        {{-- <option value="2">Saab</option>
-                                        <option value="3">Opel</option> --}}
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">Note</label>
-                                    <textarea type="text" class="form-control" name="note"  id="note" value=""></textarea>
-                                </div>
+                                <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" id="phonenumber" value="{{old('phonenumber')}}">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{old('email')}}">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"  name="address" id="address" value="{{old('address')}}">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Paymentmethod</label>
+                                <select name="paymentmethod"  class="form-control" id="cars">
+                                    <option value="1">SHIP COD</option>
+                                    {{-- <option value="2">Saab</option>
+                                    <option value="3">Opel</option> --}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Note</label>
+                                <textarea type="text" class="form-control @error('note') is-invalid @enderror" name="note"  id="note" value="{{old('note')}}">{{old('note')}}</textarea>
+                            </div>
+                          @else
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"  id="name" value="{{$user->name}}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Phone</label>
+                                <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" id="phonenumber" value="{{$user->phonenumber}}">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{$user->email}}">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"  name="address" id="address" value="{{$user->address}}">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Paymentmethod</label>
+                                <select name="paymentmethod"  class="form-control" id="cars">
+                                    <option value="1">SHIP COD</option>
+                                    {{-- <option value="2">Saab</option>
+                                    <option value="3">Opel</option> --}}
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Note</label>
+                                <textarea type="text" class="form-control @error('note') is-invalid @enderror" name="note"  id="note" value=""></textarea>
+                                @error('note')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            @endif
     
                         <!-- /.card-body -->
                     </div>

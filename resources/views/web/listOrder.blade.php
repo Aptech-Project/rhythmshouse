@@ -117,7 +117,7 @@
                                     @if ($c->status == 'processing')
                                     <td style="color:blue" class="cart-total"><a href="{{ url('web/editOrder/'.$c->id) }}">Edit</a></td>
                                     @else
-                                    <td style="color:Brown" class="cart-total"><a>Edit</a></td>
+                                    <td style="color:Brown" class="cart-total"><a href="{{ url('web/viewOrder/'.$c->id) }}">View</a></td>
                                     @endif
                                     <td style="color:blue" class="cart-total"><a href="{{ url('web/orderdetail/'.$c->id) }}">Click</a></td>
                                 </tr>

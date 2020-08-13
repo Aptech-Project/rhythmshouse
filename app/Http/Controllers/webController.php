@@ -370,9 +370,21 @@ class webController extends Controller
                 ->first();
         $date =Carbon::now('Asia/Ho_Chi_Minh');
         $deliverydate = Carbon::tomorrow();
+        $validate = Validator::make($request->all(),[
+            'name' => ['required', 'string', 'max:255'],
+            'phonenumber' => ['required','numeric','digits_between:9,11',],
+            'address' => ['required', 'string', 'max:255'],
+            'email' => ['required','email'],
+            'note' =>['max:1000']
+            ]);
+        if($validate->fails()){
+            return  back()
+                        ->withErrors($validate)
+                        ->withInput();
+        }
         DB::table('order')->insert([
             'address'=>$request['address'],
-            'receiver'=>$request['username'],
+            'receiver'=>$request['name'],
             'email'=>$request['email'],
             'phonenumber'=>$request['phonenumber'],
             'userid'=>$user->id,
@@ -411,16 +423,12 @@ class webController extends Controller
         }
         DB::table('order')->where('id',$request['id'])->update([
             'address'=>$request['address'],
-            'receiver'=>$request['username'],
+            'receiver'=>$request['name'],
             'email'=>$request['email'],
             'phonenumber'=>$request['phonenumber'],
             'note'=>$request['note'],
+            'status' => $request['status']
         ]);
-        if ($request['status'] == '2') {
-            DB::table('order')->where('id',$request['id'])->update([
-                'status' => 'Canceled'
-            ]);
-        }
         return redirect()->action('webController@listOrder');
     }
 
@@ -440,6 +448,14 @@ class webController extends Controller
         ->first();
         // dd($order);
         return view('web.editOrder')->with(['order'=> $order]);
+    }
+    public function viewOrder($id) {
+        // dd($id);
+        $order= DB::table('order')
+        ->where('id', intval($id))
+        ->first();
+        // dd($order);
+        return view('web.viewOrder')->with(['order'=> $order]);
     }
     public function orderDetail($id) {
 

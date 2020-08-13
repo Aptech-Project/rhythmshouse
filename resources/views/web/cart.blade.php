@@ -16,7 +16,11 @@
     .footer.spad {
         padding-top: 300px;
     padding-bottom: 60px;
+    
 }
+.proceed-checkout a:not([href]):hover{
+        color: red;   
+    }
 </style>
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">

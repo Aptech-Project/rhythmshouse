@@ -92,6 +92,7 @@ Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(
     Route::get('cart/buynow/{id}', 'webController@buynow');
     Route::get('order', 'webController@order');
     Route::get('editOrder/{id}', 'webController@editOrder');
+    Route::get('viewOrder/{id}', 'webController@viewOrder');
     Route::get('orderdetail/{id}', 'webController@orderDetail');
     Route::get('listOrder', 'webController@listOrder');
     Route::post('postOrder', 'webController@postOrder');
