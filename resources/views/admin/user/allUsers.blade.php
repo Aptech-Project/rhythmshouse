@@ -55,8 +55,8 @@
                                 <td>{{ $us->birthday}}</td>
                                 <td>{{ $us->phonenumber}}</td>
                                 <td>{{ $us->role}}</td>
-                                <td>{{ $us->img1}}</td>
-                                <td>{{ $us->img2}}</td>
+                                <td class="text-center"><img width="100px" src="{{ url('images/'.$us->img1) }}"/></td>
+                                <td class="text-center"><img width="100px" src="{{ url('images/'.$us->img2) }}"/></td>
                                 <td class="text-right">
                                     <a class="btn btn-primary btn-sm" href="{{ url('admin/user/userDetail/'.$us->id) }}">
                                         <i class="fas fa-folder"></i>
