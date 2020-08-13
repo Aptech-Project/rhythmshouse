@@ -20,12 +20,14 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('index', 'adminController@index');
     //Product Route
     Route::get('product/productList', 'adminController@productList');
+    Route::get('product/productFavorite', 'adminController@productFavorite');
     Route::get('product/productCreate', 'adminController@productCreate');
     Route::post('product/postProductCreate', 'adminController@postProductCreate');
     Route::get('product/productUpdate/{id}', 'adminController@productUpdate');
     Route::post('product/postProductUpdate/{id}', 'adminController@postProductUpdate');
     Route::get('product/productDelete/{id}', 'adminController@productDelete');
     Route::get('product/productDetail/{id}', 'adminController@productDetail');
+    Route::get('product/checkProductName/{name}', 'adminController@checkProductName');
     //Order Route
     Route::get('order/orderdetail/{id}', 'adminController@detailOrder');
     Route::get('order/listOrder', 'adminController@listOrder');
@@ -58,6 +60,7 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('category/categoryUpdate/{id}', 'adminController@categoryUpdate');
     Route::post('category/postCategoryUpdate/{id}', 'adminController@postCategoryUpdate');
     Route::get('category/categoryDelete/{id}', 'adminController@categoryDelete');
+    Route::get('category/checkCategoryName/{name}', 'adminController@checkCategoryName');
 });
 
 

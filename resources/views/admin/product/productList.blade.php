@@ -1,18 +1,12 @@
 @extends('admin.layout.header')
-@section('title', 'product index')
+@section('title', 'Rhythm House | Product List')
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Product List</h1>
-                </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Product List</li>
-                    </ol>
+                    <h1>All Products</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -23,12 +17,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">All product in page</h3>
-                    </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="productList" class="table table-bordered table-hover">
+                        <table id="productList" class="table table-bordered table-hover" style="text-align: center">
                             <thead>
                             <tr>
                                 <th>Id</th>
@@ -56,9 +47,6 @@
                                     <a class="btn btn-info btn-sm" href="{{ url('admin/product/productUpdate/'.$p->id) }}">
                                         <i class="fas fa-pencil-alt"></i> Edit
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="{{ url('admin/product/productDelete/'.$p->id) }}">
-                                        <i class="fas fa-trash"></i> Hide
-                                    </a>
                                 </td>
                             </tr>
                             @endforeach
@@ -78,12 +66,20 @@
         $(function () {
             $('#productList').DataTable({
                 "paging": true,
-                "lengthChange": false,
-                "searching": false,
+                "lengthChange": true,
+                "searching": true,
                 "ordering": true,
                 "info": true,
-                "autoWidth": false,
+                "autoWidth": true,
             });
         });
+    </script>
+
+    <script>
+        var status = document.getElementById("evt-status").value;
+        var remaining = document.getElementById("evt-remaining").value;
+        function alertcancel() {
+                alert("If Status is Canceled and Remaining is $0 => It's has been deleted. Else it will not");       
+        }
     </script>
 @endsection

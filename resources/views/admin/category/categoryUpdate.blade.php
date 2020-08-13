@@ -18,8 +18,9 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="txt-name">Category Name</label>
-                                    <input type="hidden" class="form-control" id="txt-name" name="categoryname"  value="{{ $c->categoryname }}">
-                                    <input type="text" class="form-control" id="txt-name" name="newcategoryname" placeholder="Input Category Name" value="{{ $c->categoryname }}">
+                                    <div style="color: red;" id="nameError"></div>
+                                    <input type="hidden" class="form-control" id="categoryname" name="categoryname"  value="{{ $c->categoryname }}">
+                                    <input type="text" class="form-control" id="newcategoryname" name="newcategoryname" required placeholder="Input Category Name" value="{{ $c->categoryname }}">
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -40,6 +41,24 @@
     <script type="text/javascript">
         $(document).ready(function () {
             bsCustomFileInput.init();
+        });
+        $("#newcategoryname").on("blur", function () {
+            $newcategoryname = $(this).val().toLowerCase();
+            $categoryname = $("#categoryname").val().toLowerCase();
+            if($newcategoryname != $categoryname){
+                $.get({
+                    url: "http://localhost/rhythmshouse/public/admin/category/checkCategoryName/" + $newcategoryname,
+                    success: function (res) {
+                        if (res.error) {
+                            $("#newcategoryname").val("");
+                            $("#newcategoryname").focus();
+                            $("#nameError").text(res.error);
+                        } else {
+                            $("#nameError").text("");
+                        }
+                    },
+                });
+            }else{$("#nameError").text("")}
         });
     </script>
 @endsection

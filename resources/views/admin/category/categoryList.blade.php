@@ -27,9 +27,10 @@
                         {{ csrf_field() }}
                         <label for="txt-name">Add Category</label>
                         <div class="form-group mx-sm-3 mb-2">
-                            <input type="text" class="form-control" name="categoryname" placeholder="Input Category Name">
+                            <input type="text" class="form-control" required id="newcategoryname" name="newcategoryname" placeholder="Input Category Name">
                         </div>
                         <button type="submit" class="btn btn-primary mb-2">Add</button>
+                        <div style="color: red;" id="nameError"></div>
                     </form>
                     <!-- /.add category -->
                     <div class="card-header">
@@ -83,6 +84,21 @@
                 "info": true,
                 "autoWidth": false,
             });
+        });
+        $("#newcategoryname").on("blur", function () {
+            $newcategoryname = $(this).val().toLowerCase();
+                $.get({
+                    url: "http://localhost/rhythmshouse/public/admin/category/checkCategoryName/" + $newcategoryname,
+                    success: function (res) {
+                        if (res.error) {
+                            $("#newcategoryname").val("");
+                            $("#newcategoryname").focus();
+                            $("#nameError").text('  '+res.error);
+                        } else {
+                            $("#nameError").text("");
+                        }
+                    },
+                });
         });
     </script>
 @endsection

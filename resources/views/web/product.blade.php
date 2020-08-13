@@ -172,11 +172,11 @@
         $("footer:first").addClass("footer--normal");
     });
     $("#keyword").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#productDiv #productDivSub").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        var value = $(this).val().toLowerCase();
+        $("#productDiv #productDivSub").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
     });
-  });
   function checklogin(){
     alertify.success('Please Login');
   }
@@ -200,7 +200,7 @@
             alertify.success('Added to Favorite');
         }
         $.get({
-                url : 'favorite/'+$id
+                url : 'http://localhost/rhythmshouse/public/web/favorite/'+$id
                 })
     }
 </script>

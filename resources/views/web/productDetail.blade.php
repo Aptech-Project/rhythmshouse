@@ -171,7 +171,7 @@
             alertify.success('Added to Favorite');
         }
         $.get({
-                url : '/favorite/'+$id
+                url : 'http://localhost/rhythmshouse/public/web/favorite/'+$id
                 })
     }
 </script>

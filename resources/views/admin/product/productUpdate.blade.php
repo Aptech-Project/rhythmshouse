@@ -22,11 +22,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Product Name</label>
-                                    <input type="text" class="form-control" id="txt-name" name="name" placeholder="Input Product Name" value="{{ $p->name }}">
+                                    <div style="color: red;" id="nameError"></div>
+                                    <input type="hidden" class="form-control" id="oldName" name="name" value="{{ $p->name }}">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Input Product Name" value="{{ $p->name }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-price">Product Price</label>
-                                    <input type="text" class="form-control" id="txt-price" name="price" placeholder="1" value="{{ $p->price }}">
+                                    <div style="color: red;" id="priceError"></div>
+                                    <input type="text" class="form-control" id="price" name="price" placeholder="1" value="{{ $p->price }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-name">Artist</label>
@@ -34,7 +37,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="txt-price">Author</label>
-                                    <input type="text" class="form-control" id="txt-price" name="author" value="{{ $p->author }}">
+                                    <input type="text" class="form-control" id="" name="author" value="{{ $p->author }}">
                                 </div>
                                 <div class="form-group">
                                     <label>Description</label>
@@ -69,5 +72,35 @@
         $(document).ready(function () {
             bsCustomFileInput.init();
         });
+        $("#price").on("blur", function () {
+        $price = $(this).val();
+        console.log($price);
+        if ($price <= 0) {
+            $("#priceError").text("Price must be positive number!");
+            $("#price").focus();
+        } else {
+            $("#priceError").text("");
+        }
+    });
+    $("#name").on("blur", function () {
+        
+        $name = $(this).val().toLowerCase();
+        $oldName = $("#oldName").val().toLowerCase();
+        if($oldName != $name){
+            console.log($name);
+            $.get({
+                url: "http://localhost/rhythmshouse/public/admin/product/checkProductName/" + $name,
+                success: function (res) {
+                    if (res.error) {
+                        $("#name").val("");
+                        $("#name").focus();
+                        $("#nameError").text(res.error);
+                    } else {
+                        $("#nameError").text("");
+                    }
+                },
+            });
+        }else{$("#nameError").text("")}
+    });
     </script>
 @endsection

@@ -17,7 +17,15 @@ class webController extends Controller
     public function index() {
         $evt = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->take(6)->get();
         $evttop = DB::table('event')->where('status','Approved')->where('fromdate','>',now())->orderBy('fromdate','asc')->first();
-        return view('web.index')->with(['evt'=>$evt,'evttop'=>$evttop]);
+        $lastestProducts = DB::table('product')->orderBy('id','desc')->take(3)->get();
+        $billboard = DB::table('product')
+            ->join('favorite', 'product.id', '=', 'favorite.productid')
+            ->select('product.*', DB::raw('count(*) as total'))
+            ->groupBy('product.id')
+            ->orderBy('total', 'desc')
+            ->take(10)
+            ->get();
+        return view('web.index')->with(['evt'=>$evt,'evttop'=>$evttop, 'lastestProducts'=>$lastestProducts, 'billboard'=>$billboard]);
     }
 
 // Controller for product start
