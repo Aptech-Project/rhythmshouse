@@ -37,7 +37,8 @@
                     @foreach ($evt as $e)                 
                         <div class="col-lg-4">
                             <div class="event__item">
-                                <div class="event__item__pic set-bg" data-setbg="{{ url('images/'.$e->url2) }}">
+                                <div class="event__item__pic set-bg" ><!--data-setbg="{ url('images/'.$e->url2) }}"-->
+                                    <img src="{{ url('images/'.$e->url2) }}" width="500" height="300">
                                     <div class="tag-date">
                                         <span>{{$e->fromdate}}</span>
                                     </div>

@@ -9,6 +9,7 @@
                     <h1>Event Management </h1>
                 </div>
             </div>
+            <h6> <b style="color: red">*NOTE:</b> If you delete an event. Event's status must be Canceled and remaining must be $0. The Event will not be Delete if it doesn't meet the conditions</h6>
         </div><!-- /.container-fluid -->
     </section>
 
@@ -85,10 +86,12 @@
     </script>
 
     <script>
-        var status = document.getElementById("evt-status").value;
-        var remaining = document.getElementById("evt-remaining").value;
         function alertcancel() {
-                alert("If Status is Canceled and Remaining is $0 => It's has been deleted. Else it will not");       
+            var x = confirm("Make sure your Event Status is Canceled and Remaining must be $0")
+            if (x)
+                return true;
+             else
+                return false;
         }
     </script>
 @endsection

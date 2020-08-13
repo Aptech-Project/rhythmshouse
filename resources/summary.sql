@@ -66,7 +66,7 @@ CREATE TABLE `event` (
   `userid` int DEFAULT '0',
   `url1` varchar(255) DEFAULT NULL,
   `url2` varchar(255) DEFAULT NULL,
-  `url3` varchar(255) DEFAULT NULL,
+  `deptremaining` float DEFAULT '0',
   `deptremaining` float DEFAULT '0',
   PRIMARY KEY (`id`),
   CONSTRAINT FOREIGN KEY (`userid`) REFERENCES `user` (`id`)
@@ -231,18 +231,16 @@ INSERT INTO `productcategory` (`productid`, `categoryname`) VALUES
 (30, 'Pop');
 
 --  EVENT 
-INSERT INTO `event` (`id`, `name`, `address`, `registerdate`, `fromdate`, `todate`, `description`, `type`, `artist`, `status`, `views`, `ticketprice`, `totaldept`, `haspaid`, `userid`, `url1`, `url2`, `url3`) VALUES
-(1, 'Work From Home 1', '23Str, SanJose, CA, USA', '2020-08-01 09:40:57', '2020-08-07 00:00:00', '2020-08-08 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Canceled', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'service-left.jpg', NULL),
-(2, 'Work From Home 2', '23Str, SanJose, CA, USA', '2020-08-04 00:00:00', '2020-08-05 00:00:00', '2020-08-06 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'skill-video.jpg', NULL),
-(3, 'Work From Home 3', '23Str, SanJose, CA, USA', '2020-08-04 00:00:00', '2020-08-07 00:00:00', '2020-08-08 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Festival-del-Sole.jpg', NULL),
-(4, 'Work From Home 4', '23Str, SanJose, CA, USA', '2020-08-08 00:00:00', '2020-08-15 00:00:00', '2020-08-22 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'countdown-bg.jpg', NULL),
-(5, 'Work From Home 5', '23Str, SanJose, CA, USA', '2020-08-01 00:00:00', '2020-08-17 00:00:00', '2020-08-19 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'hero-bg.png', NULL),
-(6, 'Work From Home 6', '23Str, SanJose, CA, USA', '2020-08-05 00:00:00', '2020-08-29 00:00:00', '2020-09-05 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Background.jpg', NULL),
-(7, 'Work From Home 7', '23Str, SanJose, CA, USA', '2020-08-05 12:39:00', '2020-08-01 12:40:00', '2020-08-08 12:40:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Processing', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'br-2.jpg', NULL),
-(8, 'Work From Home 8', '23Str, SanJose, CA, USA', '2020-08-05 13:07:00', '2020-08-08 13:07:00', '2020-08-14 13:07:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Processing', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'blog-5.jpg', NULL),
-(9, 'Work From Home 9', '23Str, SanJose, CA, USA', '2020-08-06 19:24:00', '2020-09-01 19:24:00', '2020-09-05 19:25:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Processing', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'br-1.jpg', NULL),
-(10, 'Work From Home 10', '23Str, SanJose, CA, USA', '2020-08-10 19:45:00', '2020-08-11 19:46:00', '2020-08-21 19:46:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Processing', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'blog-6.jpg', NULL),
-(11, 'Work From Home 11', '23Str, SanJose, CA, USA', '2020-08-06 20:20:00', '2020-08-05 20:20:00', '2020-08-07 20:20:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 0, 500, 0, 0, 2, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'blog-1.jpg', NULL),
-(12, 'Work From Home 12', '23Str, SanJose, CA, USA', '2020-08-06 09:37:00', '2020-08-21 09:37:00', '2020-08-22 09:37:00', 'blad blad blad', 'Pop', 'Fifth Harmony', 'Processing', 0, 500, 0, 0, 2, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'blog-3.jpg', NULL);
+INSERT INTO `event` (`id`, `name`, `address`, `registerdate`, `fromdate`, `todate`, `description`, `type`, `artist`, `status`, `views`, `ticketprice`, `totaldept`, `haspaid`, `userid`, `url1`, `url2`, `deptremaining`) VALUES
+(1, 'Work From Home ', '23Str, SanJose, CA, USA', '2020-09-01 09:40:57', '2020-09-07 00:00:00', '2020-09-08 00:00:00', 'blad blad blad', 'Rap', 'Fifth Harmony', 'Approved', 1500, 50, 30, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Work From Home.jpg', 30),
+(2, 'Game of Thrones Live Concert', '23Str, SanJose, CA, USA', '2020-09-04 00:00:00', '2020-09-05 00:00:00', '2020-09-06 00:00:00', 'blad blad blad', 'Classical', 'Game of Thrones Live Concert', 'Approved', 1000, 25, 20, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Game of Thrones Live Concert.jpg', 20),
+(3, 'Charlie Puth Liveshow', '23Str, SanJose, CA, USA', '2020-09-04 00:00:00', '2020-09-07 00:00:00', '2020-09-09 00:00:00', 'blad blad blad', 'PoP', 'Charlie Puth', 'Approved', 0, 22, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Voice notes 2.jpg', 0),
+(4, 'Larger Than Life', '23Str, SanJose, CA, USA', '2020-09-09 00:00:00', '2020-09-15 00:00:00', '2020-09-22 00:00:00', 'blad blad blad', 'PoP', 'Backstreet Boys', 'Approved', 0, 19, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Larger Than Life 2.jpg', 0),
+(5, 'Rapture 2019', '23Str, SanJose, CA, USA', '2020-09-01 00:00:00', '2020-09-17 00:00:00', '2020-09-19 00:00:00', 'blad blad blad', 'Rap', 'Eminem', 'Approved', 0, 25, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Rapture 2019.jpg', 0),
+(6, 'Acoustic Night', '23Str, SanJose, CA, USA', '2020-09-05 00:00:00', '2020-09-29 00:00:00', '2020-09-05 00:00:00', 'blad blad blad', 'Guitar', 'Guitar Show', 'Approved', 0, 15, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Acoustic Night.jpg', 0),
+(7, 'Encorel', '23Str, SanJose, CA, USA', '2020-09-05 12:39:00', '2020-09-01 12:40:00', '2020-09-09 12:40:00', 'blad blad blad', 'Piano', 'Mozard', 'Approved', 0, 20, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'For Intermediate to Early Advanced Piano.jpg', 0),
+(8, 'Westlife Tour', '23Str, SanJose, CA, USA', '2020-09-05 13:07:00', '2020-09-09 13:07:00', '2020-09-14 13:07:00', 'blad blad blad', 'PoP', 'westlife', 'Processing', 0, 50, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'westlife-the-twenty-tour-singapore-band.jpg', 0),
+(9, 'The Voicenotes Tour', '23Str, SanJose, CA, USA', '2020-09-06 19:24:00', '2020-09-01 19:24:00', '2020-09-05 19:25:00', 'blad blad blad', 'PoP', 'Charlie Puth', 'Processing', 0, 30, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'The Voicenotes Tour.jpg', 0),
+(10, 'Eminem solo performance', '23Str, SanJose, CA, USA', '2020-09-10 19:45:00', '2020-09-11 19:46:00', '2020-09-21 19:46:00', 'blad blad blad', 'Rap', 'Eminem', 'Processing', 0, 500, 0, 0, 1, 'https://www.youtube.com/watch?v=5GL9JoH4Sws', 'Eminem solo performance.jpg', 0);
 
 

@@ -246,7 +246,6 @@ public function eventDelete(Request $request,$id) {
     /*if(strcmp($status,"Approved")|| strcmp($status,"Processing")){
         return redirect()->back()->with('alert','You Cannot Delete this');
     }*/
-
         DB::table('event')
             ->where('id', intval($id))
             ->where('status','Canceled')
