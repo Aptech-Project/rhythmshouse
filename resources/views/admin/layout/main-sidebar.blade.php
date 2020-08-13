@@ -69,15 +69,9 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
+                            <a href="{{ url('admin/product/productFavorite') }}" class="nav-link">
                                 <i class="nav-icon fas"></i>
                                 <p style="color: ghostwhite">Favorite Products</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ url('admin/product/productList') }}" class="nav-link">
-                                <i class="nav-icon fas"></i>
-                                <p style="color: ghostwhite">Discount Products</p>
                             </a>
                         </li>
                         <li class="nav-item">

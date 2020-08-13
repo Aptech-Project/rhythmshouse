@@ -65,21 +65,17 @@
             <!-- Sidebar start -->
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="col">
-                    <!-- sidebar-search start-->
-                    <br />
-                    <div class="sidebar-search">
-                        <form role="form" action="{{ url('web/index') }}" method="post" enctype="multipart/form-data">
-                            <div class="input-group">
-                                <input type="text" class="form-control search-menu" placeholder="Search..."/>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                    <button type="submit" class="btn btn-light" style="padding: 0px;"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </span>
-                                </div>
-                            </div>  
-                        </form>
+                    <div class="row">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." style="line-height: 20px;"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true" ></i>
+                                </span>
+                            </div>
+                        </div>  
                     </div>
-                    <br />
+                    <br>
                     <div class="row">
                         <div class="col-lg-9 col-md-9 col-sm-9" style="padding:0px">
                             @foreach($categories as $c)
@@ -96,7 +92,7 @@
                             @foreach($songCountByCategories as $sc)
                             <ul class="list-group">
                                 <li class="list-group-item d-flex justify-content-between align-items-center" style="padding-left:15px">
-                                    <span class=" badge-primary badge-pill">{{$sc->total}}</span>
+                                <span class=" badge-primary badge-pill">{{$sc->total}}</span>
                                 </li>
                             </ul>
                             @endforeach
@@ -107,9 +103,9 @@
             </div>
             <!-- Sidebar end -->
             <!-- Product list start -->
-            <div class="col-lg-9 col-md-9 col-sm-9">
+            <div class="col-lg-9 col-md-9 col-sm-9" id="productDiv">
                 @foreach($products as $p)
-                <div class="row product-row">
+                <div class="row product-row" id="productDivSub">
                     <div class="col-lg-3 col-md-3 col-sm-3">
                         <a href="{{ url('web/productDetail/'.$p->id) }}">
                             <img src="{{ url('images/'.$p->image) }}" width=280px/>
@@ -121,27 +117,27 @@
                         <img src="{{ asset('img/line2.png') }}"/>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-3 center">
-                        <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">Price: {{$p->price}}$</p>
+                        <p style="font-family: Luckiest Guy; color: #006600; text-shadow: 1px 1px 1px white; font-size: 20px" class="center">
+                            @if (Auth::User())
+                                <img src="{{ asset('img/emptyheart.svg') }}" style="width:25px" onclick="favorite(this, {{$p->id}})"/> 
+                            @else
+                                <img src="{{ asset('img/emptyheart.svg') }}" style="width:25px" onclick="checklogin()"/> 
+                            @endif
+                            
+                            Price: {{$p->price}}$
+                        </p>
                         <a href="{{url('/web/cart/buynow/'.$p->id)}}"><img src="{{ asset('img/buynow.png') }}" style="width:150px" alt="" /></a>
+                        {{-- <a href="{{url('/web/cart/addCart/'.$p->id)}}"><img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" /></a> --}}
                         @if (Auth::User())
-                            <a  onclick="addCart({{$p->id}})" >
-                                <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
-                            </a>
+                        <a  onclick="addCart({{$p->id}})" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
                         @else
-                            <a  onclick="checklogin()" >
-                                <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
-                            </a>
+                        <a  onclick="checklogin()" >
+                            <img src="{{ asset('img/addtocart.png') }}" style="width:150px" alt="" />
+                        </a>
                         @endif
                     </div>
-                    
-                    <!-- <div class="col-lg-12">
-                        <div class="pagination__links">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">Next</a>
-                        </div>
-                    </div> -->
                 </div>
                 <br>
                 @endforeach
@@ -175,21 +171,37 @@
         $("header:first").addClass("header--normal");
         $("footer:first").addClass("footer--normal");
     });
-    function addCart($id){
+    $("#keyword").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#productDiv #productDivSub").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+  function checklogin(){
+    alertify.success('Please Login');
+  }
+  function addCart($id){
         $.ajax({
             url: 'cart/addCart/'+$id,
             type: 'GET',
         }).done(function(response){
             console.log(response);
             var proCart = $('#cart');
-            console.log(proCart);
-            // proCart.append('<span id="countCart"class="count-prodct">'+response+'</span>');
-            // $('#countCart').text(response);
+            // console.log(proCart);
             alertify.success('Add product success');
         })
     }
-    function checklogin(){
-    alertify.success('Please Login');
-  }
+    function favorite(e, $id){
+        if(e.src == "http://localhost/rhythmshouse/public/img/heart.svg"){
+            e.src = "{{ asset('img/emptyheart.svg') }}";
+            alertify.success('Removed from Favorite');
+        }else{
+            e.src = "{{ asset('img/heart.svg') }}";
+            alertify.success('Added to Favorite');
+        }
+        $.get({
+                url : 'favorite/'+$id
+                })
+    }
 </script>
 @endsection

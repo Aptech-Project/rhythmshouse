@@ -68,11 +68,13 @@ Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(
     Route::get('web/index', 'webController@index');
     Route::get('web/productDetail/{id}', 'webController@productDetail');
     Route::get('web/product/{categoryname}', 'webController@productByCategory');
-    Route::post('web/searchProduct', 'webController@searchProduct');
-    Route::get('web/favorite/{id}', 'webController@favorite');
-    Route::get('web/checkFavorite/{id}', 'webController@checkFavorite');
-    Route::get('web/favoriteList/{id}', 'webController@favoriteList');
+    
+    
 Route::prefix('web')->name('web')->middleware('checkLoginUser')->group(function(){
+    //product
+    Route::get('favorite/{id}', 'webController@favorite');
+    Route::get('checkFavorite/{id}', 'webController@checkFavorite');
+    Route::get('favoriteList/{id}', 'webController@favoriteList');
     //event
     Route::get('eventCreate/{id}', 'webController@eventCreate');
     Route::post('posteventCreate/{id}', 'webController@postEventCreate');

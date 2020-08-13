@@ -65,30 +65,15 @@
             <!-- Sidebar start -->
             <div class="col-lg-3 col-md-3 col-sm-3">
                 <div class="col">
-                    <!-- sidebar-search start-->
-                    <!-- <div class="sidebar-search">
-                        <div>
-                            <div class="input-group">
-                                <form role="form" action="{{ url('web/index') }}" method="post" enctype="multipart/form-data">
-                                    <input type="text" class="form-control search-menu" placeholder="Search..." width:60%/>
-                                    <div class="input-group-append">
-                                        <button type="button" type="submit" class="btn btn-light"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="row">
-                        <form role="form" action="{{ url('web/searchProduct') }}" method="post" enctype="multipart/form-data">
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." style="line-height: 20px;"/>
-                                <div class="input-group-append">
-                                    <span class="input-group-text">
-                                    <button type="submit" class="btn btn-light" style="padding: 0px;"><i class="fa fa-search" aria-hidden="true" ></i></button>
-                                    </span>
-                                </div>
-                            </div>  
-                        </form>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="keyword" name="keyword" placeholder="Search..." style="line-height: 20px;"/>
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                <i class="fa fa-search" aria-hidden="true" ></i>
+                                </span>
+                            </div>
+                        </div>  
                     </div>
                     <br>
                     <div class="row">
@@ -120,7 +105,7 @@
             <!-- Product list start -->
             <div class="col-lg-9 col-md-9 col-sm-9" id="productDiv">
                 @foreach($products as $p)
-                <div class="row product-row">
+                <div class="row product-row" id="productDivSub">
                     <div class="col-lg-3 col-md-3 col-sm-3">
                         <a href="{{ url('web/productDetail/'.$p->id) }}">
                             <img src="{{ url('images/'.$p->image) }}" width=280px/>
@@ -153,15 +138,6 @@
                         </a>
                         @endif
                     </div>
-                    
-                    <!-- <div class="col-lg-12">
-                        <div class="pagination__links">
-                            <a href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <a href="#">Next</a>
-                        </div>
-                    </div> -->
                 </div>
                 <br>
                 @endforeach
@@ -197,7 +173,7 @@
     });
     $("#keyword").on("keyup", function() {
     var value = $(this).val().toLowerCase();
-    $("#productDiv div").filter(function() {
+    $("#productDiv #productDivSub").filter(function() {
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
