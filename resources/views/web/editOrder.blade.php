@@ -93,6 +93,74 @@
                     
                     <!-- /.card-header -->
                     <div class="card-body">
+                        @if (count($errors) > 0)
+                        <div class="form-group" style="display: none;">
+                            <label for="exampleInputPassword1">Id</label>
+                            <input type="text" class="form-control" name="id" id="id" value="{{old("id")}}">
+                            
+                        </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Name</label>
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{old('name')}}">
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Phone</label>
+                                <input type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" id="phonenumber" value="{{old('phonenumber')}}">
+                                @error('phonenumber')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Email</label>
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{old('email')}}">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <input type="text" class="form-control @error('address') is-invalid @enderror"  name="address" id="address" value="{{old('address')}}">
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Paymentmethod</label>
+                                <select name="paymentmethod" disabled  class="form-control" id="cars">
+                                    <option value="1">SHIP COD</option>
+                                    {{-- <option value="2">Saab</option>
+                                    <option value="3">Opel</option> --}}
+                                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Status</label>
+                                <select name="status" id="status" class="form-control" >
+                                    @if(old('status')=='1')
+                                    <option selected>Processing</option>
+                                    <option value="2">Canceled</option>
+                                    @else
+                                    <option selected>Canceled</option>
+                                    <option value="1">Processing</option>
+                                    @endif
+                                  </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Note</label>
+                                <textarea type="text" class="form-control" name="note"  id="note" value="{{old('note')}}">{{old('note')}}</textarea>
+                            </div>
+                        @else
                         <div class="form-group" style="display: none;">
                             <label for="exampleInputPassword1">Id</label>
                             <input type="text" class="form-control" name="id" id="id" value="{{$order->id}}">
@@ -154,6 +222,8 @@
                                 <label for="exampleInputPassword1">Note</label>
                                 <textarea type="text" class="form-control" name="note"  id="note" value="">{{$order->note}}</textarea>
                             </div>
+                        @endif
+                        
                             <button type="submit" class="btn btn-primary">Save</button>
                     <!-- /.card-body -->
                 </div>

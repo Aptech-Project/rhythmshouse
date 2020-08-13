@@ -323,11 +323,13 @@ class webController extends Controller
                 
         $date =Carbon::now('Asia/Ho_Chi_Minh');
         $deliverydate = Carbon::tomorrow();
+        // dd($request['note']);
         $validate = Validator::make($request->all(),[
             'name' => ['required', 'string', 'max:255'],
             'phonenumber' => ['required','numeric','digits_between:9,11',],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required','email'],
+            'note' =>['max:1000']
             ]);
         if($validate->fails()){
             return  back()
@@ -415,6 +417,7 @@ class webController extends Controller
             'phonenumber' => ['required','numeric','digits_between:9,11',],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required','email'],
+            'note' =>['max:1000']
             ]);
         if($validate->fails()){
             return  back()
