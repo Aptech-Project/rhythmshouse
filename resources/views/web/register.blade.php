@@ -354,7 +354,7 @@
                             <label class="control-label col-sm-5" for="username" style="text-align: left;"><i
                                     class="fa fa-user"></i>&nbsp;UserName :*</label>
                             <div class="col-sm-9">
-                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter Username"
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Enter Username" required
                                     name="username">
                                 @error('username')
                                     <span class="invalid-feedback" role="alert">
@@ -387,7 +387,7 @@
                         
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="address" style="text-align: left;"><i
-                                    class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Address :</label>
+                                    class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Address :*</label>
                             <div class="col-sm-9">
                                 <input type="text" id="address" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" id="address" name="address" placeholder="Enter Your Address">
                                 @error('address')
@@ -399,7 +399,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="birthday" style="text-align: left;"><i
-                                    class="fa fa-birthday-cake" aria-hidden="true"></i>&nbsp;Birthday :</label>
+                                    class="fa fa-birthday-cake" aria-hidden="true"></i>&nbsp;Birthday :*</label>
                             <div class="col-sm-9">
                                 <input type="date" id="birthday" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ old('birthday') }}" required autocomplete="birthday" id="birthday" name="birthday">
                                 @error('birthday')
@@ -411,7 +411,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="name" style="text-align: left;"><i
-                                    class="fa fa-male" aria-hidden="true"></i>&nbsp;Name :</label>
+                                    class="fa fa-male" aria-hidden="true"></i>&nbsp;Name :*</label>
                             <div class="col-sm-9">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name"  placeholder="Enter Your Name" name="name">
                                 @error('name')
@@ -423,7 +423,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-sm-5" for="phonenumber" style="text-align: left;"><i
-                                    class="fa fa-phone" aria-hidden="true"></i>&nbsp;Phone Number :</label>
+                                    class="fa fa-phone" aria-hidden="true"></i>&nbsp;Phone Number :*</label>
                             <div class="col-sm-9">
                                 <input id="phonenumber" type="text" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber" placeholder="Enter Phone Number">
                                 @error('phonenumber')
