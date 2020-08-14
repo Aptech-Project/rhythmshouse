@@ -22,6 +22,7 @@
                         <table id="productList" class="table table-bordered table-hover" style="text-align: center">
                             <thead>
                             <tr>
+                                <th>Rank</th>
                                 <th>Id</th>
                                 <th>Product Name</th>
                                 <th>Artist</th>
@@ -33,8 +34,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($favoriteSong as $p)
+                            @foreach($favoriteSong as $key=>$p)
                             <tr>
+                                <td width="10%">{{ $key + 1 }}</td>
                                 <td width="10%">{{ $p->id }}</td>
                                 <td width="15%">{{ $p->name }}</td>
                                 <td width="15%">{{ $p->artist }}</td>
