@@ -439,7 +439,20 @@ class webController extends Controller
         ]);
         return redirect()->action('webController@listOrder');
     }
-
+    public function bill($id) {
+        // dd($id);
+        $order= DB::table('order')
+        ->where('id', intval($id))
+        ->first();
+        // dd($order);
+        $orderDetail = DB::table('orderdetail')
+            ->join('product', 'orderdetail.productid', '=', 'product.id')
+            ->select('orderdetail.id','orderdetail.quantity' ,'orderdetail.productid','product.name','product.image','product.price')
+            ->where('orderdetail.orderid',$id)
+            ->get();
+            // dd($orderDetail);
+        return view('web.bill')->with(['order'=> $order,'orderDetail'=>$orderDetail]);
+    }
     public function listOrder() {
 
         $user = DB::table('user')

@@ -104,6 +104,7 @@
                                 <th>Total</th>
                                 <th>Edit</th>
                                 <th>Detail</th>
+                                <th>Bill</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -120,6 +121,8 @@
                                     <td style="color:Brown" class="cart-total"><a href="{{ url('web/viewOrder/'.$c->id) }}">View</a></td>
                                     @endif
                                     <td style="color:blue" class="cart-total"><a href="{{ url('web/orderdetail/'.$c->id) }}">Click</a></td>
+                                    <td style="color:blue" class="cart-total"><a href="{{ url('web/bill/'.$c->id) }}">Bill</a></td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
