@@ -32,14 +32,14 @@
                             @foreach($revenueorder as $e)
                             <tr>
                                 <td>{{ $e->id }}</td>
-                                <td>{{ $e->registerdate }}</td>
-                                <td>${{ $e->ticketprice }}</td>
+                                <td>{{ $e->date }}</td>
+                                <td>${{ $e->totalmoney }}</td>
                             </tr>
                             @endforeach
                             <tfoot>
                                 <tr>
                                     <th colspan="2" style="text-align:right">Total:</th>
-                                    <th colspan="3" style="text-align:center">${{$revenueorder -> sum('ticketprice')}}</th> 
+                                    <th colspan="3" style="text-align:center">${{$revenueorder -> sum('totalmoney')}}</th> 
                                 </tr>
                             </tfoot>
                         </table>

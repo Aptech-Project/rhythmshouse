@@ -137,7 +137,7 @@
                     <h6>
                     {{ Auth::user()->email }}
                     </h6>
-                    <p>Rank 8/10</p><br>
+                    <p></p><br>
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
